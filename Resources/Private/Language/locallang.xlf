@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-17T18:30:52Z" product-name="ns_google_map">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_nsgooglemap_domain_model_type">
+				<source>Searching for</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_example">
+				<source>(Like travel_agency, restaurant, food, point_of_interest, establishment etc)</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_km">
+				<source>Add distance (in Km)</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_find">
+				<source>Search</source>
+			</trans-unit>
+
+
+
+			<trans-unit id="tx_ns_google_map_domain_model_map">
+				<source>Google Map</source>
+			</trans-unit>
+			<trans-unit id="tx_ns_google_map_domain_model_map.description">
+				<source>In this plugin you can find places(cafe,store etc..), direction between two places with different theme.</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.infocontent">
+				<source>Infocontent</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.closebyclick">
+				<source>Closebyclick</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.openbyclick">
+				<source>Openbyclick</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.opened">
+				<source>Opened</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.latitude">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.longitude">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.map">
+				<source>Map</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.maplink">
+				<source>View on Google Maps</source>
+			</trans-unit>
+
+			<trans-unit id="tx_nsgooglemap_domain_model_address.start">
+				<source>Start</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.end">
+				<source>End</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.travel">
+				<source>Travel:</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.getDirection">
+				<source>Get Direction</source>
+			</trans-unit>
+
+			<trans-unit id="tx_nsgooglemap_domain_model_address.DRIVING">
+				<source>Driving</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.WALKING">
+				<source>Walking</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.BICYCLING">
+				<source>Bicycling</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.TRANSIT">
+				<source>Transit</source>
+			</trans-unit>
+
+			<trans-unit id="tx_nsgooglemap_domain_model_address.notfoundmsg">
+				<source>Directions request failed due to zero result</source>
+			</trans-unit>
+
+
+			<trans-unit id="tx_nsgooglemap_domain_model_address.ChangeTheme">
+				<source>Default Theme</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.ExpressRoute">
+				<source>Express Route</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.DarkBluePower">
+				<source>Dark Blue Power</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.Energy">
+				<source>Energy</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.UltraLight">
+				<source>Ultra Light</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.GreenSerenity">
+				<source>Green Serenity</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.BlackAndWhite">
+				<source>Black And White</source>
+			</trans-unit>
+
+			<trans-unit id="find_place_map">
+				<source>Find places on the map</source>
+			</trans-unit>
+			<trans-unit id="search_place_map">
+				<source>Find the direction between location on the map</source>
+			</trans-unit>
+			<trans-unit id="change_theme">
+				<source>Change theme</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

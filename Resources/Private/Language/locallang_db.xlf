@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-17T18:30:52Z" product-name="ns_google_map">
+		<header/>
+		<body>
+			<trans-unit id="tx_ns_google_map_domain_model_map">
+				<source>Google Map</source>
+			</trans-unit>
+			<trans-unit id="tx_ns_google_map_domain_model_map.description">
+				<source>In this plugin you can find places(cafe,store etc..), direction between two places with different theme.</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.infocontent">
+				<source>Infocontent</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.maplink">
+				<source>View Google Map Link</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.closebyclick">
+				<source>Closebyclick</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.openbyclick">
+				<source>Openbyclick</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.opened">
+				<source>Opened</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.latitude">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.longitude">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.map">
+				<source>Map</source>
+			</trans-unit>
+			<!-- TCA Configuration -->
+			<trans-unit id="tx_nsgooglemap_domain_model_address.info_window">
+				<source>Info Content</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.palettes.interaction">
+				<source>Interaction</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_domain_model_address.others">
+				<source>Others</source>
+			</trans-unit>
+			<!-- FlexForm Configuration -->
+			<trans-unit id="tx_nsgooglemap_map.flexform.sheetTitle">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.width">
+				<source>Width</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.height">
+				<source>Height</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.mapSetting">
+				<source>Map Settings</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.defaulttype">
+				<source>Default MapType</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.0">
+				<source>Map</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.1">
+				<source>Satellite</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.2">
+				<source>Hybrid</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.3">
+				<source>Terrain</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.3">
+				<source>Terrain</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.zoom">
+				<source>Zoom Level (1-22)</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.scrollzoom">
+				<source>Scroll Zoom</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.draggable">
+				<source>Draggable</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.doubleclickzoom">
+				<source>Doubleclick Zoom</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controls">
+				<source>Controls</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.mapcontrol">
+				<source>Map type control</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.maptype">
+				<source>Map types</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.maptype.0">
+				<source>Map</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.maptype.1">
+				<source>Satellite</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.maptype.2">
+				<source>Hybrid</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.maptype.3">
+				<source>Terrain</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.maptype.3">
+				<source>Terrain</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlstyle">
+				<source>Map Type Control Style</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlstyle.0">
+				<source>DEFAULT</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlstyle.1">
+				<source>DROPDOWN MENU</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlstyle.2">
+				<source>HORIZONTAL BAR</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.mapcontrolposition">
+				<source>Map Control Position</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.zoomcontrolposition">
+				<source>Zoom Control Position</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.screencontrolposition">
+				<source>Full Screen Control Position</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.scalecontrolposition">
+				<source>Scale Control Position</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.streetcontrolposition">
+				<source>Street Control Position</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.0">
+				<source>TOP CENTER</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.1">
+				<source>TOP LEFT</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.2">
+				<source>TOP RIGHT</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.3">
+				<source>LEFT TOP</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.4">
+				<source>RIGHT TOP</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.5">
+				<source>LEFT CENTER</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.6">
+				<source>RIGHT CENTER</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.7">
+				<source>LEFT BOTTOM</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.8">
+				<source>RIGHT BOTTOM</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.9">
+				<source>BOTTOM CENTER</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.10">
+				<source>BOTTOM LEFT</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.controlposition.11">
+				<source>BOTTOM RIGHT</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.zoomcontrol">
+				<source>Zoom Control</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.pancontrol">
+				<source>Zoom Control</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.streetviewcontrol">
+				<source>Street view Control</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.pancontrol">
+				<source>Pan Control</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.fullscreencontrol">
+				<source>Fullscreen Control</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.scalecontrol">
+				<source>Scale Control</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.markerSetting">
+				<source>Marker Settings</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.opacity">
+				<source>Marker Opacity</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.markercluster">
+				<source>Marker Cluster</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.maxzoomlevel">
+				<source>Max Zoom Level</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.styles">
+				<source>Marker Cluster icons</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.styles.0">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.styles.1">
+				<source>People</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.styles.2">
+				<source>Conversation</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.styles.3">
+				<source>Heart</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.styles.4">
+				<source>Pin</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.gridsize">
+				<source>Grid Size</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.label">
+				<source>Show alphabet label on marker</source>
+			</trans-unit>
+			<!-- Constant Editor -->
+			<trans-unit id="apiKey">
+				<source>API Key : https://developers.google.com/maps/documentation/javascript/get-api-key</source>
+			</trans-unit>
+			<trans-unit id="language">
+				<source>Language Code : https://developers.google.com/maps/faq#languagesupport</source>
+			</trans-unit>
+			<trans-unit id="jquery">
+				<source>Include Jquery</source>
+			</trans-unit>
+
+			<trans-unit id="address">
+		            <source>Addreses</source>
+		      </trans-unit>
+		      <trans-unit id="width">
+		            <source>Width</source>
+		      </trans-unit>
+		      <trans-unit id="height">
+		            <source>Height</source>
+		      </trans-unit>
+		      <trans-unit id="radiussearch">
+		            <source>Show Radius search feature</source>
+		      </trans-unit>
+		      <trans-unit id="theme">
+		            <source>Show theme option</source>
+		      </trans-unit>
+		      <trans-unit id="direction">
+		            <source>Show direction feature</source>
+		      </trans-unit>
+		      <trans-unit id="defaulttype">
+		            <source>Default map type</source>
+		      </trans-unit>
+		      <trans-unit id="zoom">
+		            <source>Zoom level</source>
+		      </trans-unit>
+		      <trans-unit id="scrollzoom">
+		            <source>Zoom while scroll</source>
+		      </trans-unit>
+		      <trans-unit id="draggable">
+		            <source>Draggable</source>
+		      </trans-unit>
+		      <trans-unit id="doubleclickzoom">
+		            <source>Zoom on doubleclick</source>
+		      </trans-unit>
+		      <trans-unit id="mapcontrol">
+		            <source>Map control</source>
+		      </trans-unit>
+		      <trans-unit id="zoomcontrol">
+		            <source>Zoom control</source>
+		      </trans-unit>
+		      <trans-unit id="fullscreencontrol">
+		            <source>Full screen control</source>
+		      </trans-unit>
+		      <trans-unit id="streetviewcontrol">
+		            <source>Street view control</source>
+		      </trans-unit>
+		      <trans-unit id="scalecontrol">
+		            <source>Scale control</source>
+		      </trans-unit>
+		      <trans-unit id="maptype">
+		            <source>Map type</source>
+		      </trans-unit>
+		      <trans-unit id="controlstyle">
+		            <source>Control style</source>
+		      </trans-unit>
+		      <trans-unit id="mapcontrolposition">
+		            <source>Map control position</source>
+		      </trans-unit>
+		      <trans-unit id="zoomcontrolposition">
+		            <source>Zoom control position</source>
+		      </trans-unit>
+		      <trans-unit id="screencontrolposition">
+		            <source>Screen control position</source>
+		      </trans-unit>
+		      <trans-unit id="streetcontrolposition">
+		            <source>Street control position</source>
+		      </trans-unit>
+		      <trans-unit id="label">
+		            <source>Show alphabet Label</source>
+		      </trans-unit>
+		      <trans-unit id="opacity">
+		            <source>Opacity</source>
+		      </trans-unit>
+		      <trans-unit id="markercluster">
+		            <source>Marker cluster</source>
+		      </trans-unit>
+		      <trans-unit id="maxzoomlevel">
+		            <source>Max zoom level</source>
+		      </trans-unit>
+		      <trans-unit id="gridsize">
+		            <source>Grid size</source>
+		      </trans-unit>
+		      <trans-unit id="styles">
+		            <source>Styles</source>
+		      </trans-unit>
+
+		      <trans-unit id="yesNo-1">
+		            <source>Yes</source>
+		      </trans-unit>
+		      <trans-unit id="yesNo-0">
+		            <source>No</source>
+		      </trans-unit>
+
+		     <trans-unit id="TOP_CENTER">
+				<source>TOP CENTER</source>
+			</trans-unit>
+			<trans-unit id="TOP_LEFT">
+				<source>TOP LEFT</source>
+			</trans-unit>
+			<trans-unit id="TOP_RIGHT">
+				<source>TOP RIGHT</source>
+			</trans-unit>
+			<trans-unit id="LEFT_TOP">
+				<source>LEFT TOP</source>
+			</trans-unit>
+			<trans-unit id="RIGHT_TOP">
+				<source>RIGHT TOP</source>
+			</trans-unit>
+			<trans-unit id="LEFT_CENTER">
+				<source>LEFT CENTER</source>
+			</trans-unit>
+			<trans-unit id="RIGHT_CENTER">
+				<source>RIGHT CENTER</source>
+			</trans-unit>
+			<trans-unit id="LEFT_BOTTOM">
+				<source>LEFT BOTTOM</source>
+			</trans-unit>
+			<trans-unit id="RIGHT_BOTTOM">
+				<source>RIGHT BOTTOM</source>
+			</trans-unit>
+			<trans-unit id="BOTTOM_CENTER">
+				<source>BOTTOM CENTER</source>
+			</trans-unit>
+			<trans-unit id="BOTTOM_LEFT">
+				<source>BOTTOM LEFT</source>
+			</trans-unit>
+			<trans-unit id="BOTTOM_RIGHT">
+				<source>BOTTOM RIGHT</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

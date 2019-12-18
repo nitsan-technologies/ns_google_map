@@ -1,0 +1,253 @@
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url(../fonts/glyphicons-halflings-regular.eot);
+    src: url(../fonts/glyphicons-halflings-regular.eot) format('embedded-opentype'),
+        url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'),
+        url(../fonts/glyphicons-halflings-regular.woff) format('woff'),
+        url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'),
+        url(../fonts/glyphicons-halflings-regular.svg) format('svg')
+}
+
+.view-link,
+.view-link a:visited {
+    color: #427fed;
+}
+
+.gm-style .gm-style-iw {
+    font-weight: 400 !important;
+}
+
+.title {
+    overflow: hidden;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.map_canvas {
+    min-height: 400px;
+    min-width: 100%;
+}
+
+.info-window {
+    color: #333;
+}
+
+.add_sidebar {
+    min-height: 500px;
+    overflow: auto;
+}
+
+.store_loca {
+    min-height: 500px;
+}
+
+.map-add {
+    cursor: pointer;
+}
+
+html,
+body {
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-map-marker:before {
+    content: "\e062";
+}
+
+.container-width {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.tx-ns-google-map .store_loca {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 30px -15px 0;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.tx-ns-google-map .store_loca .map-block {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+    margin-bottom: 30px;
+}
+
+.tx-ns-google-map .store_loca .add_sidebar {
+    -ms-flex: 0 0 100%;
+    -webkit-box-flex: 0;
+    flex: 0 0 100%;
+    max-width: 100%;
+    overflow: auto;
+    padding: 0 15px;
+}
+
+.tx-ns-google-map .store_loca .add_sidebar .map-add {
+    padding: 15px;
+    border: 1px solid #000;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.tx-ns-google-map .form-inline-heading {
+    margin: 20px 0;
+}
+
+.tx-ns-google-map .form-inline {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+.tx-ns-google-map .input-group {
+    margin-right: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+.tx-ns-google-map .btn {
+    margin-right: 10px;
+    background-color: #17a2b8;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border: 0;
+    font-size: 14px;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.tx-ns-google-map .btn option,
+.tx-ns-google-map .btn.focus,
+.tx-ns-google-map .btn:focus,
+.tx-ns-google-map .btn:hover {
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: 0;
+}
+
+.tx-ns-google-map .form-inline .input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    width: 1%;
+    display: table-cell;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+.tx-ns-google-map .form-inline .input-group-addon:first-child {
+    border-right: 0;
+}
+
+.tx-ns-google-map .form-control {
+    display: block;
+    height: 34px;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.tx-ns-google-map .form-control:focus {
+    border-color: #000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+@media (min-width: 768px) {
+    .tx-ns-google-map .input-group {
+        width: auto;
+    }
+
+    .tx-ns-google-map .store_loca .map-block {
+        -ms-flex: 0 0 75%;
+        -webkit-box-flex: 0;
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+
+    .tx-ns-google-map .store_loca .add_sidebar {
+        -ms-flex: 0 0 25%;
+        -webkit-box-flex: 0;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}

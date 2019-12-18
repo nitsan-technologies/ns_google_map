@@ -1,0 +1,234 @@
+<table class='table table-striped table-hover typo3-extension-list no-footer'>
+	<thead>
+		<tr>
+			<th colspan='2'>
+				<h2><img src="../typo3conf/ext/ns_google_map/Resources/Public/Icons/user_plugin_map.svg" height="36" width="36" />
+				<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:tx_ns_google_map_domain_model_map" /></h2>
+			</th>
+		</tr>
+	</thead>
+		<tr>
+			<td>
+				<table class='table table-striped table-hover typo3-extension-list no-footer'>
+					<thead>
+						<tr>
+							<th colspan='2'>
+								<h3><f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:tx_nsgooglemap_map.flexform.sheetTitle" /></h3>
+							</th>
+						</tr>
+					</thead>
+					<f:if condition="{flexformData.settings.address}">
+						<tr>
+							<th style='text-align:left'>
+						    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:address" />
+						    </th>
+						    <td style='padding-left: 10px;'>
+						    	{flexformData.settings.address}
+						    </td>
+						</tr>
+					</f:if>	
+					<f:if condition="{flexformData.settings.width}">
+						<tr>
+							<th style='text-align:left'>
+						    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:width" />
+						    </th>
+						    <td style='padding-left: 10px;'>
+						    	{flexformData.settings.width}
+						    </td>
+						</tr>
+					</f:if>	
+					<f:if condition="{flexformData.settings.height}">
+						<tr>
+							<th style='text-align:left'>
+						    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:height" />
+						    </th>
+						    <td style='padding-left: 10px;'>
+						    	{flexformData.settings.height}
+						    </td>
+						</tr>
+					</f:if>			
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class='table table-striped table-hover typo3-extension-list no-footer'>
+					<thead>
+						<tr>
+							<th colspan='2'>
+								<h3><img src="../typo3conf/ext/ns_google_map/Resources/Public/Icons/settings.svg" height="30" width="30" /> 
+									<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:tx_nsgooglemap_map.flexform.mapSetting" />
+								</h3>
+							</th>
+						</tr>
+					</thead>
+					<f:if condition="{flexformData.settings.zoom}">
+						<tr>
+							<th style='text-align:left'>
+						    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:zoom" />
+						    </th>
+						    <td style='padding-left: 10px;'>
+						    	{flexformData.settings.zoom}
+						    </td>
+						</tr>
+					</f:if>	
+					<f:if condition="{flexformData.settings.scrollzoom}">
+						<tr>
+							<th style='text-align:left'>
+						    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:scrollzoom" />
+						    </th>
+						    <td style='padding-left: 10px;'>
+						    	{flexformData.settings.scrollzoom}
+						    </td>
+						</tr>
+					</f:if>
+					<f:if condition="{flexformData.settings.draggable}">
+						<tr>
+							<th style='text-align:left'>
+						    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:draggable" />
+						    </th>
+						    <td style='padding-left: 10px;'>
+						    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:yesNo-{flexformData.settings.draggable}" />
+						    </td>
+						</tr>
+					</f:if>
+					<f:if condition="{flexformData.settings.doubleclickzoom}">
+						<tr>
+							<th style='text-align:left'>
+						    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:doubleclickzoom" />
+						    </th>
+						    <td style='padding-left: 10px;'>
+						    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:yesNo-{flexformData.settings.doubleclickzoom}" />
+						    </td>
+						</tr>
+					</f:if>
+				</table>
+			</td>
+		</tr>
+		<f:if condition="{flexformData.settings.zoomcontrol}">
+			<tr>
+				<td>
+					<table class='table table-striped table-hover typo3-extension-list no-footer'>
+						<thead>
+							<tr>
+								<th colspan='2'>
+									<h3><img src="../typo3conf/ext/ns_google_map/Resources/Public/Icons/loupe.svg" height="30" width="30" /> <f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:zoomcontrol" /></h3>
+								</th>
+							</tr>
+						</thead>
+						<f:if condition="{flexformData.settings.zoomcontrol}">
+							<tr>
+								<th style='text-align:left'>
+							    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:zoomcontrol" />
+							    </th>
+							    <td style='padding-left: 10px;'>
+							    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:yesNo-{flexformData.settings.zoomcontrol}" />
+							    </td>
+							</tr>
+						</f:if>
+						<f:if condition="{flexformData.settings.zoomcontrolposition}">
+							<tr>
+								<th style='text-align:left'>
+							    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:zoomcontrolposition" />
+							    </th>
+							    <td style='padding-left: 10px;'>
+							    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:{flexformData.settings.zoomcontrolposition}" />
+							    </td>
+							</tr>
+						</f:if>
+					</table>
+				</td>
+			</tr>
+		</f:if>
+		<f:if condition="{flexformData.settings.fullscreencontrol}">
+			<tr>
+				<td>
+					<table class='table table-striped table-hover typo3-extension-list no-footer'>
+						<thead>
+							<tr>
+								<th colspan='2'>
+									<h3> <img src="../typo3conf/ext/ns_google_map/Resources/Public/Icons/direction.svg" height="30" width="30" /> <f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:fullscreencontrol" /></h3>
+								</th>
+							</tr>
+						</thead>
+						<f:if condition="{flexformData.settings.fullscreencontrol}">
+							<tr>
+								<th style='text-align:left'>
+							    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:fullscreencontrol" />
+							    </th>
+							    <td style='padding-left: 10px;'>
+							    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:yesNo-{flexformData.settings.fullscreencontrol}" />
+							    </td>
+							</tr>
+						</f:if>
+						<f:if condition="{flexformData.settings.screencontrolposition}">
+							<tr>
+								<th style='text-align:left'>
+							    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:screencontrolposition" />
+							    </th>
+							    <td style='padding-left: 10px;'>
+							    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:{flexformData.settings.screencontrolposition}" />
+							    </td>
+							</tr>
+						</f:if>
+					</table>
+				</td>
+			</tr>
+		</f:if>			
+	<tr>
+		<td>
+			<table class='table table-striped table-hover typo3-extension-list no-footer'>
+				<thead>
+					<tr>
+						<th colspan='2'>
+							<h3>
+								<img src="../typo3conf/ext/ns_google_map/Resources/Public/Icons/map.svg" height="30" width="30" />
+								<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:tx_nsgooglemap_map.flexform.markerSetting" />
+							</h3>
+						</th>
+					</tr>
+				</thead>				
+				<f:if condition="{flexformData.settings.markercluster}">
+					<tr>
+						<th style='text-align:left'>
+					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:markercluster" />
+					    </th>
+					    <td style='padding-left: 10px;'>
+					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:yesNo-{flexformData.settings.markercluster}" />
+					    </td>
+					</tr>
+				</f:if>
+				<f:if condition="{flexformData.settings.maxzoomlevel}">
+					<tr>
+						<th style='text-align:left'>
+					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:maxzoomlevel" />
+					    </th>
+					    <td style='padding-left: 10px;'>
+					    	{flexformData.settings.maxzoomlevel}
+					    </td>
+					</tr>
+				</f:if>
+				<f:if condition="{flexformData.settings.gridsize}">
+					<tr>
+						<th style='text-align:left'>
+					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:gridsize" />
+					    </th>
+					    <td style='padding-left: 10px;'>
+					    	{flexformData.settings.gridsize}
+					    </td>
+					</tr>
+				</f:if>
+				<f:if condition="{flexformData.settings.styles}">
+					<tr>
+						<th style='text-align:left'>
+					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:styles" />
+					    </th>
+					    <td style='padding-left: 10px;'>
+					    	{flexformData.settings.styles}
+					    </td>
+					</tr>
+				</f:if>
+			</table>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,23 @@
+{namespace esc=Nitsan\NsGoogleMap\ViewHelpers}
+<div class="add_sidebar" id="sidebar_map_{data.uid}">
+    <f:for as="address" each="{locations}" iteration="i">
+        <div class="map-add" data-markerid="{i.index}">
+            <div class="title">                
+                <b>
+                    <esc:escape>
+                        {address.title}
+                    </esc:escape>                
+                </b>
+            </div>
+            <div class="address">
+                <f:format.raw>
+                    <esc:escape>
+                        <f:format.crop maxCharacters="150" append="">
+                            {address.infocontent}
+                        </f:format.crop>
+                    </esc:escape>
+                </f:format.raw>
+            </div>            
+        </div>
+    </f:for>
+</div>
