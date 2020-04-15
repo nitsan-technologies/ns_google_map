@@ -1,11 +1,8 @@
 <?php
 namespace Nitsan\NsGoogleMap\Hooks;
 
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Service\FlexFormService;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class PageLayoutView implements PageLayoutViewDrawItemHookInterface
@@ -35,12 +32,18 @@ class PageLayoutView implements PageLayoutViewDrawItemHookInterface
             // template
             $view = $this->getFluidTemplate($extKey, 'GoogleMap');
 
-            if (!empty($row['pi_flexform'])) {
-                /** @var FlexFormService $flexFormService */
-                $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
-            }
+            if (version_compare(TYPO3_branch, '9.0', '>')) {
+                if (!empty($row['pi_flexform'])) {
+                    /** @var FlexFormService $flexFormService */
+                    $flexFormService = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Service\FlexFormService::class);
+                }
+            } else {
+                if (!empty($row['pi_flexform'])) {
+                    /** @var FlexFormService $flexFormService */
+                    $flexFormService = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
+                }
 
-            //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($flexFormService->convertFlexFormContentToArray($row['pi_flexform']));
+            }
             // assign all to view
             $view->assignMultiple([
                 'data' => $row,

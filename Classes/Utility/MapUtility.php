@@ -1,13 +1,12 @@
 <?php
+declare (strict_types = 1);
 
 namespace Nitsan\NsGoogleMap\Utility;
-
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility as debug;
 
 /***************************************************************
  *  Copyright notice
  *
- *  
+ *
  *
  *  All rights reserved
  *
@@ -32,109 +31,109 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility as debug;
  * Google map.
  *
  */
-class MapUtility {
+class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
+{
 
-	/**
-	 * Renders the Google map.
-	 *
-	 * @param array $PA
-	 * @param \TYPO3\CMS\Backend\Form\FormEngine $pObj
-	 * @return string
-	 */
-	public function render(array &$PA, $pObj) {
-		
-		$version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
-		$settings = $this->loadTS($PA['row']['pid']);
-		$pluginSettings = $settings['plugin.']['tx_nsgooglemap_map.']['settings.'];
+    public function render()
+    {
 
-		$googleMapsLibrary = 'http://maps.googleapis.com/maps/api/js?libraries=places';
+        $out = $this->initializeResultArray();
 
+        $version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch);
+        $settings = $this->loadTS($this->data['databaseRow']['pid']);
 
-		$googleMapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/googleMap.js';
-		$mapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/autocompletemap.js';
+        $pluginSettings = $settings['plugin.']['tx_nsgooglemap_map.']['settings.'];
 
-		if ($pluginSettings['apiKey']) {
-			$googleMapsLibrary .= '&key=' . $pluginSettings['apiKey'];
-		}
-		
-		$out = [];
-		$latitude = (float)$PA['row'][$PA['parameters']['latitude']];
-		$longitude = (float)$PA['row'][$PA['parameters']['longitude']];
-		$address = $PA['row'][$PA['parameters']['address']];
+        $googleMapsLibrary = 'http://maps.googleapis.com/maps/api/js?libraries=places';
 
-		$baseElementId = isset($PA['itemFormElID']) ? $PA['itemFormElID'] : $PA['table'] . '_map';
-		$addressId = $baseElementId . '_address';
-		$mapId = $baseElementId . '_map';
+        $googleMapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/googleMap.js';
+        $mapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/autocompletemap.js';
 
-		if (!($latitude && $longitude)) {
-			$latitude = 0;
-			$longitude = 0;
-		};
-		$dataPrefix = 'data[' . $PA['table'] . '][' . $PA['row']['uid'] . ']';
-		$latitudeField = $dataPrefix . '[' . $PA['parameters']['latitude'] . ']';
-		$longitudeField = $dataPrefix . '[' . $PA['parameters']['longitude'] . ']';
-		$addressField = $dataPrefix . '[' . $PA['parameters']['address'] . ']';
+        if ($pluginSettings['apiKey']) {
+            $googleMapsLibrary .= '&key=' . $pluginSettings['apiKey'];
+        }
 
-		$updateJs = "TBE_EDITOR.fieldChanged('%s','%s','%s','%s');";
-		$updateLatitudeJs = sprintf(
-			$updateJs,
-			$PA['table'],
-			$PA['row']['uid'],
-			$PA['parameters']['latitude'],
-			$latitudeField
-		);
-		$updateLongitudeJs = sprintf(
-			$updateJs,
-			$PA['table'],
-			$PA['row']['uid'],
-			$PA['parameters']['longitude'],
-			$longitudeField
-		);
-		$updateAddressJs = sprintf(
-			$updateJs,
-			$PA['table'],
-			$PA['row']['uid'],
-			$PA['parameters']['address'],
-			$addressField
-		);		
-		$out[] = '<script src="' . $googleMapsLibrary . '"></script>';
-		$out[] = '<script type="text/javascript" src="' . $googleMapJs . '"></script>';
-		$out[] = '<script type="text/javascript" src="' . $mapJs . '"></script>';
-		$out[] = '<input type="hidden" value="'.$latitude.'" class="latitude"/>';
-		$out[] = '<input type="hidden" value="'.$longitude.'" class="longitude"/>';
-		$out[] = '<input type="hidden" value="'.$mapId.'" class="mapId"/>';
-		$out[] = '<input type="hidden" value="'.$addressId.'" class="addressId"/>';
-		$out[] = '<input type="hidden" value="'.$latitudeField.'" class="latitudeField"/>';
-		$out[] = '<input type="hidden" value="'.$longitudeField.'" class="longitudeField"/>';
-		$out[] = '<input type="hidden" value="'.$addressField.'" class="addressField"/>';
-		$out[] = '<input type="hidden" value="'.$updateLatitudeJs.'" class="updateLatitudeJs"/>';
-		$out[] = '<input type="hidden" value="'.$updateLongitudeJs.'" class="updateLongitudeJs"/>';
-		$out[] = '<input type="hidden" value="'.$updateAddressJs.'" class="updateAddressJs"/>';
-		$out[] = '<input type="hidden" value="'.$version.'" class="version"/>';
-		$out[] = '<div id="' . $baseElementId . '">';
-		$out[] = '
-			<input id="' . $addressId . '" type="textbox" value="' . $address . '" class="origin" style="width:300px">
-			<input type="button" value="Update" onclick="GoogleMap.codeAddress()">
-		';
-		$out[] = '<div id="' . $mapId . '" style="height:400px;margin:10px 0;width:400px"></div>';
-		$out[] = '</div>'; // id=$baseElementId
+        //$out = [];
+        $latitude = (float) $this->data['databaseRow']['latitude'];
+        $longitude = (float) $this->data['databaseRow']['longitude'];
+        $address = $this->data['databaseRow']['address'];
 
-		return implode('', $out);
-	}
+        $baseElementId = isset($this->data['databaseRow']['itemFormElID']) ? $this->data['databaseRow']['itemFormElID'] : $this->data['tableName'] . '_' . $this->data['databaseRow']['uid'] . '_map';
+        $addressId = 'data_' . $baseElementId . '_address';
+        $mapId = $baseElementId . '_map';
 
-	protected function loadTS($pageUid) {
-		$sysPageObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-			'TYPO3\\CMS\\Frontend\\Page\\PageRepository'
-		);
-		$rootLine = $sysPageObj->getRootLine($pageUid);
-		$TSObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-			'TYPO3\\CMS\\Core\\TypoScript\\ExtendedTemplateService'
-		);
-		$TSObj->tt_track = 0;
-		$TSObj->init();
-		$TSObj->runThroughTemplates($rootLine);
-		$TSObj->generateConfig();
+        if (!($latitude && $longitude)) {
+            $latitude = 0;
+            $longitude = 0;
+        };
+        $dataPrefix = 'data[' . $this->data['tableName'] . '][' . $this->data['databaseRow']['uid'] . ']';
+        $latitudeField = $dataPrefix . '[latitude]';
+        $longitudeField = $dataPrefix . '[longitude]';
+        $addressField = $dataPrefix . '[address]';
 
-		return $TSObj->setup;
-	}
+        $updateJs = "TBE_EDITOR.fieldChanged('%s','%s','%s','%s');";
+        $updateLatitudeJs = sprintf(
+            $updateJs,
+            $this->data['tableName'],
+            $this->data['databaseRow']['uid'],
+            $this->data['databaseRow']['latitude'],
+            $latitudeField
+        );
+        $updateLongitudeJs = sprintf(
+            $updateJs,
+            $this->data['tableName'],
+            $this->data['databaseRow']['uid'],
+            $this->data['databaseRow']['longitude'],
+            $longitudeField
+        );
+        $updateAddressJs = sprintf(
+            $updateJs,
+            $this->data['tableName'],
+            $this->data['databaseRow']['uid'],
+            $this->data['databaseRow']['address'],
+            $addressField
+        );
+        $out['html'] = '<script src="' . $googleMapsLibrary . '"></script>';
+        $out['html'] .= '<script type="text/javascript" src="' . $googleMapJs . '"></script>';
+        $out['html'] .= '<script type="text/javascript" src="' . $mapJs . '"></script>';
+        $out['html'] .= '<input type="hidden" value="' . $latitude . '" class="latitude"/>';
+        $out['html'] .= '<input type="hidden" value="' . $longitude . '" class="longitude"/>';
+        $out['html'] .= '<input type="hidden" value="' . $mapId . '" class="mapId"/>';
+        $out['html'] .= '<input type="hidden" value="' . $addressId . '" class="addressId"/>';
+        $out['html'] .= '<input type="hidden" value="' . $latitudeField . '" class="latitudeField"/>';
+        $out['html'] .= '<input type="hidden" value="' . $longitudeField . '" class="longitudeField"/>';
+        $out['html'] .= '<input type="hidden" value="' . $addressField . '" class="addressField"/>';
+        $out['html'] .= '<input type="hidden" value="' . $updateLatitudeJs . '" class="updateLatitudeJs"/>';
+        $out['html'] .= '<input type="hidden" value="' . $updateLongitudeJs . '" class="updateLongitudeJs"/>';
+        $out['html'] .= '<input type="hidden" value="' . $updateAddressJs . '" class="updateAddressJs"/>';
+        $out['html'] .= '<input type="hidden" value="' . $version . '" class="version"/>';
+        $out['html'] .= '<div id="' . $baseElementId . '">';
+        $out['html'] .= '<input id="' . $addressId . '" type="textbox" value="' . $address . '" class="origin" style="width:300px">';
+        $out['html'] .= '<input type="button" value="Update" onclick="GoogleMap.codeAddress()">';
+        $out['html'] .= '<div id="' . $mapId . '" style="height:400px;margin:10px 0;width:400px"></div>';
+        $out['html'] .= '</div>'; // id=$baseElementId
+
+        return $out;
+    }
+
+    protected function loadTS($pageUid)
+    {
+        $rootLine = [];
+        if ($pageUid > 0) {
+            try {
+                $rootLine = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Utility\RootlineUtility::class, 3)->get();
+            } catch (\RuntimeException $e) {
+                $rootLine = [];
+            }
+        }
+        $TSObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+            'TYPO3\\CMS\\Core\\TypoScript\\ExtendedTemplateService'
+        );
+
+        $TSObj->tt_track = 0;
+        $TSObj->runThroughTemplates($rootLine, 0);
+        $TSObj->generateConfig();
+        return $TSObj->setup;
+
+    }
 }

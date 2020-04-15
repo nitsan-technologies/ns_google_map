@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Nitsan\\AddressController\\": "Classes/"
+      "Nitsan\\NsGoogleMap\\": "Classes/"
     }
   },
   "replace": {

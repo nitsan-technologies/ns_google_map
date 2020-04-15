@@ -37,7 +37,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $infocontent = '';
-    
+
     /**
      * maplink
      *
@@ -91,7 +91,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * markerImage
      *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade remove
      */
     protected $markerImage = null;
 
@@ -330,7 +330,8 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference markerImage
      */
-    public function getMarkerImage() {
+    public function getMarkerImage()
+    {
         return $this->markerImage;
     }
 
@@ -340,7 +341,8 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $markerImage
      * @return void
      */
-    public function setMarkerImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $markerImage) {
+    public function setMarkerImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $markerImage)
+    {
         $this->markerImage = $markerImage;
     }
 }

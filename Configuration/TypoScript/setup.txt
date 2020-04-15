@@ -19,6 +19,7 @@ plugin.tx_nsgooglemap_map {
 }
 page.includeCSS{
   mapstyle = EXT:ns_google_map/Resources/Public/Css/style.css
+  #bootsrapStyle = EXT:ns_google_map/Resources/Public/Css/bootstrap.min.css
 }
 page.includeJSFooter{
   mapjs = EXT:ns_google_map/Resources/Public/Js/map.js
@@ -26,4 +27,5 @@ page.includeJSFooter{
 }
 [globalVar = LIT:1 = {$plugin.tx_nsgooglemap_map.settings.jquery}]
   page.includeJS.mapjs = EXT:ns_google_map/Resources/Public/Js/jquery.min.js
+
 [global]

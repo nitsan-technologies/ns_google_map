@@ -1,11 +1,12 @@
 <?php
 namespace Nitsan\NsGoogleMap\ViewHelpers;
-/*                                                                                                    
+
+/*
  *  Copyright notice
  *
  *  (c) 2013 Marc Hirdes <Marc_Hirdes@gmx.de>, Nitsan GmbH
  *  (c) 2013 Mathias Brodala <mbrodala@pagemachine.de>, PAGEmachine AG
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -23,7 +24,7 @@ namespace Nitsan\NsGoogleMap\ViewHelpers;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
-*/
+ */
 
 /**
  */
@@ -51,52 +52,54 @@ namespace Nitsan\NsGoogleMap\ViewHelpers;
  * </output>
  *
  */
-class ScriptViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper {
+class ScriptViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	/**
-	 * @return The parsed string.
-	 * @author Marc Hirdes <marc_hirdes@gmx.de>
-	 */
+    /**
+     * @return The parsed string.
+     * @author Marc Hirdes <marc_hirdes@gmx.de>
+     */
 
-	public function render() {
+    public function render()
+    {
 
-		if (version_compare(TYPO3_branch, '9.0', '>')) {		    
-			$pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-			$pageRenderer->addJsFooterFile(\TYPO3\CMS\Core\Utility\GeneralUtility::writeJavaScriptContentToTemporaryFile($this->renderChildren(), 'js'),
-				'text/javascript', // $type
-				true, // $compress
-				false, // $forceOnTop
-				'', // $allWrap
-				true // $excludeFromConcatenation
-			);
-		} else {
-			$pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-			$pageRenderer->addJsFooterFile(
-			\TYPO3\CMS\Frontend\Page\PageGenerator::inline2TempFile($this->renderChildren(), 'js'),
-				'text/javascript', // $type
-				true, // $compress
-				false, // $forceOnTop
-				'', // $allWrap
-				true // $excludeFromConcatenation
-			);
-		}
-		return '';
-	}
-	
-	/*	
+        if (version_compare(TYPO3_branch, '9.0', '>')) {
+            $pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
+            $pageRenderer->addJsFooterFile(\TYPO3\CMS\Core\Utility\GeneralUtility::writeJavaScriptContentToTemporaryFile($this->renderChildren(), 'js'),
+                'text/javascript', // $type
+                true, // $compress
+                false, // $forceOnTop
+                '', // $allWrap
+                true// $excludeFromConcatenation
+            );
+        } else {
+            $pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
+            $pageRenderer->addJsFooterFile(
+                \TYPO3\CMS\Frontend\Page\PageGenerator::inline2TempFile($this->renderChildren(), 'js'),
+                'text/javascript', // $type
+                true, // $compress
+                false, // $forceOnTop
+                '', // $allWrap
+                true// $excludeFromConcatenation
+            );
+        }
+        return '';
+    }
 
-	public function render() {
-		$pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-		$pageRenderer->addJsFooterFile(
-			\TYPO3\CMS\Frontend\Page\PageGenerator::inline2TempFile($this->renderChildren(), 'js'),
-			'text/javascript', // $type
-			true, // $compress
-			false, // $forceOnTop
-			'', // $allWrap
-			true // $excludeFromConcatenation
-		);
+    /*
 
-		return '';
-	}
-*/
+public function render() {
+$pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
+$pageRenderer->addJsFooterFile(
+\TYPO3\CMS\Frontend\Page\PageGenerator::inline2TempFile($this->renderChildren(), 'js'),
+'text/javascript', // $type
+true, // $compress
+false, // $forceOnTop
+'', // $allWrap
+true // $excludeFromConcatenation
+);
+
+return '';
+}
+ */
 }

@@ -125,6 +125,7 @@
 							<displayCond>FIELD:settings.zoomcontrol:=:1</displayCond>
 							<config>
 					            <type>select</type>
+					            <renderType>selectSingle</renderType>
 					            <items type="array">
 					                <numIndex index="0" type="array">
 					                    <numIndex index="0">LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.controlposition.0</numIndex>
@@ -194,6 +195,7 @@
 							<displayCond>FIELD:settings.fullscreencontrol:=:1</displayCond>
 							<config>
 					            <type>select</type>
+					            <renderType>selectSingle</renderType>
 					            <items type="array">
 					                <numIndex index="0" type="array">
 					                    <numIndex index="0">LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.controlposition.0</numIndex>
@@ -297,6 +299,7 @@
 							<displayCond>FIELD:settings.markercluster:=:1</displayCond>
 							<config>
 					            <type>select</type>
+					            <renderType>selectSingle</renderType>
 					            <items type="array">
 					                <numIndex index="0" type="array">
 					                    <numIndex index="0">LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.styles.0</numIndex>
