@@ -23,7 +23,7 @@ namespace Nitsan\NsGoogleMap\ViewHelpers;
  *  GNU General Public License for more details.
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
-*/
+ */
 
 /**
  */
@@ -49,15 +49,13 @@ namespace Nitsan\NsGoogleMap\ViewHelpers;
  *
  */
 
-class EscapeViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper {
+class EscapeViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	/**
-	 * @return The parsed string.
-	 * @author Marc Hirdes <marc_hirdes@gmx.de>
-	 */
-	public function render() {
-		$value = $this->renderChildren();
+    public function render()
+    {
+        $value = $this->renderChildren();
 
-		return str_replace("'", "\'", preg_replace("/\r\n|\r|\n/", "", $value));
-	}
+        return str_replace("'", "\'", preg_replace("/\r\n|\r|\n/", "", $value));
+    }
 }

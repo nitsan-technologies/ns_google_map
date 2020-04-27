@@ -55,11 +55,6 @@ namespace Nitsan\NsGoogleMap\ViewHelpers;
 class ScriptViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
 {
 
-    /**
-     * @return The parsed string.
-     * @author Marc Hirdes <marc_hirdes@gmx.de>
-     */
-
     public function render()
     {
 

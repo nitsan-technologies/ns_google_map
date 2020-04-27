@@ -1,6 +1,5 @@
-$(document).ready(function(){
 
-
+$(document).ready(function () {
 	if (typeof GoogleMap == 'undefined') GoogleMap = {};
 
 	String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); } 
@@ -125,7 +124,7 @@ $(document).ready(function(){
 	    if(version < 7005000) {
 	        document[TBE_EDITOR.formname][fieldName + '_hr'].value = value;
 	    } else {
-	        jQuery('[data-formengine-input-name="' + fieldName + '"]').val(value);
+	        $('[data-formengine-input-name="' + fieldName + '"]').val(value);
 	    }
 	}
 
@@ -175,5 +174,4 @@ $(document).ready(function(){
 		});
 	}
 	window.onload = GoogleMap.init;
-
 });

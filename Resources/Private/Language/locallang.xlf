@@ -5,7 +5,7 @@
 		<body>
 
 			<trans-unit id="tx_nsgooglemap_domain_model_type">
-				<source>Searching for</source>
+				<source>Searching for (Like travel_agency, restaurant)</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_example">
 				<source>(Like travel_agency, restaurant, food, point_of_interest, establishment etc)</source>
@@ -14,7 +14,7 @@
 				<source>Add distance (in Km)</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_find">
-				<source>Search</source>
+				<source>Find</source>
 			</trans-unit>
 
 
@@ -60,10 +60,10 @@
 			</trans-unit>
 
 			<trans-unit id="tx_nsgooglemap_domain_model_address.start">
-				<source>Start</source>
+				<source>From</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_address.end">
-				<source>End</source>
+				<source>To</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_address.travel">
 				<source>Travel:</source>

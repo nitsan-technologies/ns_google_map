@@ -8,10 +8,7 @@ plugin.tx_nsgooglemap_map {
     # cat=plugin.tx_nsgooglemap_map/file; type=string; label=Path to template layouts (FE)
     layoutRootPath = EXT:ns_google_map/Resources/Private/Layouts/
   }
-  persistence {
-    # cat=plugin.tx_nsgooglemap_map//a; type=string; label=Default storage PID
-    storagePid =
-  }
+  
   settings{
     # cat=plugin.tx_nsgooglemap_map//a; type=text+; label = LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:apiKey
     apiKey =

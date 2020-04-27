@@ -1,8 +1,6 @@
 <?php
 namespace Nitsan\NsGoogleMap\Controller;
 
-use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /***
@@ -29,24 +27,6 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $addressRepository = null;
 
-    public function initializeAction()
-    {
-        /** @var $pageRenderer \TYPO3\CMS\Core\Page\PageRenderer */
-        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-        $googleMapsLibrary = 'https://maps.google.com/maps/api/js?';
-
-        if ($this->settings['apiKey']) {
-            $googleMapsLibrary .= '&key=' . $this->settings['apiKey'];
-        }
-
-        if ($this->settings['language']) {
-            $googleMapsLibrary .= '&language=' . $this->settings['language'] . '&libraries=places';
-        }
-        $cluster = "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js";
-        $pageRenderer->addJsFooterFile($googleMapsLibrary, $type = "text/javascript", $compress = true);
-        $pageRenderer->addJsFooterFile($cluster, $type = "text/javascript", $compress = true);
-    }
-
     /**
      * action list
      *
@@ -57,16 +37,6 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $setting = $this->settings;
         $this->contentObj = $this->configurationManager->getContentObject();
         $data = $this->contentObj->data;
-
-        //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->settings);die;
-
-        // Set storage page id from tt_content
-        $pid = $data['pages'];
-        if ($pid != '') {
-            $querySettings = $this->addressRepository->createQuery()->getQuerySettings();
-            $querySettings->setStoragePageIds(array($pid));
-            $this->addressRepository->setDefaultQuerySettings($querySettings);
-        }
 
         if (empty($this->settings['address'])) {
             $address = $this->addressRepository->findAll()->toArray();

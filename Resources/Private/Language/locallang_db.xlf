@@ -99,7 +99,7 @@
 				<source>Doubleclick Zoom</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_map.flexform.controls">
-				<source>Controls</source>
+				<source>Frontend Controls</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_map.flexform.mapcontrol">
 				<source>Map type control</source>
@@ -377,6 +377,15 @@
 			</trans-unit>
 			<trans-unit id="BOTTOM_RIGHT">
 				<source>BOTTOM RIGHT</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.radiussearch">
+				<source>Enable Radius Search Feature</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.theme">
+				<source>Enable Theme Feature</source>
+			</trans-unit>
+			<trans-unit id="tx_nsgooglemap_map.flexform.direction">
+				<source>Enable Direction and Distance Feature</source>
 			</trans-unit>
 
 		</body>
