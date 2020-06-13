@@ -51,6 +51,7 @@ class MapUtilityV8 {
 
 
 		$googleMapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/googleMap.js';
+		$jQuery = '../typo3conf/ext/ns_google_map/Resources/Public/Js/jquery.min.js';
 		$mapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/autocompletemap.js';
 
 		if ($pluginSettings['apiKey']) {
@@ -96,7 +97,8 @@ class MapUtilityV8 {
 			$PA['row']['uid'],
 			$PA['parameters']['address'],
 			$addressField
-		);		
+		);
+		$out[] = '<script src="' . $jQuery . '"></script>';
 		$out[] = '<script src="' . $googleMapsLibrary . '"></script>';
 		$out[] = '<script type="text/javascript" src="' . $googleMapJs . '"></script>';
 		$out[] = '<script type="text/javascript" src="' . $mapJs . '"></script>';

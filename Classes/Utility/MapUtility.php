@@ -45,7 +45,7 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $pluginSettings = $settings['plugin.']['tx_nsgooglemap_map.']['settings.'];
 
         $googleMapsLibrary = 'http://maps.googleapis.com/maps/api/js?libraries=places';
-
+        $jQuery = '../typo3conf/ext/ns_google_map/Resources/Public/Js/jquery.min.js';
         $googleMapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/googleMap.js';
         $mapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/autocompletemap.js';
 
@@ -93,7 +93,8 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
             $this->data['databaseRow']['address'],
             $addressField
         );
-        $out['html'] = '<script src="' . $googleMapsLibrary . '"></script>';
+        $out['html'] = '<script src="' . $jQuery . '"></script>';
+        $out['html'] .= '<script src="' . $googleMapsLibrary . '"></script>';
         $out['html'] .= '<script type="text/javascript" src="' . $googleMapJs . '"></script>';
         $out['html'] .= '<script type="text/javascript" src="' . $mapJs . '"></script>';
         $out['html'] .= '<input type="hidden" value="' . $latitude . '" class="latitude"/>';
