@@ -152,7 +152,7 @@ return [
                 'eval' => 'trim',
             ],
             'defaultExtras' => 'richtext:rte_transform[mode=ts_css]',
-        ],        
+        ],
         'closebyclick' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.closebyclick',
@@ -222,6 +222,6 @@ return [
                     'address' => 'address',
                 ],
             ],
-        ],        
+        ],
     ],
 ];

@@ -1,5 +1,5 @@
 <?php
-declare (strict_types = 1);
+declare(strict_types = 1);
 
 namespace Nitsan\NsGoogleMap\Utility;
 
@@ -33,10 +33,8 @@ namespace Nitsan\NsGoogleMap\Utility;
  */
 class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
 {
-
     public function render()
     {
-
         $out = $this->initializeResultArray();
 
         $version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch);
@@ -65,7 +63,7 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         if (!($latitude && $longitude)) {
             $latitude = 0;
             $longitude = 0;
-        };
+        }
         $dataPrefix = 'data[' . $this->data['tableName'] . '][' . $this->data['databaseRow']['uid'] . ']';
         $latitudeField = $dataPrefix . '[latitude]';
         $longitudeField = $dataPrefix . '[longitude]';
@@ -135,6 +133,5 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $TSObj->runThroughTemplates($rootLine, 0);
         $TSObj->generateConfig();
         return $TSObj->setup;
-
     }
 }

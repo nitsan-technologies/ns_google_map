@@ -45,7 +45,7 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $address = $this->addressRepository->findAddress($addressId)->toArray();
         }
 
-        $maptypes = explode(",", $this->settings['maptype']);
+        $maptypes = explode(',', $this->settings['maptype']);
         $this->view->assign('locations', $address);
         $this->view->assign('maptypes', $maptypes);
         $this->view->assign('data', $data);

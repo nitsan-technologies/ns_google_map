@@ -48,14 +48,12 @@ namespace Nitsan\NsGoogleMap\ViewHelpers;
  * </output>
  *
  */
-
 class EscapeViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
 {
-
     public function render()
     {
         $value = $this->renderChildren();
 
-        return str_replace("'", "\'", preg_replace("/\r\n|\r|\n/", "", $value));
+        return str_replace("'", "\'", preg_replace("/\r\n|\r|\n/", '', $value));
     }
 }

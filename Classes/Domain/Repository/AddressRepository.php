@@ -17,17 +17,17 @@ namespace Nitsan\NsGoogleMap\Domain\Repository;
  */
 class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-	/*
-	* array $addressId
-	*/
+    /*
+    * array $addressId
+    */
 
-	public function findAddress(array $addressId)
-	{
-		$query = $this->createQuery();
-		$query->matching(
-			$query->in('uid' ,$addressId)
-		);
-		$result = $query->execute();
-		return $result;
-	}    
+    public function findAddress(array $addressId)
+    {
+        $query = $this->createQuery();
+        $query->matching(
+            $query->in('uid', $addressId)
+        );
+        $result = $query->execute();
+        return $result;
+    }
 }

@@ -54,13 +54,12 @@ namespace Nitsan\NsGoogleMap\ViewHelpers;
  */
 class ScriptViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
 {
-
     public function render()
     {
-
         if (version_compare(TYPO3_branch, '9.0', '>')) {
             $pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-            $pageRenderer->addJsFooterFile(\TYPO3\CMS\Core\Utility\GeneralUtility::writeJavaScriptContentToTemporaryFile($this->renderChildren(), 'js'),
+            $pageRenderer->addJsFooterFile(
+                \TYPO3\CMS\Core\Utility\GeneralUtility::writeJavaScriptContentToTemporaryFile($this->renderChildren(), 'js'),
                 'text/javascript', // $type
                 true, // $compress
                 false, // $forceOnTop

@@ -42,7 +42,6 @@ class PageLayoutView implements PageLayoutViewDrawItemHookInterface
                     /** @var FlexFormService $flexFormService */
                     $flexFormService = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Service\FlexFormService::class);
                 }
-
             }
             // assign all to view
             $view->assignMultiple([
