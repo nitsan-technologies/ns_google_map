@@ -27,6 +27,8 @@ namespace Nitsan\NsGoogleMap\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+
 /**
  * Google map.
  *
@@ -35,12 +37,18 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
 {
     public function render()
     {
+
+        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        $this->configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
+        $config = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+
         $out = $this->initializeResultArray();
 
         $version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch);
         $settings = $this->loadTS($this->data['databaseRow']['pid']);
 
-        $pluginSettings = $settings['plugin.']['tx_nsgooglemap_map.']['settings.'];
+        //$pluginSettings = $settings['plugin.']['tx_nsgooglemap_map.']['settings.'];
+        $pluginSettings = $config['plugin.']['tx_nsgooglemap_map.']['settings.'];
 
         $googleMapsLibrary = 'http://maps.googleapis.com/maps/api/js?libraries=places';
         $jQuery = '../typo3conf/ext/ns_google_map/Resources/Public/Js/jquery.min.js';
