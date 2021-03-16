@@ -99,7 +99,7 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
             $this->data['databaseRow']['address'],
             $addressField
         );
-        $out['html'] = '<script src="' . $jQuery . '"></script>';
+        $out['html'] = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>';
         $out['html'] .= '<script src="' . $googleMapsLibrary . '"></script>';
         $out['html'] .= '<script type="text/javascript" src="' . $googleMapJs . '"></script>';
         $out['html'] .= '<script type="text/javascript" src="' . $mapJs . '"></script>';
