@@ -6,6 +6,7 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'plugin',
     'author' => 'NITSAN Technologies Pvt Ltd',
     'author_email' => 'sanjay@nitsan.in',
+    'author_company' => 'NITSAN Technologies Pvt Ltd',
     'state' => 'stable',
     'internal' => '',
     'uploadfolder' => '0',
