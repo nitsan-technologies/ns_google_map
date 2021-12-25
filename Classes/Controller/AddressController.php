@@ -23,9 +23,17 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * addressRepository
      *
      * @var \Nitsan\NsGoogleMap\Domain\Repository\AddressRepository
-     * @inject
      */
     protected $addressRepository = null;
+
+    /**
+     * @param \Nitsan\NsGoogleMap\Domain\Repository\AddressRepository $addressRepository
+     */
+    public function injectAddressRepository(\Nitsan\NsGoogleMap\Domain\Repository\AddressRepository $addressRepository)
+    {
+        $this->addressRepository = $addressRepository;
+    }
+
 
     /**
      * action list
