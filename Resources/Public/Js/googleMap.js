@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+	var TBE_EDITOR_fieldChanged = TBE_EDITOR.fieldChanged;
 	if (typeof GoogleMap == 'undefined') GoogleMap = {};
 
 	String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); } 
@@ -120,11 +121,13 @@ $(document).ready(function () {
 	GoogleMap.updateValue = function(fieldName, value) {
 		var version = $('.version').val();
 
-	    document[TBE_EDITOR.formname][fieldName].value = value;
 	    if(version < 7005000) {
 	        document[TBE_EDITOR.formname][fieldName + '_hr'].value = value;
 	    } else {
-	        $('[data-formengine-input-name="' + fieldName + '"]').val(value);
+			var $formField = $('[name="' + fieldName + '"]');
+			var $humanReadableField = $('[data-formengine-input-name="' + fieldName + '"]');
+			$formField.val(value);
+			$humanReadableField.val(value);
 	    }
 	}
 

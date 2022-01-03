@@ -28,7 +28,7 @@ namespace Nitsan\NsGoogleMap\Utility;
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-
+use TYPO3\CMS\Backend\Form\Behavior\UpdateValueOnFieldChange;
 /**
  * Google map.
  *
@@ -43,10 +43,7 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 
 		$version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch);
 		$settings = $this->loadTS($this->data['databaseRow']['pid']);
-
-		//$pluginSettings = $settings['plugin.']['tx_nsgooglemap_map.']['settings.'];
 		$pluginSettings = $config['plugin.']['tx_nsgooglemap_map.']['settings.'];
-
 		$checkURL = \TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_SSL') ? 'https://' : 'http://';
 
 		if ($checkURL == 'http://') {
@@ -55,9 +52,9 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 			$googleMapsLibrary = 'https://maps.googleapis.com/maps/api/js?libraries=places';
 		}
 
-		$jQuery = '../typo3conf/ext/ns_google_map/Resources/Public/Js/jquery.min.js';
-		$googleMapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/googleMap.js';
-		$mapJs = '../typo3conf/ext/ns_google_map/Resources/Public/Js/autocompletemap.js';
+		$jQuery = '/typo3conf/ext/ns_google_map/Resources/Public/Js/jquery.min.js';
+		$googleMapJs = '/typo3conf/ext/ns_google_map/Resources/Public/Js/googleMap.js';
+		$mapJs = '/typo3conf/ext/ns_google_map/Resources/Public/Js/autocompletemap.js';
 
 		if ($pluginSettings['apiKey']) {
 			$googleMapsLibrary .= '&key=' . $pluginSettings['apiKey'];
@@ -80,29 +77,30 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 		$latitudeField = $dataPrefix . '[latitude]';
 		$longitudeField = $dataPrefix . '[longitude]';
 		$addressField = $dataPrefix . '[address]';
-
-		$updateJs = "TBE_EDITOR.fieldChanged('%s','%s','%s','%s');";
-		$updateLatitudeJs = sprintf(
-			$updateJs,
-			$this->data['tableName'],
-			$this->data['databaseRow']['uid'],
-			$this->data['databaseRow']['latitude'],
-			$latitudeField
-		);
-		$updateLongitudeJs = sprintf(
-			$updateJs,
-			$this->data['tableName'],
-			$this->data['databaseRow']['uid'],
-			$this->data['databaseRow']['longitude'],
-			$longitudeField
-		);
-		$updateAddressJs = sprintf(
-			$updateJs,
-			$this->data['tableName'],
-			$this->data['databaseRow']['uid'],
-			$this->data['databaseRow']['address'],
-			$addressField
-		);
+        
+        $updateLatitudeJs = new UpdateValueOnFieldChange(
+            $this->data['tableName'],
+            (string)$this->data['databaseRow']['uid'],
+            $latitudeField,
+            $this->data['databaseRow']['latitude']
+        );
+        $updateLatitudeJs = $updateLatitudeJs->__toString();
+        
+        $updateLongitudeJs = new UpdateValueOnFieldChange(
+            $this->data['tableName'],
+            (string)$this->data['databaseRow']['uid'],
+            $longitudeField,
+            $this->data['databaseRow']['longitude']
+        );
+        $updateLongitudeJs = $updateLongitudeJs->__toString();
+        
+        $updateAddressJs = new UpdateValueOnFieldChange(
+            $this->data['tableName'],
+            (string)$this->data['databaseRow']['uid'],
+            $addressField,
+            $this->data['databaseRow']['address']
+        );
+        $updateAddressJs = $updateAddressJs->__toString();
 		$out['html'] = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>';
 		$out['html'] .= '<script src="' . $googleMapsLibrary . '"></script>';
 		$out['html'] .= '<script type="text/javascript" src="' . $googleMapJs . '"></script>';
@@ -123,7 +121,7 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 		$out['html'] .= '<input type="button" value="Update" onclick="GoogleMap.codeAddress()">';
 		$out['html'] .= '<div id="' . $mapId . '" style="height:400px;margin:10px 0;width:400px"></div>';
 		$out['html'] .= '</div>'; // id=$baseElementId
-
+		
 		return $out;
 	}
 
