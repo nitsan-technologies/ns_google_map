@@ -1,7 +1,7 @@
 {
   "name": "nitsan/ns-google-map",
   "type": "typo3-cms-extension",
-  "description": "This extension can easily integrate of powerful features of Google map like find-places, find-direction between locations etc. Live-Demo: https://demo.t3terminal.com/t3t-extensions/ You can download PRO version for more-features & free-support at https://t3terminal.com/google-map-by-nitsan-pro/",
+  "description": "This extension can easily integrate of powerful features of Google map like find-places, find-direction between locations etc. Live-Demo: https://demo.t3terminal.com//t3t-extensions/google-map You can download PRO version for more-features & free-support at https://t3terminal.com/typo3-google-map-typo3-extension-pro",
   "homepage": "https://extensions.typo3.org/extension/ns_google_map/",
   "license": "GPL-2.0+",
   "keywords": [
