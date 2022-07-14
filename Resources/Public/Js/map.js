@@ -399,7 +399,7 @@
                 maxZoom: googlemap.mapSettings.markerClusterZoom,
                 gridSize: googlemap.mapSettings.markerClusterSize,
                 styles: styles[googlemap.mapSettings.markerClusterStyle],
-                imagePath: 'typo3conf/ext/ns_google_map/Resources/Public/Images/m'
+                imagePath: '/typo3conf/ext/ns_google_map/Resources/Public/Images/m'
             };
             if (googlemap.mapSettings.markerCluster == 1) {
                 var markerCluster = new MarkerClusterer(_map, markers, mcOptions);
@@ -443,62 +443,62 @@
         getMarkerClusterStyle: function() {
             var styles = [
                 [{
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/people35.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/people35.png',
                     height: 35,
                     width: 35,
                     textColor: '#ff00ff',
                     textSize: 10
                 }, {
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/people45.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/people45.png',
                     height: 45,
                     width: 45,
                     textColor: '#ff0000',
                     textSize: 11
                 }, {
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/people55.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/people55.png',
                     height: 55,
                     width: 55,
                     textColor: '#ffffff',
                     textSize: 12
                 }],
                 [{
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/conv30.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/conv30.png',
                     height: 27,
                     width: 30,
                     textColor: '#ff00ff',
                     textSize: 10
                 }, {
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/conv40.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/conv40.png',
                     height: 36,
                     width: 40,
                     textColor: '#ff0000',
                     textSize: 11
                 }, {
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/conv50.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/conv50.png',
                     width: 50,
                     height: 45,
                     textSize: 12
                 }],
                 [{
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/heart30.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/heart30.png',
                     height: 26,
                     width: 30,
                     textColor: '#ff00ff',
                     textSize: 10
                 }, {
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/heart40.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/heart40.png',
                     height: 35,
                     width: 40,
                     textColor: '#ff0000',
                     textSize: 11
                 }, {
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/heart50.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/heart50.png',
                     width: 50,
                     height: 44,
                     textSize: 12
                 }],
                 [{
-                    url: 'typo3conf/ext/ns_google_map/Resources/Public/Images/pin.png',
+                    url: '/typo3conf/ext/ns_google_map/Resources/Public/Images/pin.png',
                     height: 48,
                     width: 30,
                     textColor: '#ffffff',

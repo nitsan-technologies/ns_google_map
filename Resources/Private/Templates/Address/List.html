@@ -28,9 +28,24 @@
 							<div id="map_{data.uid}" class="map_canvas"></div>
 							<div id="dis_dir_block" class="dis_dir_block"></div>
 						</div>
-						<f:render partial="Address/AddressList" arguments="{_all}" />						
+						<f:if condition="{version} == 'less'">
+							<f:then>
+								<f:render partial="Address/OlderVersion/AddressList" arguments="{_all}" />	
+							</f:then>
+							<f:else>
+								<f:render partial="Address/AddressList" arguments="{_all}" />	
+							</f:else>
+						</f:if>				
 					</div>
-				<f:render partial="Address/Settings" arguments="{_all}" />
+					<f:if condition="{version} == 'less'">
+						<f:then>
+							<f:render partial="Address/OlderVersion/Settings" arguments="{_all}" />
+						</f:then>
+						<f:else>
+							<f:render partial="Address/Settings" arguments="{_all}" />
+						</f:else>
+					</f:if>	
+				
 			</div>
 	</f:section>
 </html>

@@ -52,10 +52,14 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $addressId = explode(',', $this->settings['address']);
             $address = $this->addressRepository->findAddress($addressId)->toArray();
         }
-
+        $version = 'greater';
+        if(\TYPO3\CMS\Core\Utility\VersionNumberUtility::getCurrentTypo3Version(TYPO3_branch) <= 8.0){
+            $version = 'less';
+        }
         $maptypes = explode(',', $this->settings['maptype']);
         $this->view->assign('locations', $address);
         $this->view->assign('maptypes', $maptypes);
         $this->view->assign('data', $data);
+        $this->view->assign('version', $version);
     }
 }

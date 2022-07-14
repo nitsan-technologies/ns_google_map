@@ -281,6 +281,11 @@
 							<displayCond>FIELD:settings.markercluster:=:1</displayCond>
 							<config>
 								<type>input</type>
+								<eval>int</eval>
+								<range>
+									<lower>0</lower>
+									<upper>21</upper>
+								</range>
 							</config>
 						</TCEforms>
 					</settings.maxzoomlevel>
