@@ -213,7 +213,7 @@
 				<source>Marker Cluster</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_map.flexform.maxzoomlevel">
-				<source>Max Zoom Level</source>
+				<source>Max Zoom Level (1-22)</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_map.flexform.styles">
 				<source>Marker Cluster icons</source>

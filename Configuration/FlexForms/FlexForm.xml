@@ -66,7 +66,13 @@
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.zoom</label>
 							<config>
 								<type>input</type>
+								<default>20</default>
 								<size>30</size>
+								<eval>int</eval>
+								<range>
+									<lower>1</lower>
+									<upper>22</upper>
+								</range>
 							</config>
 						</TCEforms>
 					</settings.zoom>
@@ -281,6 +287,12 @@
 							<displayCond>FIELD:settings.markercluster:=:1</displayCond>
 							<config>
 								<type>input</type>
+								<default>10</default>
+								<eval>int</eval>
+								<range>
+									<lower>1</lower>
+									<upper>22</upper>
+								</range>
 							</config>
 						</TCEforms>
 					</settings.maxzoomlevel>
