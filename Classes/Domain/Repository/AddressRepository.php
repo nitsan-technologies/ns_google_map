@@ -17,10 +17,10 @@ namespace Nitsan\NsGoogleMap\Domain\Repository;
  */
 class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-    /*
-    * array $addressId
-    */
-
+    /**
+     * @param array $addressId
+     * @return array |\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
+     */
     public function findAddress(array $addressId)
     {
         $query = $this->createQuery();

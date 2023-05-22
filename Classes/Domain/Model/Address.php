@@ -39,13 +39,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $infocontent = '';
 
     /**
-     * maplink
-     *
-     * @var bool
-     */
-    protected $maplink = false;
-
-    /**
      * closebyclick
      *
      * @var bool
@@ -88,19 +81,11 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $map = '';
 
     /**
-     * markerImage
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade remove
-     */
-    protected $markerImage = null;
-
-    /**
      * Returns the title
      *
      * @return string $title
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -121,7 +106,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $address
      */
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->address;
     }
@@ -142,7 +127,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $infocontent
      */
-    public function getInfocontent()
+    public function getInfocontent(): string
     {
         return $this->infocontent;
     }
@@ -159,32 +144,11 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the maplink
-     *
-     * @return bool $maplink
-     */
-    public function getMaplink()
-    {
-        return $this->maplink;
-    }
-
-    /**
-     * Sets the maplink
-     *
-     * @param bool $maplink
-     * @return void
-     */
-    public function setMaplink($maplink)
-    {
-        $this->maplink = $maplink;
-    }
-
-    /**
      * Returns the closebyclick
      *
      * @return bool $closebyclick
      */
-    public function getClosebyclick()
+    public function getClosebyclick(): bool
     {
         return $this->closebyclick;
     }
@@ -205,7 +169,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return bool
      */
-    public function isClosebyclick()
+    public function isClosebyclick(): bool
     {
         return $this->closebyclick;
     }
@@ -215,7 +179,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return bool $openbyclick
      */
-    public function getOpenbyclick()
+    public function getOpenbyclick(): bool
     {
         return $this->openbyclick;
     }
@@ -236,7 +200,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return bool
      */
-    public function isOpenbyclick()
+    public function isOpenbyclick(): bool
     {
         return $this->openbyclick;
     }
@@ -246,7 +210,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $opened
      */
-    public function getOpened()
+    public function getOpened(): string
     {
         return $this->opened;
     }
@@ -267,7 +231,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $latitude
      */
-    public function getLatitude()
+    public function getLatitude(): string
     {
         return $this->latitude;
     }
@@ -288,7 +252,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $longitude
      */
-    public function getLongitude()
+    public function getLongitude(): string
     {
         return $this->longitude;
     }
@@ -309,7 +273,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $map
      */
-    public function getMap()
+    public function getMap(): string
     {
         return $this->map;
     }
@@ -323,26 +287,5 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setMap($map)
     {
         $this->map = $map;
-    }
-
-    /**
-     * Returns the markerImage
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference markerImage
-     */
-    public function getMarkerImage()
-    {
-        return $this->markerImage;
-    }
-
-    /**
-     * Sets the markerImage
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $markerImage
-     * @return void
-     */
-    public function setMarkerImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $markerImage)
-    {
-        $this->markerImage = $markerImage;
     }
 }

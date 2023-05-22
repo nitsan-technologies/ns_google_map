@@ -1,8 +1,7 @@
 <?php
 namespace Nitsan\NsGoogleMap\Controller;
-
-use TYPO3\CMS\Extbase\Annotation\Inject;
-
+use Psr\Http\Message\ResponseInterface;
+use Nitsan\NsGoogleMap\Domain\Repository\AddressRepository;
 /***
  *
  * This file is part of the "[Nitsan] Google Map" Extension for TYPO3 CMS.
@@ -10,7 +9,7 @@ use TYPO3\CMS\Extbase\Annotation\Inject;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2017
+ *  (c) 2023
  *
  ***/
 
@@ -22,25 +21,19 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * addressRepository
      *
-     * @var \Nitsan\NsGoogleMap\Domain\Repository\AddressRepository
      */
-    protected $addressRepository = null;
+    protected $addressRepository;
 
-    /**
-     * @param \Nitsan\NsGoogleMap\Domain\Repository\AddressRepository $addressRepository
-     */
-    public function injectAddressRepository(\Nitsan\NsGoogleMap\Domain\Repository\AddressRepository $addressRepository)
-    {
+    public function __construct(AddressRepository $addressRepository){
         $this->addressRepository = $addressRepository;
     }
-
 
     /**
      * action list
      *
-     * @return void
+     * @return \Psr\Http\Message\ResponseInterface
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $setting = $this->settings;
         $this->contentObj = $this->configurationManager->getContentObject();
@@ -52,20 +45,8 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $addressId = explode(',', $this->settings['address']);
             $address = $this->addressRepository->findAddress($addressId)->toArray();
         }
-        $version = 'greater';
-        if(version_compare(TYPO3_version, '8.0.0', '<=')){
-            $version = 'less';
-        }
-        $maptype = $this->settings['maptype'] ?? null;
-        if($maptype){
-            $maptypes = explode(',', $this->settings['maptype']);
-        } else {
-            $maptypes = $maptype;
-        }
-        
         $this->view->assign('locations', $address);
-        $this->view->assign('maptypes', $maptypes);
         $this->view->assign('data', $data);
-        $this->view->assign('version', $version);
+        return $this->htmlResponse();
     }
 }

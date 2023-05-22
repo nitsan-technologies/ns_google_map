@@ -1,6 +1,5 @@
 
 $(document).ready(function () {
-	var TBE_EDITOR_fieldChanged = TBE_EDITOR.fieldChanged;
 	if (typeof GoogleMap == 'undefined') GoogleMap = {};
 
 	String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); } 
@@ -47,7 +46,8 @@ $(document).ready(function () {
 			GoogleMap.positionChanged();
 		});
 		GoogleMap.geocoder = new google.maps.Geocoder();
-
+		var origin = document.getElementsByClassName("origin");
+		var places = new google.maps.places.Autocomplete(origin[0]);
 	};
 
 	GoogleMap.refreshMap = function() {

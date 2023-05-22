@@ -1,48 +1,36 @@
 <?php
 
-defined('TYPO3_MODE') || die('Access denied.');
+defined('TYPO3') || die('Access denied.');
 
-if (version_compare(TYPO3_branch, '11.0', '>=')) {
-    $moduleClass = \Nitsan\NsGoogleMap\Controller\AddressController::class;
-} else {
-    $moduleClass = 'Address';
-}
-
-
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Imaging\IconRegistry;
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Nitsan.NsGoogleMap',
+    'NsGoogleMap',
     'Map',
     [
-        $moduleClass => 'list',
+        \Nitsan\NsGoogleMap\Controller\AddressController::class => 'list',
     ],
     // non-cacheable actions
     [
-        $moduleClass => '',
+        \Nitsan\NsGoogleMap\Controller\AddressController::class => '',
     ]
 );
 
 /* set iconidentifier */
-$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-    \TYPO3\CMS\Core\Imaging\IconRegistry::class
-);
-$typeArray = [
+$iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
+
+$iconRegistry->registerIcon(
     'ext-google-map-icon',
+    \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+    ['source' => 'EXT:ns_google_map/Resources/Public/Icons/ext-google-map-icon.svg']
+);
+
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1549261866] = [
+    'nodeName' => 'MapUtility',
+    'priority' => 70,
+    'class' => \Nitsan\NsGoogleMap\Utility\MapUtility::class,
 ];
-foreach ($typeArray as $currentType) {
-    $iconRegistry->registerIcon(
-        $currentType,
-        \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
-        ['source' => 'EXT:ns_google_map/Resources/Public/Icons/' . $currentType . '.svg']
-    );
-}
 
-if (version_compare(TYPO3_branch, '9.0', '>')) {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1549261866] = [
-        'nodeName' => 'MapUtility',
-        'priority' => 70,
-        'class' => \Nitsan\NsGoogleMap\Utility\MapUtility::class,
-    ];
-}
-
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['tt_content_drawItem']['ns_google_map'] = \Nitsan\NsGoogleMap\Hooks\PageLayoutView::class;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['features']['security.backend.enforceContentSecurityPolicy'] = false;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['features']['security.frontend.enforceContentSecurityPolicy'] = false;
