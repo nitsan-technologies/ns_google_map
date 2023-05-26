@@ -225,3 +225,4 @@ return [
         ],
     ],
 ];
+$GLOBALS['TCA']['tx_nsgooglemap_domain_model_address']['ctrl']['security']['ignorePageTypeRestriction'] = true;

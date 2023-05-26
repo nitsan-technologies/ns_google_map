@@ -24,6 +24,11 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $addressRepository;
 
+    /**
+     * contentObj
+     */
+    protected $contentObj = null;    
+
     public function __construct(AddressRepository $addressRepository){
         $this->addressRepository = $addressRepository;
     }
