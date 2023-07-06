@@ -161,7 +161,7 @@
                 maxZoom: googlemap.mapSettings.markerClusterZoom,
                 gridSize: googlemap.mapSettings.markerClusterSize,
                 styles: styles[googlemap.mapSettings.markerClusterStyle],
-                imagePath: '/typo3conf/ext/ns_google_map/Resources/Public/Images/m'
+                imagePath: googlemap.iconBase
             };
             if (googlemap.mapSettings.markerCluster == 1) {
                 var markerCluster = new MarkerClusterer(_map, markers, mcOptions);

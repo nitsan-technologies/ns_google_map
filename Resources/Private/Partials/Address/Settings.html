@@ -4,11 +4,13 @@
     $(function () {
 
     var googlemap = new Object();
-    <f:variable name="clusterVariance1">{f:uri.resource(path:'Images/m1.png', extensionName: 'NsGoogleMap')}</f:variable>
+    <f:variable name="iconBase">{f:uri.resource(path:'Images/', extensionName: 'NsGoogleMap')}</f:variable>
+    <f:variable name="clusterVariance1">{f:uri.resource(path:'Images/1.png', extensionName: 'NsGoogleMap')}</f:variable>
     <f:variable name="clusterVariance2">{f:uri.resource(path:'Images/people35.png', extensionName: 'NsGoogleMap')}</f:variable>
     <f:variable name="clusterVariance3">{f:uri.resource(path:'Images/conv30.png', extensionName: 'NsGoogleMap')}</f:variable>
     <f:variable name="clusterVariance4">{f:uri.resource(path:'Images/heart30.png', extensionName: 'NsGoogleMap')}</f:variable>
     <f:variable name="placeIcon">{f:uri.resource(path:'Images/pin.png', extensionName: 'NsGoogleMap')}</f:variable>
+    googlemap.iconBase = "{iconBase}";
     googlemap.placeIcon = "{placeIcon}";
     googlemap.clusterVariance1 = "{clusterVariance1}";
     googlemap.clusterVariance2 = "{clusterVariance2}";

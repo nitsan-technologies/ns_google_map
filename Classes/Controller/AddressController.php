@@ -1,6 +1,7 @@
 <?php
 namespace Nitsan\NsGoogleMap\Controller;
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Nitsan\NsGoogleMap\Domain\Repository\AddressRepository;
 /***
  *
@@ -50,8 +51,12 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $addressId = explode(',', $this->settings['address']);
             $address = $this->addressRepository->findAddress($addressId)->toArray();
         }
-        $this->view->assign('locations', $address);
-        $this->view->assign('data', $data);
+        $this->view->assignMultiple(
+            [
+                'locations' => $address,
+                'data' => $data
+            ]
+        );
         return $this->htmlResponse();
     }
 }

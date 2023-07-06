@@ -155,11 +155,6 @@ return [
             'label' => 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.closebyclick',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled',
-                    ],
-                ],
                 'default' => 0,
             ],
         ],
@@ -168,11 +163,6 @@ return [
             'label' => 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.openbyclick',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled',
-                    ],
-                ],
                 'default' => 0,
             ],
         ],
@@ -181,11 +171,6 @@ return [
             'label' => 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.opened',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled',
-                    ],
-                ],
                 'default' => 0,
             ],
         ],
