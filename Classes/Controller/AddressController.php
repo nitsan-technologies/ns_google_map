@@ -1,7 +1,6 @@
 <?php
 namespace Nitsan\NsGoogleMap\Controller;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Nitsan\NsGoogleMap\Domain\Repository\AddressRepository;
 /***
  *
