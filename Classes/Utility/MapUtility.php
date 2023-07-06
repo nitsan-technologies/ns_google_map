@@ -29,19 +29,20 @@ namespace Nitsan\NsGoogleMap\Utility;
 
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Page\PageRenderer;
 /**
  * Google map.
  *
  */
 class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 	public function render() {
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-		$this->configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
-		$config = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-
+		$pluginSettings = [];
+		$configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
+		$config = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+		$pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 		$out = $this->initializeResultArray();
 
-		$version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_branch);
+		$version = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
 		$settings = $this->loadTS($this->data['databaseRow']['pid']);
 		if (array_key_exists("tx_nsgooglemap_map.",$config['plugin.']))
 	  	{
@@ -59,11 +60,8 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 		} else {
 			$googleMapsLibrary = 'https://maps.googleapis.com/maps/api/js?libraries=places';
 		}
-
-		$jQuery = '/typo3conf/ext/ns_google_map/Resources/Public/Js/jquery.min.js';
-		$googleMapJs = 'typo3conf/ext/ns_google_map/Resources/Public/Js/googleMap.js';
-		$mapJs = 'typo3conf/ext/ns_google_map/Resources/Public/Js/autocompletemap.js';
-
+		$pageRenderer->addJsFile('EXT:ns_google_map/Resources/Public/Js/jquery.min.js');
+		$pageRenderer->addJsFile('EXT:ns_google_map/Resources/Public/Js/googleMap.js');		
 
 		if ($pluginSettings['apiKey']) {
 			$googleMapsLibrary .= '&key=' . $pluginSettings['apiKey'];
@@ -87,63 +85,13 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 		$longitudeField = $dataPrefix . '[longitude]';
 		$addressField = $dataPrefix . '[address]';
 
-		$version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
+		$updateLatitudeJs = $this->updateField($this->data['tableName'],(string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['latitude']);
+		$updateLongitudeJs = $this->updateField($this->data['tableName'],(string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['longitude']);
+		$updateAddressJs = $this->updateField($this->data['tableName'],(string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['address']);
 
-		if($version  <= 11){
-			
-			$updateLatitudeJs = new \TYPO3\CMS\Backend\Form\Behavior\UpdateValueOnFieldChange(
-	            $this->data['tableName'],
-	            (string)$this->data['databaseRow']['uid'],
-	            $latitudeField,
-	            $this->data['databaseRow']['latitude']
-	        );
-	        $updateLatitudeJs = $updateLatitudeJs->__toString();
-
-	        $updateLongitudeJs = new \TYPO3\CMS\Backend\Form\Behavior\UpdateValueOnFieldChange(
-	            $this->data['tableName'],
-	            (string)$this->data['databaseRow']['uid'],
-	            $longitudeField,
-	            $this->data['databaseRow']['longitude']
-	        );
-	        $updateLongitudeJs = $updateLongitudeJs->__toString();
-
-	        $updateAddressJs = new \TYPO3\CMS\Backend\Form\Behavior\UpdateValueOnFieldChange(
-	            $this->data['tableName'],
-	            (string)$this->data['databaseRow']['uid'],
-	            $addressField,
-	            $this->data['databaseRow']['address']
-	        );
-	        $updateAddressJs = $updateAddressJs->__toString();
-		}else{
-			$updateJs = "TBE_EDITOR.fieldChanged('%s','%s','%s','%s');";
-			$updateLatitudeJs = sprintf(
-				$updateJs,
-				$this->data['tableName'],
-				$this->data['databaseRow']['uid'],
-				$this->data['databaseRow']['latitude'],
-				$latitudeField
-			);
-			$updateLongitudeJs = sprintf(
-				$updateJs,
-				$this->data['tableName'],
-				$this->data['databaseRow']['uid'],
-				$this->data['databaseRow']['longitude'],
-				$longitudeField
-			);
-			$updateAddressJs = sprintf(
-				$updateJs,
-				$this->data['tableName'],
-				$this->data['databaseRow']['uid'],
-				$this->data['databaseRow']['address'],
-				$addressField
-			);
-		}
-		
 		$basePath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 		$out['html'] = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>';
 		$out['html'] .= '<script src="' . $googleMapsLibrary . '"></script>';
-		$out['html'] .= '<script type="text/javascript" src="'.$basePath.''.$googleMapJs.'"></script>';
-		$out['html'] .= '<script type="text/javascript" src="'.$basePath.''.$mapJs.'"></script>';
 		$out['html'] .= '<input type="hidden" value="' . $latitude . '" class="latitude"/>';
 		$out['html'] .= '<input type="hidden" value="' . $longitude . '" class="longitude"/>';
 		$out['html'] .= '<input type="hidden" value="' . $mapId . '" class="mapId"/>';
@@ -174,12 +122,28 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 			}
 		}
 		$TSObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-			'TYPO3\\CMS\\Core\\TypoScript\\ExtendedTemplateService'
+			'TYPO3\\CMS\\Core\\TypoScript\\TemplateService'
 		);
 
-		$TSObj->tt_track = 0;
+		$TSObj->tt_track = false;
 		$TSObj->runThroughTemplates($rootLine, 0);
 		$TSObj->generateConfig();
 		return $TSObj->setup;
 	}
+
+	/**
+	 * @param string $tableName
+	 * @param string $identifier
+	 * @param string $fieldName
+	 * @param string $elementName
+	 * @return string
+	 */
+	protected function updateField($tableName, $identifier, $fieldName, $elementName){
+		$args = array_map(
+            [GeneralUtility::class, 'quoteJSvalue'],
+            [$tableName, $identifier, $fieldName, $elementName]
+        );
+        return sprintf('TBE_EDITOR.fieldChanged(%s);', implode(',', $args));
+	}
+
 }

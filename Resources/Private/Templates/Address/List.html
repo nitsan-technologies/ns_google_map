@@ -1,51 +1,17 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 	<f:layout name="Default" />
 
-	This Template is responsible for creating a table of domain objects.
-
-	If you modify this template, do not forget to change the overwrite settings
-	in /Configuration/ExtensionBuilder/settings.yaml:
-	  Resources:
-	    Private:
-	      Templates:
-	        List.html: keep
-
-	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
 	<f:section name="main">
 		<f:flashMessages />
 			<div class="tx-ns-google-map-wrapper">				
-					<f:if condition="{settings.theme}">
-						<f:then>
-							<f:render partial="Address/Theme" arguments="{_all}" />
-						</f:then>
-						<f:else>
-							<select style="display: none;" class="btn btn-primary" id="gmaptheme" name="gmaptheme"></select>
-						</f:else>
-					</f:if>	
 					<div class="store_loca">
 						<div class="map-block">
 							<div id="map_{data.uid}" class="map_canvas"></div>
 							<div id="dis_dir_block" class="dis_dir_block"></div>
 						</div>
-						<f:if condition="{version} == 'less'">
-							<f:then>
-								<f:render partial="Address/OlderVersion/AddressList" arguments="{_all}" />	
-							</f:then>
-							<f:else>
-								<f:render partial="Address/AddressList" arguments="{_all}" />	
-							</f:else>
-						</f:if>				
+						<f:render partial="Address/AddressList" arguments="{_all}" />	
 					</div>
-					<f:if condition="{version} == 'less'">
-						<f:then>
-							<f:render partial="Address/OlderVersion/Settings" arguments="{_all}" />
-						</f:then>
-						<f:else>
-							<f:render partial="Address/Settings" arguments="{_all}" />
-						</f:else>
-					</f:if>	
-				
+					<f:render partial="Address/Settings" arguments="{_all}" />
 			</div>
 	</f:section>
 </html>

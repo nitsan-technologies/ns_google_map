@@ -1,6 +1,8 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 $extKey = 'ns_google_map';
 
 $fields = [
@@ -19,20 +21,18 @@ $fields = [
         ],
     ],
 ];
-if (version_compare(TYPO3_branch, '9.0', '>')) {
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tx_nsgooglemap_domain_model_address', $fields);
-}
+
+ExtensionManagementUtility::addTCAcolumns('tx_nsgooglemap_domain_model_address', $fields);
 // register plugin
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Nitsan.NsGoogleMap',
+$pluginSignature = ExtensionUtility::registerPlugin(
+    'NsGoogleMap',
     'Map',
     'Google Map'
 );
 
 // Flexform
-$pluginSignature = str_replace('_', '', $extKey) . '_map';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+ExtensionManagementUtility::addPiFlexFormValue(
     $pluginSignature,
     'FILE:EXT:' . $extKey . '/Configuration/FlexForms/FlexForm.xml'
 );

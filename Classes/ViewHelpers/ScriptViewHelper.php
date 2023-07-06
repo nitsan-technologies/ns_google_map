@@ -1,6 +1,8 @@
 <?php
 namespace Nitsan\NsGoogleMap\ViewHelpers;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Page\PageRenderer;
 /*
  *  Copyright notice
  *
@@ -56,44 +58,14 @@ class ScriptViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHel
 {
     public function render()
     {
-        if (version_compare(TYPO3_branch, '9.0', '>')) {
-            $pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-            $pageRenderer->addJsFooterFile(
-                \TYPO3\CMS\Core\Utility\GeneralUtility::writeJavaScriptContentToTemporaryFile($this->renderChildren(), 'js'),
-                'text/javascript', // $type
-                true, // $compress
-                false, // $forceOnTop
-                '', // $allWrap
-                true// $excludeFromConcatenation
-            );
-        } else {
-            $pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-            $pageRenderer->addJsFooterFile(
-                \TYPO3\CMS\Frontend\Page\PageGenerator::inline2TempFile($this->renderChildren(), 'js'),
-                'text/javascript', // $type
-                true, // $compress
-                false, // $forceOnTop
-                '', // $allWrap
-                true// $excludeFromConcatenation
-            );
-        }
-        return '';
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        $pageRenderer->addJsFooterFile(
+            GeneralUtility::writeJavaScriptContentToTemporaryFile($this->renderChildren()),
+            'text/javascript', // $type
+            true, // $compress
+            false, // $forceOnTop
+            '', // $allWrap
+            true// $excludeFromConcatenation
+        );
     }
-
-    /*
-
-public function render() {
-$pageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Page\PageRenderer::class);
-$pageRenderer->addJsFooterFile(
-\TYPO3\CMS\Frontend\Page\PageGenerator::inline2TempFile($this->renderChildren(), 'js'),
-'text/javascript', // $type
-true, // $compress
-false, // $forceOnTop
-'', // $allWrap
-true // $excludeFromConcatenation
-);
-
-return '';
-}
- */
 }

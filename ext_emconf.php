@@ -11,11 +11,10 @@ $EM_CONF['ns_google_map'] = [
 	'internal' => '',
 	'uploadfolder' => '0',
 	'createDirs' => '',
-	'clearCacheOnLoad' => 0,
-	'version' => '3.1.2',
+	'version' => '12.0.0',
 	'constraints' => [
 		'depends' => [
-			'typo3' => '7.6.0-11.5.99',
+			'typo3' => '12.0.0-12.4.99',
 		],
 		'conflicts' => [],
 		'suggests' => [],

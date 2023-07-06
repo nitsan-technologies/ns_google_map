@@ -16,20 +16,17 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,address,infocontent,closebyclick,openbyclick,opened,latitude,longitude,map, marker_image',
+        'searchFields' => 'title,address,infocontent,closebyclick,openbyclick,opened,latitude,longitude,map',
         'iconfile' => 'EXT:ns_google_map/Resources/Public/Icons/tx_nsgooglemap_domain_model_address.gif',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, address, infocontent, maplink,closebyclick, openbyclick, opened, latitude, longitude, map, marker_image',
-    ],
-    'types' => [
-        '1' => ['showitem' => 'title, address, infocontent, maplink,closebyclick, openbyclick, opened, latitude, longitude, map, marker_image, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden,starttime, endtime'],
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, address, infocontent, closebyclick, openbyclick, opened, latitude, longitude, map',
     ],
     'types' => [
         '0' => [
-            'showitem' => 'title,map,marker_image,--palette--;;data,
+            'showitem' => 'title,map,--palette--;;data,
 					--div--;LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.info_window,
-					infocontent,maplink,
+					infocontent,
 					--palette--;LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.palettes.interaction;interaction',
             'columnsOverrides' => [
                 'infocontent' => [
@@ -158,11 +155,6 @@ return [
             'label' => 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.closebyclick',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled',
-                    ],
-                ],
                 'default' => 0,
             ],
         ],
@@ -171,11 +163,6 @@ return [
             'label' => 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.openbyclick',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled',
-                    ],
-                ],
                 'default' => 0,
             ],
         ],
@@ -184,11 +171,6 @@ return [
             'label' => 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.opened',
             'config' => [
                 'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled',
-                    ],
-                ],
                 'default' => 0,
             ],
         ],
@@ -198,7 +180,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim',
+                'eval' => 'trim,required',
             ],
         ],
         'longitude' => [
@@ -207,7 +189,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim',
+                'eval' => 'trim,required',
             ],
         ],
         'map' => [
@@ -215,7 +197,7 @@ return [
             'label' => 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.map',
             'config' => [
                 'type' => 'user',
-                'userFunc' => 'Nitsan\\NsGoogleMap\\Utility\\MapUtilityV8->render',
+                'userFunc' => 'Nitsan\\NsGoogleMap\\Utility\\MapUtility->render',
                 'parameters' => [
                     'longitude' => 'longitude',
                     'latitude' => 'latitude',
@@ -225,3 +207,4 @@ return [
         ],
     ],
 ];
+$GLOBALS['TCA']['tx_nsgooglemap_domain_model_address']['ctrl']['security']['ignorePageTypeRestriction'] = true;

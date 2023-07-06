@@ -1,6 +1,5 @@
 
 $(document).ready(function () {
-	var TBE_EDITOR_fieldChanged = TBE_EDITOR.fieldChanged;
 	if (typeof GoogleMap == 'undefined') GoogleMap = {};
 
 	String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); } 
@@ -18,7 +17,9 @@ $(document).ready(function () {
 		var myOptions = {
 			zoom: 12,
 			center: GoogleMap.origin,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			streetViewControl: false,
+			mapTypeControl: false
 		};
 
 		GoogleMap.map = new google.maps.Map(document.getElementById(mapId), myOptions);
@@ -47,7 +48,8 @@ $(document).ready(function () {
 			GoogleMap.positionChanged();
 		});
 		GoogleMap.geocoder = new google.maps.Geocoder();
-
+		var origin = document.getElementsByClassName("origin");
+		var places = new google.maps.places.Autocomplete(origin[0]);
 	};
 
 	GoogleMap.refreshMap = function() {

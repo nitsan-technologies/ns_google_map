@@ -1,7 +1,6 @@
 mod.wizards.newContentElement.wizardItems.plugins {
 	elements {
 			map {
-				icon = ../typo3conf/ext/ns_google_map/Resources/Public/Icons/user_plugin_map.svg
 				iconIdentifier = ext-google-map-icon
 				title = LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_ns_google_map_domain_model_map
 				description = LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_ns_google_map_domain_model_map.description
@@ -13,3 +12,5 @@ mod.wizards.newContentElement.wizardItems.plugins {
 		}
 	show = *
 }
+
+mod.web_layout.tt_content.preview.list.nsgooglemap_map = EXT:ns_google_map/Resources/Private/Backend/Backendpreview/GoogleMap.html
