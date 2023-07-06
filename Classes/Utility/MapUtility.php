@@ -36,6 +36,7 @@ use TYPO3\CMS\Core\Page\PageRenderer;
  */
 class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 	public function render() {
+		$pluginSettings = [];
 		$configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
 		$config = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
 		$pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
@@ -124,7 +125,7 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
 			'TYPO3\\CMS\\Core\\TypoScript\\TemplateService'
 		);
 
-		$TSObj->tt_track = 0;
+		$TSObj->tt_track = false;
 		$TSObj->runThroughTemplates($rootLine, 0);
 		$TSObj->generateConfig();
 		return $TSObj->setup;

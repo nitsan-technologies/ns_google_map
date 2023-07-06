@@ -17,7 +17,9 @@ $(document).ready(function () {
 		var myOptions = {
 			zoom: 12,
 			center: GoogleMap.origin,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			streetViewControl: false,
+			mapTypeControl: false
 		};
 
 		GoogleMap.map = new google.maps.Map(document.getElementById(mapId), myOptions);

@@ -96,7 +96,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle($title): void
     {
         $this->title = $title;
     }
@@ -117,7 +117,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $address
      * @return void
      */
-    public function setAddress($address)
+    public function setAddress($address): void
     {
         $this->address = $address;
     }
@@ -138,7 +138,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $infocontent
      * @return void
      */
-    public function setInfocontent($infocontent)
+    public function setInfocontent($infocontent): void
     {
         $this->infocontent = $infocontent;
     }
@@ -159,7 +159,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param bool $closebyclick
      * @return void
      */
-    public function setClosebyclick($closebyclick)
+    public function setClosebyclick($closebyclick): void
     {
         $this->closebyclick = $closebyclick;
     }
@@ -190,7 +190,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param bool $openbyclick
      * @return void
      */
-    public function setOpenbyclick($openbyclick)
+    public function setOpenbyclick($openbyclick): void
     {
         $this->openbyclick = $openbyclick;
     }
@@ -208,9 +208,9 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the opened
      *
-     * @return string $opened
+     * @return bool $opened
      */
-    public function getOpened(): string
+    public function getOpened(): bool
     {
         return $this->opened;
     }
@@ -218,10 +218,10 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the opened
      *
-     * @param string $opened
+     * @param bool $opened
      * @return void
      */
-    public function setOpened($opened)
+    public function setOpened($opened): void
     {
         $this->opened = $opened;
     }
@@ -284,7 +284,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $map
      * @return void
      */
-    public function setMap($map)
+    public function setMap($map): void
     {
         $this->map = $map;
     }

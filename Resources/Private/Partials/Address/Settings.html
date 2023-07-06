@@ -75,7 +75,6 @@
     <f:for each="{maptypes}" as="type" iteration="i">
         googlemap.mapSettings.mapTypes[{i.index}] = googlemap.defaultMapTypes['{type}'];
     </f:for>
-    console.log(googlemap.mapSettings);
     googlemap.locations = new Array();
     <f:for each="{locations}" as="address" iteration="i">
 

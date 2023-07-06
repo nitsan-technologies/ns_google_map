@@ -23,9 +23,6 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, address, infocontent, closebyclick, openbyclick, opened, latitude, longitude, map',
     ],
     'types' => [
-        '1' => ['showitem' => 'title, address, infocontent, closebyclick, openbyclick, opened, latitude, longitude, map, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, sys_language_uid, l10n_parent, l10n_diffsource, hidden,starttime, endtime'],
-    ],
-    'types' => [
         '0' => [
             'showitem' => 'title,map,--palette--;;data,
 					--div--;LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_domain_model_address.info_window,

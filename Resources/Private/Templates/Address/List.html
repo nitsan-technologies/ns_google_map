@@ -4,14 +4,6 @@
 	<f:section name="main">
 		<f:flashMessages />
 			<div class="tx-ns-google-map-wrapper">				
-					<f:if condition="{settings.theme}">
-						<f:then>
-							<f:render partial="Address/Theme" arguments="{_all}" />
-						</f:then>
-						<f:else>
-							<select style="display: none;" class="btn btn-primary" id="gmaptheme" name="gmaptheme"></select>
-						</f:else>
-					</f:if>	
 					<div class="store_loca">
 						<div class="map-block">
 							<div id="map_{data.uid}" class="map_canvas"></div>

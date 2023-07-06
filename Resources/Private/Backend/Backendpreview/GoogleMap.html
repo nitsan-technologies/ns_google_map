@@ -174,61 +174,63 @@
 					</table>
 				</td>
 			</tr>
-		</f:if>			
-	<tr>
-		<td>
-			<table class='table table-bordered table-striped table-hover typo3-extension-list no-footer'>
-				<thead>
-					<tr>
-						<th colspan='2'>
-							<h3>
-								<f:image src="EXT:ns_google_map/Resources/Public/Icons/map.svg" height="30" width="30" />
-								<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:tx_nsgooglemap_map.flexform.markerSetting" />
-							</h3>
-						</th>
-					</tr>
-				</thead>				
-				<f:if condition="{pi_flexform_transformed.settings.markercluster}">
-					<tr>
-						<th style='text-align:left'>
-					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:markercluster" />
-					    </th>
-					    <td style='padding-left: 10px;'>
-					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:yesNo-{pi_flexform_transformed.settings.markercluster}" />
-					    </td>
-					</tr>
-				</f:if>
-				<f:if condition="{pi_flexform_transformed.settings.maxzoomlevel}">
-					<tr>
-						<th style='text-align:left'>
-					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:maxzoomlevel" />
-					    </th>
-					    <td style='padding-left: 10px;'>
-					    	{pi_flexform_transformed.settings.maxzoomlevel}
-					    </td>
-					</tr>
-				</f:if>
-				<f:if condition="{pi_flexform_transformed.settings.gridsize}">
-					<tr>
-						<th style='text-align:left'>
-					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:gridsize" />
-					    </th>
-					    <td style='padding-left: 10px;'>
-					    	{pi_flexform_transformed.settings.gridsize}
-					    </td>
-					</tr>
-				</f:if>
-				<f:if condition="{pi_flexform_transformed.settings.styles}">
-					<tr>
-						<th style='text-align:left'>
-					    	<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:styles" />
-					    </th>
-					    <td style='padding-left: 10px;'>
-					    	{pi_flexform_transformed.settings.styles}
-					    </td>
-					</tr>
-				</f:if>
-			</table>
-		</td>
-	</tr>
+		</f:if>		
+	<f:if condition="{pi_flexform_transformed.settings.markercluster}">
+		<tr>
+			<td>
+				<table class='table table-bordered table-striped table-hover typo3-extension-list no-footer'>
+					<thead>
+						<tr>
+							<th colspan='2'>
+								<h3>
+									<f:image src="EXT:ns_google_map/Resources/Public/Icons/map.svg" height="30" width="30" />
+									<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:tx_nsgooglemap_map.flexform.markerSetting" />
+								</h3>
+							</th>
+						</tr>
+					</thead>				
+					<f:if condition="{pi_flexform_transformed.settings.markercluster}">
+						<tr>
+							<th style='text-align:left'>
+								<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:markercluster" />
+							</th>
+							<td style='padding-left: 10px;'>
+								<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:yesNo-{pi_flexform_transformed.settings.markercluster}" />
+							</td>
+						</tr>
+					</f:if>
+					<f:if condition="{pi_flexform_transformed.settings.maxzoomlevel}">
+						<tr>
+							<th style='text-align:left'>
+								<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:maxzoomlevel" />
+							</th>
+							<td style='padding-left: 10px;'>
+								{pi_flexform_transformed.settings.maxzoomlevel}
+							</td>
+						</tr>
+					</f:if>
+					<f:if condition="{pi_flexform_transformed.settings.gridsize}">
+						<tr>
+							<th style='text-align:left'>
+								<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:gridsize" />
+							</th>
+							<td style='padding-left: 10px;'>
+								{pi_flexform_transformed.settings.gridsize}
+							</td>
+						</tr>
+					</f:if>
+					<f:if condition="{pi_flexform_transformed.settings.styles}">
+						<tr>
+							<th style='text-align:left'>
+								<f:translate key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xl:styles" />
+							</th>
+							<td style='padding-left: 10px;'>
+								{pi_flexform_transformed.settings.styles}
+							</td>
+						</tr>
+					</f:if>
+				</table>
+			</td>
+		</tr>
+	</f:if>			
 </table>
