@@ -3,19 +3,13 @@
     <f:for as="address" each="{locations}" iteration="i">
         <div class="map-add" data-markerid="{i.index}">
             <div class="title">                
-                <b>
-                    <esc:escape>
-                        {address.title}
-                    </esc:escape>                
-                </b>
+                <b>{address.title}</b>
             </div>
             <div class="address">
                 <f:format.raw>
-                    <esc:escape>
-                        <f:format.crop maxCharacters="150" append="">
-                            {address.infocontent}
-                        </f:format.crop>
-                    </esc:escape>
+                    <f:format.crop maxCharacters="150" append="">
+                        {address.infocontent}
+                    </f:format.crop>
                 </f:format.raw>
             </div>            
         </div>
