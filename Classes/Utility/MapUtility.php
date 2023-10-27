@@ -34,6 +34,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  */
 class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
+	protected $configurationManager;
 	public function render() {
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
 		$this->configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');

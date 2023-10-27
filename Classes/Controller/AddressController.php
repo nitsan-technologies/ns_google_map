@@ -19,6 +19,8 @@ use TYPO3\CMS\Extbase\Annotation\Inject;
  */
 class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
+    protected $contentObj;
+
     /**
      * addressRepository
      *
