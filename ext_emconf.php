@@ -1,12 +1,14 @@
 <?php
 
 $EM_CONF['ns_google_map'] = [
-	'title' => '[NITSAN] Google Map Plugin',
-	'description' => 'This extension can easily integrate of powerful features of Google map like find-places, find-direction between locations etc. Live-Demo: https://demo.t3planet.com//t3t-extensions/google-map You can download PRO version for more-features & free-support at https://t3planet.com/typo3-google-map-typo3-extension-pro',
+	'title' => 'Google Map',
+	'description' => 'Introducing the TYPO3 Google Map Extension! This TYPO3 extension enables you to seamlessly add and customize Google Maps to your website with ease. Designed with responsive layouts and SEO-friendly features, it ensures a smooth and optimized experience for your visitors.
+
+	*** Live Demo: https://demo.t3planet.com/t3-extensions/google-map *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-google-map-extension',
 	'category' => 'plugin',
-	'author' => 'Team NITSAN',
+	'author' => 'T3: Jay Bhalgamiya, Nilesh Malankiya, QA: Krishna Dhapa',
 	'author_email' => 'sanjay@nitsan.in',
-	'author_company' => 'NITSAN Technologies Pvt Ltd',
+	'author_company' => 'T3Planet // NITSAN',
 	'state' => 'stable',
 	'internal' => '',
 	'uploadfolder' => '0',
