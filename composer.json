@@ -1,7 +1,7 @@
 {
   "name": "nitsan/ns-google-map",
   "type": "typo3-cms-extension",
-  "description": "Introducing the TYPO3 Google Map Extension! This TYPO3 extension enables you to seamlessly add and customize Google Maps to your website with ease. Designed with responsive layouts and SEO-friendly features, it ensures a smooth and optimized experience for your visitors. *** Live Demo: https://demo.t3planet.com/t3-extensions/google-map *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-google-map-extension",
+  "description": "Introducing the TYPO3 Google Map Extension! This TYPO3 extension enables you to seamlessly add and customize Google Maps to your website with ease. Designed with responsive layouts and SEO-friendly features, it ensures a smooth and optimized experience for your visitors.",
   "homepage": "https://t3planet.com/typo3-google-map-extension",
   "license": "GPL-2.0+",
   "keywords": [
