@@ -9,9 +9,11 @@
     </div>
     <div class="address">
         <f:format.raw>
-            <f:format.crop maxCharacters="150">
+            <f:format.htmlentitiesDecode>
+            <f:format.html parseFuncTSPath="lib.parseFunc">
                 {address.infocontent}
-            </f:format.crop>
+           </f:format.html>
+            </f:format.htmlentitiesDecode>
         </f:format.raw>
     </div>
     <f:if condition="{address.maplink}">
