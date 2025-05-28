@@ -3,7 +3,7 @@ namespace Nitsan\NsGoogleMap\Domain\Model;
 
 /***
  *
- * This file is part of the "[Nitsan] Google Map" Extension for TYPO3 CMS.
+ * This file is part of the "Google Map" Extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.

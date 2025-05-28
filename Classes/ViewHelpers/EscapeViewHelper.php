@@ -4,7 +4,7 @@ namespace Nitsan\NsGoogleMap\ViewHelpers;
 /*
  *  Copyright notice
  *
- *  (c) 2012 Marc Hirdes <Marc_Hirdes@gmx.de>, Nitsan GmbH
+ *  (c) 2012 Marc Hirdes <Marc_Hirdes@gmx.de>, GmbH
  *
  *  All rights reserved
  *

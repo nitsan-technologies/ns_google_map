@@ -10,13 +10,12 @@
 		-->
 		<sDEF>
 			<ROOT>
-				<TCEforms>
 					<sheetTitle>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.sheetTitle</sheetTitle>
-				</TCEforms>
+				
 				<type>array</type>
 				<el>
 					<settings.address>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.address</label>
 							<config>
 								<type>select</type>
@@ -26,25 +25,27 @@
 								<size>8</size>
 								<maxitems>999</maxitems>
 							</config>
-						</TCEforms>
+						
 					</settings.address>
 					<settings.width>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.width</label>
 							<config>
 								<type>input</type>
 								<size>30</size>
+								<max>4</max>
 							</config>
-						</TCEforms>
+						
 					</settings.width>
 					<settings.height>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.height</label>
 							<config>
 								<type>input</type>
 								<size>30</size>
+								<max>4</max>
 							</config>
-						</TCEforms>
+						
 					</settings.height>
 				</el>
 			</ROOT>
@@ -56,13 +57,13 @@
 		-->
 		<mapSetting>
 			<ROOT>
-				<TCEforms>
+				
 					<sheetTitle>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.mapSetting</sheetTitle>
-				</TCEforms>
+				
 				<type>array</type>
 				<el>					
 					<settings.zoom>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.zoom</label>
 							<config>
 								<type>input</type>
@@ -74,31 +75,31 @@
 									<upper>22</upper>
 								</range>
 							</config>
-						</TCEforms>
+						
 					</settings.zoom>
 					<settings.scrollzoom>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.scrollzoom</label>
 							<config>
 								<type>check</type>
 							</config>
-						</TCEforms>
+						
 					</settings.scrollzoom>
 					<settings.draggable>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.draggable</label>
 							<config>
 								<type>check</type>
 							</config>
-						</TCEforms>
+						
 					</settings.draggable>
 					<settings.doubleclickzoom>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.doubleclickzoom</label>
 							<config>
 								<type>check</type>
 							</config>
-						</TCEforms>
+						
 					</settings.doubleclickzoom>
 				</el>
 			</ROOT>
@@ -111,22 +112,22 @@
 		-->
 		<controls>
 			<ROOT>
-				<TCEforms>
+				
 					<sheetTitle>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.controls</sheetTitle>
-				</TCEforms>
+				
 				<type>array</type>
 				<el>
 					<settings.zoomcontrol>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.zoomcontrol</label>
 							<onChange>reload</onChange>
 							<config>
 								<type>check</type>
 							</config>
-						</TCEforms>
+						
 					</settings.zoomcontrol>
 					<settings.zoomcontrolposition>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.zoomcontrolposition</label>
 							<displayCond>FIELD:settings.zoomcontrol:=:1</displayCond>
 							<config>
@@ -184,19 +185,19 @@
 					            </items>
 					            <default>TOP_CENTER</default>
 					        </config>
-						</TCEforms>
+						
 					</settings.zoomcontrolposition>
 					<settings.fullscreencontrol>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.fullscreencontrol</label>
 							<onChange>reload</onChange>
 							<config>
 								<type>check</type>
 							</config>
-						</TCEforms>
+						
 					</settings.fullscreencontrol>
 					<settings.screencontrolposition>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.screencontrolposition</label>
 							<displayCond>FIELD:settings.fullscreencontrol:=:1</displayCond>
 							<config>
@@ -254,7 +255,7 @@
 					            </items>
 					            <default>TOP_CENTER</default>
 					        </config>
-						</TCEforms>
+						
 					</settings.screencontrolposition>
 				</el>
 			</ROOT>
@@ -267,22 +268,22 @@
 		-->
 		<markerSetting>
 			<ROOT>
-				<TCEforms>
+				
 					<sheetTitle>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.markerSetting</sheetTitle>
-				</TCEforms>
+				
 				<type>array</type>
 				<el>				
 					<settings.markercluster>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.markercluster</label>
 							<onChange>reload</onChange>
 							<config>
 								<type>check</type>
 							</config>
-						</TCEforms>
+						
 					</settings.markercluster>
 					<settings.maxzoomlevel>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.maxzoomlevel</label>
 							<displayCond>FIELD:settings.markercluster:=:1</displayCond>
 							<config>
@@ -294,19 +295,10 @@
 									<upper>22</upper>
 								</range>
 							</config>
-						</TCEforms>
+						
 					</settings.maxzoomlevel>
-					<settings.gridsize>
-						<TCEforms>
-							<displayCond>FIELD:settings.markercluster:=:1</displayCond>
-							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.gridsize</label>
-							<config>
-								<type>input</type>
-							</config>
-						</TCEforms>
-					</settings.gridsize>
 					<settings.styles>
-						<TCEforms>
+						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.styles</label>
 							<displayCond>FIELD:settings.markercluster:=:1</displayCond>
 							<config>
@@ -336,7 +328,7 @@
 					            </items>
 					            <default>-1</default>
 					        </config>
-						</TCEforms>
+						
 					</settings.styles>
 				</el>
 			</ROOT>
