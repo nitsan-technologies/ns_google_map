@@ -16,7 +16,7 @@ $EM_CONF['ns_google_map'] = [
 	'version' => '12.0.2',
 	'constraints' => [
 		'depends' => [
-			'typo3' => '12.0.0-12.4.99',
+			'typo3' => '12.0.0-13.9.99',
 		],
 		'conflicts' => [],
 		'suggests' => [],
