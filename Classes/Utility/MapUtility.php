@@ -1,5 +1,6 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Nitsan\NsGoogleMap\Utility;
 
@@ -31,28 +32,31 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\RootlineUtility;
+
 /**
  * Google map.
  *
  */
-class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
-	public function render()    :array {
-		$pluginSettings = [];
-		$configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
-		$config = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-		$pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-		$out = $this->initializeResultArray();
+class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
+{
+    public function render(): array
+    {
+        $pluginSettings = [];
+        $configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
+        $config = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        $out = $this->initializeResultArray();
 
-		$version = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
-		// $settings = $this->loadTS($this->data['databaseRow']['pid']);
-		 if (array_key_exists("tx_nsgooglemap_map.", $config['plugin.'])) {
+        $version = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
+        // $settings = $this->loadTS($this->data['databaseRow']['pid']);
+        if (array_key_exists("tx_nsgooglemap_map.", $config['plugin.'])) {
             $pluginSettings = $config['plugin.']['tx_nsgooglemap_map.']['settings.'];
-        } elseif(array_key_exists("tx_nsgooglemap_map.", $config['plugin.'])) {
+        } elseif (array_key_exists("tx_nsgooglemap_map.", $config['plugin.'])) {
             $pluginSettings = $config['plugin.']['tx_nsgooglemap_map.']['settings.'];
         }
 
 
-		  $checkURL = GeneralUtility::getIndpEnv('TYPO3_SSL') ? 'https://' : 'http://';
+        $checkURL = GeneralUtility::getIndpEnv('TYPO3_SSL') ? 'https://' : 'http://';
 
         if ($checkURL == 'http://') {
             $googleMapsLibrary = 'http://maps.googleapis.com/maps/api/js?libraries=places';
@@ -61,35 +65,35 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
         }
 
         $pageRenderer->addJsFile('EXT:ns_google_map/Resources/Public/Js/jquery.min.js');
-        $pageRenderer->addJsFile('EXT:ns_google_map/Resources/Public/Js/googleMap.js');		
+        $pageRenderer->addJsFile('EXT:ns_google_map/Resources/Public/Js/googleMap.js');
 
-		if ($pluginSettings['apiKey']) {
-			$googleMapsLibrary .= '&key=' . $pluginSettings['apiKey'];
-		}
+        if (isset($pluginSettings['apiKey']) && $pluginSettings['apiKey']) {
+            $googleMapsLibrary .= '&key=' . $pluginSettings['apiKey'];
+        }
 
-		//$out = [];
-		$latitude = (float) $this->data['databaseRow']['latitude'];
-		$longitude = (float) $this->data['databaseRow']['longitude'];
-		$address = $this->data['databaseRow']['address'];
+        //$out = [];
+        $latitude = (float) $this->data['databaseRow']['latitude'];
+        $longitude = (float) $this->data['databaseRow']['longitude'];
+        $address = $this->data['databaseRow']['address'];
 
-		$baseElementId = isset($this->data['databaseRow']['itemFormElID']) ? $this->data['databaseRow']['itemFormElID'] : $this->data['tableName'] . '_' . $this->data['databaseRow']['uid'] . '_map';
-		$addressId = 'data_' . $baseElementId . '_address';
-		$mapId = $baseElementId . '_map';
+        $baseElementId = isset($this->data['databaseRow']['itemFormElID']) ? $this->data['databaseRow']['itemFormElID'] : $this->data['tableName'] . '_' . $this->data['databaseRow']['uid'] . '_map';
+        $addressId = 'data_' . $baseElementId . '_address';
+        $mapId = $baseElementId . '_map';
 
-		if (!($latitude && $longitude)) {
-			$latitude = 0;
-			$longitude = 0;
-		}
-		$dataPrefix = 'data[' . $this->data['tableName'] . '][' . $this->data['databaseRow']['uid'] . ']';
-		$latitudeField = $dataPrefix . '[latitude]';
-		$longitudeField = $dataPrefix . '[longitude]';
-		$addressField = $dataPrefix . '[address]';
+        if (!($latitude && $longitude)) {
+            $latitude = 0;
+            $longitude = 0;
+        }
+        $dataPrefix = 'data[' . $this->data['tableName'] . '][' . $this->data['databaseRow']['uid'] . ']';
+        $latitudeField = $dataPrefix . '[latitude]';
+        $longitudeField = $dataPrefix . '[longitude]';
+        $addressField = $dataPrefix . '[address]';
 
-		$updateLatitudeJs = $this->updateField($this->data['tableName'],(string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['latitude']);
-		$updateLongitudeJs = $this->updateField($this->data['tableName'],(string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['longitude']);
-		$updateAddressJs = $this->updateField($this->data['tableName'],(string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['address']);
+        $updateLatitudeJs = $this->updateField($this->data['tableName'], (string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['latitude']);
+        $updateLongitudeJs = $this->updateField($this->data['tableName'], (string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['longitude']);
+        $updateAddressJs = $this->updateField($this->data['tableName'], (string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['address']);
 
-		$basePath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
+        $basePath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
         $out['html'] = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>';
         $out['html'] .= '<script src="' . $googleMapsLibrary . '"></script>';
         $out['html'] .= '<input type="hidden" value="' . $latitude . '" class="latitude"/>';
@@ -106,13 +110,13 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement {
         $out['html'] .= '<input id="' . $addressId . '" type="textbox" value="' . $address . '" class="origin"  style="width:300px">';
         $out['html'] .= '<input type="button" id="findMap" value="Update">';
         $out['html'] .= '<div id="' . $mapId . '" style="height:400px;margin:10px 0;width:400px"></div>';
-        $out['html'] .= '</div>'; 
+        $out['html'] .= '</div>';
 
-		
-		return $out;
-	}
 
-protected function loadTS($pageUid)
+        return $out;
+    }
+
+    protected function loadTS($pageUid)
     {
         $rootLine = [];
         if ($pageUid > 0) {
@@ -136,19 +140,19 @@ protected function loadTS($pageUid)
 
 
 
-	/**
-	 * @param string $tableName
-	 * @param string $identifier
-	 * @param string $fieldName
-	 * @param string $elementName
-	 * @return string
-	 */
-	protected function updateField($tableName, $identifier, $fieldName, $elementName){
-		$args = array_map(
+    /**
+     * @param string $tableName
+     * @param string $identifier
+     * @param string $fieldName
+     * @param string $elementName
+     * @return string
+     */
+    protected function updateField($tableName, $identifier, $fieldName, $elementName)
+    {
+        $args = array_map(
             [GeneralUtility::class, 'quoteJSvalue'],
             [$tableName, $identifier, $fieldName, $elementName]
         );
         return sprintf('TBE_EDITOR.fieldChanged(%s);', implode(',', $args));
-	}
-
+    }
 }

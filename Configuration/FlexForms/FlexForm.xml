@@ -31,6 +31,7 @@
 						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.width</label>
 							<config>
+							<placeholder>900</placeholder>
 								<type>input</type>
 								<size>30</size>
 								<max>4</max>
@@ -41,6 +42,7 @@
 						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.height</label>
 							<config>
+							<placeholder>500</placeholder>
 								<type>input</type>
 								<size>30</size>
 								<max>4</max>
@@ -77,14 +79,6 @@
 							</config>
 						
 					</settings.zoom>
-					<settings.scrollzoom>
-						
-							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.scrollzoom</label>
-							<config>
-								<type>check</type>
-							</config>
-						
-					</settings.scrollzoom>
 					<settings.draggable>
 						
 							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.draggable</label>
@@ -93,9 +87,20 @@
 							</config>
 						
 					</settings.draggable>
+					<settings.scrollzoom>
+						
+							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.scrollzoom</label>
+							<displayCond>FIELD:settings.draggable:=:1</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						
+					</settings.scrollzoom>
+					
 					<settings.doubleclickzoom>
 						
-							<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.doubleclickzoom</label>
+						<label>LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_nsgooglemap_map.flexform.doubleclickzoom</label>
+							<displayCond>FIELD:settings.draggable:=:1</displayCond>
 							<config>
 								<type>check</type>
 							</config>

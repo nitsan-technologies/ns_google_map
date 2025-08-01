@@ -16,13 +16,13 @@
 				<source>address</source>
 			</trans-unit>
 			<trans-unit id="infocontent.description">
-				<source>infocontent</source>
+				<source>Info Content</source>
 			</trans-unit>
 			<trans-unit id="closebyclick.description">
-				<source>closebyclick</source>
+				<source>Close By Click</source>
 			</trans-unit>
 			<trans-unit id="openbyclick.description">
-				<source>openbyclick</source>
+				<source>Open By Click</source>
 			</trans-unit>
 			<trans-unit id="opened.description">
 				<source>opened</source>
