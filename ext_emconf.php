@@ -1,14 +1,13 @@
 <?php
 
 $EM_CONF['ns_google_map'] = [
-	'title' => 'Google Map',
-	'description' => 'Introducing the TYPO3 Google Map Extension! This TYPO3 extension enables you to seamlessly add and customize Google Maps to your website with ease. Designed with responsive layouts and SEO-friendly features, it ensures a smooth and optimized experience for your visitors.
+	'title' => 'TYPO3 Google Map Extension',
+	'description' => 'Easily integrate and customize responsive Google Maps on your TYPO3 website. Designed to be SEO-friendly and user-centric, it enhances user experience with smooth map embedding and layout options.',
 
-	*** Live Demo: https://demo.t3planet.com/t3-extensions/google-map *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-google-map-extension',
 	'category' => 'plugin',
-	'author' => 'T3: Jay Bhalgamiya, Nilesh Malankiya, QA: Krishna Dhapa',
-	'author_email' => 'sanjay@nitsan.in',
-	'author_company' => 'T3Planet // NITSAN',
+	'author' => 'Team T3Planet',
+	'author_email' => 'info@t3planet.de',
+	'author_company' => 'T3Planet',
 	'state' => 'stable',
 	'internal' => '',
 	'uploadfolder' => '0',
