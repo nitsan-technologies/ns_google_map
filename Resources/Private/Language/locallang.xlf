@@ -35,7 +35,7 @@
 				<source>Address</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_address.infocontent">
-				<source>Infocontent</source>
+				<source>Info Content</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_address.closebyclick">
 				<source>Closebyclick</source>

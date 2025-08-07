@@ -6,7 +6,7 @@ use TYPO3\CMS\Core\Page\PageRenderer;
 /*
  *  Copyright notice
  *
- *  (c) 2013 Marc Hirdes <Marc_Hirdes@gmx.de>, Nitsan GmbH
+ *  (c) 2013 Marc Hirdes <Marc_Hirdes@gmx.de>, GmbH
  *  (c) 2013 Mathias Brodala <mbrodala@pagemachine.de>, PAGEmachine AG
  *
  *  All rights reserved

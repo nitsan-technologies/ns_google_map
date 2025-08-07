@@ -19,16 +19,16 @@
 				<source>Address</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_address.infocontent">
-				<source>Infocontent</source>
+				<source>Info Content</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_address.maplink">
 				<source>View Google Map Link</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_address.closebyclick">
-				<source>Closebyclick</source>
+				<source>Close By Click</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_address.openbyclick">
-				<source>Openbyclick</source>
+				<source>Open By Click</source>
 			</trans-unit>
 			<trans-unit id="tx_nsgooglemap_domain_model_address.opened">
 				<source>Opened</source>

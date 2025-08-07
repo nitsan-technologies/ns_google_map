@@ -25,7 +25,6 @@
 
 .map_canvas {
     min-height: 400px;
-    min-width: 100%;
 }
 
 .info-window {
@@ -242,6 +241,7 @@ h6 {
         -webkit-box-flex: 0;
         flex: 0 0 75%;
         max-width: 75%;
+        overflow: hidden;
     }
 
     .tx-ns-google-map .store_loca .add_sidebar {

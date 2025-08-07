@@ -1,8 +1,7 @@
-
 $(document).ready(function () {
 	if (typeof GoogleMap == 'undefined') GoogleMap = {};
 
-	String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); } 
+	String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); }
 
 	GoogleMap.init = function() {
 		var latitude = $('.latitude').val();
@@ -13,13 +12,11 @@ $(document).ready(function () {
 		var longitudeField = $('.longitudeField').val();
 		var addressField = $('.addressField').val();
 		GoogleMap.origin = new google.maps.LatLng(latitude, longitude);
-		
+
 		var myOptions = {
 			zoom: 12,
 			center: GoogleMap.origin,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			streetViewControl: false,
-			mapTypeControl: false
+			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 
 		GoogleMap.map = new google.maps.Map(document.getElementById(mapId), myOptions);
@@ -39,11 +36,11 @@ $(document).ready(function () {
 
 			// Update address
 			GoogleMap.reverseGeocode(GoogleMap.marker.getPosition().lat(), GoogleMap.marker.getPosition().lng(),addressField);
-			
+
 			// Update Position
 			var position = document.getElementById(addressId);
 			position.value = lat + "," + lng;
-			
+
 			// Tell TYPO3 that fields were updated
 			GoogleMap.positionChanged();
 		});
@@ -58,7 +55,14 @@ $(document).ready(function () {
 		// No need to do it again
 		Ext.fly(GoogleMap.tabPrefix + '-MENU').un('click', GoogleMap.refreshMap);
 	}
-	
+
+	let findMap = document.getElementById('findMap');
+	if (findMap) {
+		findMap.addEventListener('click', () => {
+			GoogleMap.codeAddress();
+		})
+	}
+
 	/***************************/
 	GoogleMap.codeAddress = function() {
 		var latitude = $('.latitude').val();
@@ -76,11 +80,11 @@ $(document).ready(function () {
 			lat = address.substr(0, address.lastIndexOf(',')).trim();
 			lng = address.substr(address.lastIndexOf(',')+1).trim();
 			position = new google.maps.LatLng(lat, lng);
-			
+
 			// Update Map
 			GoogleMap.map.setCenter(position);
 			GoogleMap.marker.setPosition(position);
-			
+
 			// Update visible fields
 			GoogleMap.updateValue(latitudeField, lat);
 	        GoogleMap.updateValue(longitudeField, lng);
@@ -95,11 +99,11 @@ $(document).ready(function () {
 					lng = results[0].geometry.location.lng().toFixed(6);
 
 					formatedAddress = results[0].formatted_address
-					
+
 					// Update Map
 					GoogleMap.map.setCenter(results[0].geometry.location);
 					GoogleMap.marker.setPosition(results[0].geometry.location);
-					
+
 					// Update fields
 	                GoogleMap.updateValue(latitudeField, lat);
 	                GoogleMap.updateValue(longitudeField, lng);
@@ -121,16 +125,10 @@ $(document).ready(function () {
 	}
 
 	GoogleMap.updateValue = function(fieldName, value) {
-		var version = $('.version').val();
-
-	    if(version < 7005000) {
-	        document[TBE_EDITOR.formname][fieldName + '_hr'].value = value;
-	    } else {
-			var $formField = $('[name="' + fieldName + '"]');
-			var $humanReadableField = $('[data-formengine-input-name="' + fieldName + '"]');
-			$formField.val(value);
-			$humanReadableField.val(value);
-	    }
+		var $formField = $('[name="' + fieldName + '"]');
+		var $humanReadableField = $('[data-formengine-input-name="' + fieldName + '"]');
+		$formField.val(value);
+		$humanReadableField.val(value);
 	}
 
 	GoogleMap.setMarker = function(lat, lng) {
@@ -159,7 +157,7 @@ $(document).ready(function () {
 
 	GoogleMap.convertAddress = function(addressOld) {
 		addressInput = document.getElementById("{$addressId}");
-		
+
 		GoogleMap.geocoder.geocode({'address':addressOld}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				GoogleMap.map.setCenter(results[0].geometry.location);
@@ -172,7 +170,7 @@ $(document).ready(function () {
 
 				// Update visible fields
 				addressInput.value = addressOld;
-				
+
 			} else {
 				alert("Geocode was not successful for the following reason: " + status);
 			}

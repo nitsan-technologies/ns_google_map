@@ -159,12 +159,12 @@
             var styles = this.getMarkerClusterStyle(googlemap);
             var mcOptions = {
                 maxZoom: googlemap.mapSettings.markerClusterZoom,
-                gridSize: googlemap.mapSettings.markerClusterSize,
+                disableClusteringAtZoom: googlemap.mapSettings.markerClusterZoom,
                 styles: styles[googlemap.mapSettings.markerClusterStyle],
                 imagePath: googlemap.iconBase
             };
             if (googlemap.mapSettings.markerCluster == 1) {
-                var markerCluster = new MarkerClusterer(_map, markers, mcOptions);
+                new MarkerClusterer(_map, markers, mcOptions);
             }
         },
         // Create marker for map

@@ -14,18 +14,38 @@ plugin.tx_nsgooglemap_map {
     jquery = {$plugin.tx_nsgooglemap_map.settings.jquery}
   }
 }
+
 page {
     includeCSS {
         mapstyle = EXT:ns_google_map/Resources/Public/Css/style.css
     }
+    
+    # Load jQuery first
     includeJSLibs {
         nsfjquery = EXT:ns_google_map/Resources/Public/Js/jquery.min.js
         nsfjquery.if.isTrue = {$plugin.tx_nsgooglemap_map.settings.jquery}
+        nsfjquery.forceOnTop = 1
+        nsfjquery.disableCompression = 1
     }
+    
+    # Load Google Maps API and other scripts in footer
     includeJSFooter {
-        apiKey = https://maps.google.com/maps/api/js?key={$plugin.tx_nsgooglemap_map.settings.apiKey}&language={$plugin.tx_nsgooglemap_map.settings.language}&libraries=places
+        # Google Maps API
+        googleMapsApi = https://maps.googleapis.com/maps/api/js?key={$plugin.tx_nsgooglemap_map.settings.apiKey}&language={$plugin.tx_nsgooglemap_map.settings.language}&libraries=places
+        googleMapsApi.external = 1
+        googleMapsApi.disableCompression = 1
+        
+        
+        # Marker Clusterer
+        markerClusterer = https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js
+        markerClusterer.external = 1
+        markerClusterer.disableCompression = 1
+        
+        # Extension specific scripts
         mapjs = EXT:ns_google_map/Resources/Public/Js/map.js
-        cluster = https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js
+        mapjs.disableCompression = 1
         customJs = EXT:ns_google_map/Resources/Public/Js/custom.js
+        customJs.disableCompression = 1
+        clusterCustom = EXT:ns_google_map/Resources/Public/Js/markerclusterer.js
     }
 }

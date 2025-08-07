@@ -1,107 +1,153 @@
 {namespace nsgooglemap=Nitsan\NsGoogleMap\ViewHelpers}
 <nsgooglemap:script>
     (function ($, window, document, undefined) {
-    $(function () {
+        $(function () {
+            // Wait for Google Maps API to be fully loaded
+            if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+                console.error('Google Maps API not loaded');
+                return;
+            }
 
-    var googlemap = new Object();
-    <f:variable name="iconBase">{f:uri.resource(path:'Images/', extensionName: 'NsGoogleMap')}</f:variable>
-    <f:variable name="clusterVariance1">{f:uri.resource(path:'Images/1.png', extensionName: 'NsGoogleMap')}</f:variable>
-    <f:variable name="clusterVariance2">{f:uri.resource(path:'Images/people35.png', extensionName: 'NsGoogleMap')}</f:variable>
-    <f:variable name="clusterVariance3">{f:uri.resource(path:'Images/conv30.png', extensionName: 'NsGoogleMap')}</f:variable>
-    <f:variable name="clusterVariance4">{f:uri.resource(path:'Images/heart30.png', extensionName: 'NsGoogleMap')}</f:variable>
-    <f:variable name="placeIcon">{f:uri.resource(path:'Images/pin.png', extensionName: 'NsGoogleMap')}</f:variable>
-    googlemap.iconBase = "{iconBase}";
-    googlemap.placeIcon = "{placeIcon}";
-    googlemap.clusterVariance1 = "{clusterVariance1}";
-    googlemap.clusterVariance2 = "{clusterVariance2}";
-    googlemap.clusterVariance3 = "{clusterVariance3}";
-    googlemap.clusterVariance4= "{clusterVariance4}";
+            var googlemap = new Object();
+            <f:variable name="iconBase">{f:uri.resource(path:'Images/', extensionName: 'NsGoogleMap')}</f:variable>
+            <f:variable name="clusterVariance1">{f:uri.resource(path:'Images/1.png', extensionName: 'NsGoogleMap')}</f:variable>
+            <f:variable name="clusterVariance2">{f:uri.resource(path:'Images/people35.png', extensionName: 'NsGoogleMap')}</f:variable>
+            <f:variable name="clusterVariance3">{f:uri.resource(path:'Images/conv30.png', extensionName: 'NsGoogleMap')}</f:variable>
+            <f:variable name="clusterVariance4">{f:uri.resource(path:'Images/heart30.png', extensionName: 'NsGoogleMap')}</f:variable>
+            <f:variable name="placeIcon">{f:uri.resource(path:'Images/pin.png', extensionName: 'NsGoogleMap')}</f:variable>
+            
+            googlemap.iconBase = "{iconBase}";
+            googlemap.placeIcon = "{placeIcon}";
+            googlemap.clusterVariance1 = "{clusterVariance1}";
+            googlemap.clusterVariance2 = "{clusterVariance2}";
+            googlemap.clusterVariance3 = "{clusterVariance3}";
+            googlemap.clusterVariance4 = "{clusterVariance4}";
 
-    googlemap.zoomTypes = new Array(google.maps.ZoomControlStyle.DEFAULT,
-    google.maps.ZoomControlStyle.SMALL,
-    google.maps.ZoomControlStyle.LARGE);
-    
-    googlemap.defaultMapTypes = new Array(google.maps.MapTypeId.ROADMAP);
+            googlemap.zoomTypes = new Array(
+                google.maps.ZoomControlStyle.DEFAULT,
+                google.maps.ZoomControlStyle.SMALL,
+                google.maps.ZoomControlStyle.LARGE
+            );
+            
+            googlemap.defaultMapTypes = new Array(google.maps.MapTypeId.ROADMAP);
 
-    googlemap.mapSettings = <f:format.raw>{</f:format.raw>
-    id: 'map_' + {data.uid},
-    <f:if condition="{settings.width} ==''">
-        <f:then>
-            width : '100%',
-        </f:then>
-        <f:else>
-            width : '{settings.width}',
-        </f:else>
-    </f:if>
-    <f:if condition="{settings.height} == ''">
-        <f:then>
-            height : '500px',
-        </f:then>
-        <f:else>
-            height : '{settings.height}',
-        </f:else>
-    </f:if>
-    zoom: {f:if(condition:"{settings.zoom}", then:"{settings.zoom}", else:"0")},
-    <f:if condition="{settings.scrollzoom}">
-        <f:then>
-            scrollwheel: "true",
-        </f:then>
-        <f:else>
-            scrollwheel:'false',
-        </f:else>
-    </f:if>
-    draggable: {f:if(condition:"{settings.draggable}", then:"true", else:"false")},
-    doubleClickZoom: {f:if(condition:"{settings.doubleclickzoom}", then:"false", else:"true")},    
-    markerCluster: {f:if(condition:"{settings.markercluster}", then:"1", else:"0")},
-    markerClusterZoom: {f:if(condition:"{settings.maxzoomlevel} != ''", then:"{settings.maxzoomlevel}", else:"null")},
-    markerClusterSize: {f:if(condition:"{settings.gridsize} != ''", then:"{settings.gridsize}", else:"null")},
-    <f:if condition="{settings.markercluster}">
-        markerClusterStyle: <f:format.raw>{settings.styles}</f:format.raw>,
-    </f:if>
-    zoomControl: {f:if(condition:"{settings.zoomcontrol}", then:"true", else:"false")},
-    <f:if condition="{settings.zoomcontrol}">
-    zoomControlOptions: {
-        position: google.maps.ControlPosition.<f:format.raw>{settings.zoomcontrolposition}</f:format.raw>
-    },
-    </f:if>
-    fullscreenControl: {f:if(condition:"{settings.fullscreencontrol}", then:"true", else:"false")},
-    <f:if condition="{settings.fullscreencontrol}">
-    fullscreenControlOptions: {
-        position: google.maps.ControlPosition.<f:format.raw>{settings.screencontrolposition}</f:format.raw>
-    },
-    </f:if>
-    
-    defaultZoom: 11
-    <f:format.raw>}</f:format.raw>
-    googlemap.mapSettings.mapTypes = new Array();
-    <f:for each="{maptypes}" as="type" iteration="i">
-        googlemap.mapSettings.mapTypes[{i.index}] = googlemap.defaultMapTypes['{type}'];
-    </f:for>
-    googlemap.locations = new Array();
-    <f:for each="{locations}" as="address" iteration="i">
+            googlemap.mapSettings = <f:format.raw>{</f:format.raw>
+                id: 'map_{data.uid}',
+               
+                <f:if condition="{settings.width} ==''">
+                    <f:then>
+                        width: '900px',
+                    </f:then>
+                    <f:else>
+                        width: '{settings.width}',
+                    </f:else>
+                </f:if>
+                <f:if condition="{settings.height} == ''">
+                    <f:then>
+                        height: '500px',
+                    </f:then>
+                    <f:else>
+                        height: '{settings.height}',
+                    </f:else>
+                </f:if>
+                zoom: {f:if(condition:"{settings.zoom}", then:"{settings.zoom}", else:"0")},
+                <f:if condition="{settings.scrollzoom}">
+                    <f:then>
+                        scrollwheel: true,
+                    </f:then>
+                    <f:else>
+                        scrollwheel: false,
+                    </f:else>
+                </f:if>
+                draggable: {f:if(condition:"{settings.draggable}", then:"true", else:"false")},
+                doubleClickZoom: {f:if(condition:"{settings.doubleclickzoom}", then:"false", else:"true")},
+                markerCluster: {f:if(condition:"{settings.markercluster}", then:"1", else:"0")},
+                markerClusterZoom: {f:if(condition:"{settings.maxzoomlevel} != ''", then:"{settings.maxzoomlevel}", else:"null")},
+                markerClusterSize: {f:if(condition:"{settings.gridsize} != ''", then:"{settings.gridsize}", else:"null")},
+                <f:if condition="{settings.markercluster}">
+                    markerClusterStyle: <f:format.raw>{settings.styles}</f:format.raw>,
+                </f:if>
+                zoomControl: {f:if(condition:"{settings.zoomcontrol}", then:"true", else:"false")},
+                <f:if condition="{settings.zoomcontrol}">
+                    zoomControlOptions: {
+                        position: google.maps.ControlPosition.<f:format.raw>{settings.zoomcontrolposition}</f:format.raw>
+                    },
+                </f:if>
+                fullscreenControl: {f:if(condition:"{settings.fullscreencontrol}", then:"true", else:"false")},
+                <f:if condition="{settings.fullscreencontrol}">
+                    fullscreenControlOptions: {
+                        position: google.maps.ControlPosition.<f:format.raw>{settings.screencontrolposition}</f:format.raw>
+                    },
+                </f:if>
+                defaultZoom: 11
+            <f:format.raw>}</f:format.raw>;
 
-        googlemap.locations[{i.index}]  = <f:format.raw>{</f:format.raw>
-        uid: {address.uid},        
-        title: '<nsgooglemap:escape>{address.title}</nsgooglemap:escape>',
-        latitude: {address.latitude -> f:format.number(decimals:6, thousandsSeparator:'')},
-        longitude: {address.longitude -> f:format.number(decimals:6, thousandsSeparator:'')},
-        address: '<nsgooglemap:escape>{address.address}</nsgooglemap:escape>',
-        infoWindowContent: '<f:format.raw><nsgooglemap:escape><f:render partial="Address/InfoWindow" arguments="{_all}" /></nsgooglemap:escape></f:format.raw>',
-        openByClick: {f:if(condition:"{address.openByClick}", then:"1", else:"0")},
-        closeByClick: {f:if(condition:"{address.closeByClick}", then:"1", else:"0")},
-        opened: {f:if(condition:"{address.opened}", then:"1", else:"0")},
-        position: new google.maps.LatLng({address.latitude -> f:format.number(decimals:6, thousandsSeparator:'')}, {address.longitude -> f:format.number(decimals:6, thousandsSeparator:'')}),
-        <f:format.raw>}</f:format.raw>
-    </f:for>
+            googlemap.mapSettings.mapTypes = new Array();
+            <f:for each="{maptypes}" as="type" iteration="i">
+                googlemap.mapSettings.mapTypes[{i.index}] = googlemap.defaultMapTypes['{type}'];
+            </f:for>
 
-    var $element = jQuery("#" + googlemap.mapSettings.id);
-    $element.nsgooglemap(googlemap);
-    if(googlemap.mapSettings.width.indexOf('%') != -1) {
-        $(window).resize(function() {
-            $element.trigger('mapresize');
+            googlemap.locations = new Array();
+            <f:for each="{locations}" as="address" iteration="i">
+                googlemap.locations[{i.index}] = <f:format.raw>{</f:format.raw>
+                    uid: {address.uid},
+                    title: '<nsgooglemap:escape>{address.title}</nsgooglemap:escape>',
+                    latitude: {address.latitude -> f:format.number(decimals:6, thousandsSeparator:'')},
+                    longitude: {address.longitude -> f:format.number(decimals:6, thousandsSeparator:'')},
+                    address: '<nsgooglemap:escape>{address.address}</nsgooglemap:escape>',
+                    infoWindowContent: '<f:format.raw><nsgooglemap:escape><f:render partial="Address/InfoWindow" arguments="{_all}" /></nsgooglemap:escape></f:format.raw>',
+                    openByClick: {f:if(condition:"{address.openByClick}", then:"1", else:"0")},
+                    closeByClick: {f:if(condition:"{address.closeByClick}", then:"1", else:"0")},
+                    opened: {f:if(condition:"{address.opened}", then:"1", else:"0")},
+                    position: new google.maps.LatLng(
+                        {address.latitude -> f:format.number(decimals:6, thousandsSeparator:'')},
+                        {address.longitude -> f:format.number(decimals:6, thousandsSeparator:'')}
+                    )
+                <f:format.raw>}</f:format.raw>;
+            </f:for>
+    $('#rcd_form_'+googlemap.mapSettings.id).submit(function(event){
+        event.preventDefault();
+        var nodata = document.getElementById("nodata");
+        nodata.style.display = "none";
+
+        var map = new google.maps.Map(document.getElementById(googlemap.mapSettings.id), {
+            zoom: googlemap.mapSettings.zoom,
+            center: new google.maps.LatLng(28.704, 77.25),
+            mapTypeId: googlemap.defaultMapTypes[googlemap.mapSettings.defaultType],
+            scrollwheel: googlemap.mapSettings.scrollZoom,
+            draggable: googlemap.mapSettings.draggable,
+            disableDoubleClickZoom: googlemap.mapSettings.doubleClickZoom,
+            mapTypeControl: googlemap.mapSettings.mapTypeControl,
+            zoomControl: googlemap.mapSettings.zoomControl,
+            maxZoom: googlemap.mapSettings.markerClusterZoom
         });
-    }
 
-    }); // end of closure
+        if(googlemap.defaultMapTypes[googlemap.mapSettings.defaultType] == undefined){
+            map.mapTypes.set('styled_map', googlemap.theme);
+            map.setMapTypeId('styled_map');
+        }
+
+
+    });
+
+
+            try {
+                var $element = jQuery("#" + googlemap.mapSettings.id);
+                if ($element.length === 0) {
+                    console.error('Map container not found:', googlemap.mapSettings.id);
+                    return;
+                }
+                
+                $element.nsgooglemap(googlemap);
+                
+                if(googlemap.mapSettings.width.indexOf('%') != -1) {
+                    $(window).resize(function() {
+                        $element.trigger('mapresize');
+                    });
+                }
+            } catch (error) {
+                console.error('Error initializing map:', error);
+            }
+        });
     })(jQuery || $, window, document);
 </nsgooglemap:script>
