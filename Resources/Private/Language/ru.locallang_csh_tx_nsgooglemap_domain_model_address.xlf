@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2017-10-17T18:30:52Z" product-name="ns_google_map" target-language="ru">
+    <header/>
+    <body>
+      <trans-unit id="tx_ns_google_map_domain_model_map">
+        <source>Google Map</source>
+        <target state="needs-translation">Google Map</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_google_map_domain_model_map.description">
+        <source/>
+      </trans-unit>
+      <trans-unit id="title.description">
+        <source>title</source>
+        <target state="needs-translation">title</target>
+      </trans-unit>
+      <trans-unit id="address.description">
+        <source>address</source>
+        <target state="needs-translation">address</target>
+      </trans-unit>
+      <trans-unit id="infocontent.description">
+        <source>Info Content</source>
+        <target state="needs-translation">Info Content</target>
+      </trans-unit>
+      <trans-unit id="closebyclick.description">
+        <source>Close By Click</source>
+        <target state="needs-translation">Close By Click</target>
+      </trans-unit>
+      <trans-unit id="openbyclick.description">
+        <source>Open By Click</source>
+        <target state="needs-translation">Open By Click</target>
+      </trans-unit>
+      <trans-unit id="opened.description">
+        <source>opened</source>
+        <target state="needs-translation">opened</target>
+      </trans-unit>
+      <trans-unit id="latitude.description">
+        <source>latitude</source>
+        <target state="needs-translation">latitude</target>
+      </trans-unit>
+      <trans-unit id="longitude.description">
+        <source>longitude</source>
+        <target state="needs-translation">longitude</target>
+      </trans-unit>
+      <trans-unit id="map.description">
+        <source>map</source>
+        <target state="needs-translation">map</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
