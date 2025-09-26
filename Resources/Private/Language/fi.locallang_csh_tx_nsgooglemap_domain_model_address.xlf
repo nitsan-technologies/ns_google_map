@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="messages" date="2017-10-17T18:30:52Z" product-name="ns_google_map" target-language="fi">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_google_map/Resources/Private/Language/locallang_csh_tx_nsgooglemap_domain_model_address.xlf" date="2017-10-17T18:30:52Z" product-name="ns_google_map" target-language="fi">
     <header/>
     <body>
       <trans-unit id="tx_ns_google_map_domain_model_map">
