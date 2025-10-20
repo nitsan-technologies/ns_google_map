@@ -15,9 +15,9 @@
         <source>Add distance (in Km)</source>
         <target state="needs-translation">Add distance (in Km)</target>
       </trans-unit>
-      <trans-unit id="tx_nsgooglemap_domain_model_find">
+      <trans-unit id="tx_nsgooglemap_domain_model_find" approved="yes">
         <source>Find</source>
-        <target state="needs-translation">Find</target>
+        <target state="final">Find</target>
       </trans-unit>
       <trans-unit id="tx_ns_google_map_domain_model_map">
         <source>Google Map</source>
