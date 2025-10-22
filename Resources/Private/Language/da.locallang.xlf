@@ -19,29 +19,29 @@
         <source>Find</source>
         <target state="final">Find</target>
       </trans-unit>
-      <trans-unit id="tx_ns_google_map_domain_model_map">
+      <trans-unit id="tx_ns_google_map_domain_model_map" approved="yes">
         <source>Google Map</source>
-        <target state="needs-translation">Google Map</target>
+        <target state="final">Google Map</target>
       </trans-unit>
       <trans-unit id="tx_ns_google_map_domain_model_map.description">
         <source>In this plugin you can find places(cafe,store etc..), direction between two places with different theme.</source>
         <target state="needs-translation">In this plugin you can find places(cafe,store etc..), direction between two places with different theme.</target>
       </trans-unit>
-      <trans-unit id="tx_nsgooglemap_domain_model_address">
+      <trans-unit id="tx_nsgooglemap_domain_model_address" approved="yes">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="final">By</target>
       </trans-unit>
-      <trans-unit id="tx_nsgooglemap_domain_model_address.title">
+      <trans-unit id="tx_nsgooglemap_domain_model_address.title" approved="yes">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="final">Titel</target>
       </trans-unit>
-      <trans-unit id="tx_nsgooglemap_domain_model_address.address">
+      <trans-unit id="tx_nsgooglemap_domain_model_address.address" approved="yes">
         <source>Address</source>
-        <target state="needs-translation">Address</target>
+        <target state="final">Adresse</target>
       </trans-unit>
-      <trans-unit id="tx_nsgooglemap_domain_model_address.infocontent">
+      <trans-unit id="tx_nsgooglemap_domain_model_address.infocontent" approved="yes">
         <source>Info Content</source>
-        <target state="needs-translation">Info Content</target>
+        <target state="final">Info-indhold</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.closebyclick">
         <source>Closebyclick</source>
