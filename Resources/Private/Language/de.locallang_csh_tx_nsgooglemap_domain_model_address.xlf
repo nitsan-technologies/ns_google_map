@@ -5,46 +5,46 @@
     <body>
       <trans-unit id="tx_ns_google_map_domain_model_map">
         <source>Google Map</source>
-        <target state="needs-translation">Google Map</target>
+        <target state="translated">Google Karte</target>
       </trans-unit>
       <trans-unit id="tx_ns_google_map_domain_model_map.description">
         <source/>
       </trans-unit>
       <trans-unit id="title.description">
         <source>title</source>
-        <target state="needs-translation">title</target>
+        <target state="translated">Titel</target>
       </trans-unit>
       <trans-unit id="address.description">
         <source>address</source>
-        <target state="needs-translation">address</target>
+        <target state="translated">Adresse</target>
       </trans-unit>
       <trans-unit id="infocontent.description">
         <source>Info Content</source>
-        <target state="needs-translation">Info Content</target>
+        <target state="translated">Info Inhalt</target>
       </trans-unit>
       <trans-unit id="closebyclick.description">
         <source>Close By Click</source>
-        <target state="needs-translation">Close By Click</target>
+        <target state="translated">Schließen durch Klicken</target>
       </trans-unit>
       <trans-unit id="openbyclick.description">
         <source>Open By Click</source>
-        <target state="needs-translation">Open By Click</target>
+        <target state="translated">Durch Klicken öffnen</target>
       </trans-unit>
       <trans-unit id="opened.description">
         <source>opened</source>
-        <target state="needs-translation">opened</target>
+        <target state="translated">geöffnet</target>
       </trans-unit>
       <trans-unit id="latitude.description">
         <source>latitude</source>
-        <target state="needs-translation">latitude</target>
+        <target state="translated">Breitengrad</target>
       </trans-unit>
       <trans-unit id="longitude.description">
         <source>longitude</source>
-        <target state="needs-translation">longitude</target>
+        <target state="translated">Längengrad</target>
       </trans-unit>
       <trans-unit id="map.description">
         <source>map</source>
-        <target state="needs-translation">map</target>
+        <target state="translated">Karte</target>
       </trans-unit>
     </body>
   </file>
