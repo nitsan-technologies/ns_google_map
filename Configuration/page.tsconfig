@@ -5,8 +5,7 @@ mod.wizards.newContentElement.wizardItems.plugins {
 				title = LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_ns_google_map_domain_model_map
 				description = LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_ns_google_map_domain_model_map.description
 				tt_content_defValues {
-					CType = list
-					list_type = nsgooglemap_map
+					CType = nsgooglemap_map
 				}
 			}
 		}

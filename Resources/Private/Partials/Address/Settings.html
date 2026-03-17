@@ -1,11 +1,11 @@
 {namespace nsgooglemap=Nitsan\NsGoogleMap\ViewHelpers}
 <nsgooglemap:script>
     (function ($, window, document, undefined) {
-        $(function () {
-            // Wait for Google Maps API to be fully loaded
+        function initNsGoogleMap() {
+            // If Google isn't ready yet, the API callback will call us later.
             if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
                 console.error('Google Maps API not loaded');
-                return;
+                return false;
             }
 
             var googlemap = new Object();
@@ -135,7 +135,7 @@
                 var $element = jQuery("#" + googlemap.mapSettings.id);
                 if ($element.length === 0) {
                     console.error('Map container not found:', googlemap.mapSettings.id);
-                    return;
+                    return true;
                 }
                 
                 $element.nsgooglemap(googlemap);
@@ -147,6 +147,22 @@
                 }
             } catch (error) {
                 console.error('Error initializing map:', error);
+            }
+            return true;
+        }
+
+        // Expose a deterministic callback for Google Maps API loading.
+        // TypoScript loads the API with `callback=nsGoogleMapInit`.
+        window.nsGoogleMapInit = function () {
+            initNsGoogleMap();
+        };
+
+        $(function () {
+            // Attempt immediate init (works if API is already available).
+            // If not available yet, the API callback will run later.
+            if (!initNsGoogleMap()) {
+                // Keep a helpful log for debugging, but don't throw.
+                console.warn('Google Maps API not ready yet; waiting for callback');
             }
         });
     })(jQuery || $, window, document);

@@ -1,0 +1,57 @@
+categories:
+  nsGoogleMap:
+    label: 'NS Google Map'
+
+  nsGoogleMap.view:
+    label: 'View Settings'
+    parent: nsGoogleMap
+
+  nsGoogleMap.settings:
+    label: 'Configuration Settings'
+    parent: nsGoogleMap
+
+settings:
+
+  ##################################################
+  # View Settings
+  ##################################################
+
+  nsGoogleMap.view.templateRootPath:
+    label: 'Path to template root (FE)'
+    category: nsGoogleMap.view
+    type: string
+    default: 'EXT:ns_google_map/Resources/Private/Templates/'
+
+  nsGoogleMap.view.partialRootPath:
+    label: 'Path to template partials (FE)'
+    category: nsGoogleMap.view
+    type: string
+    default: 'EXT:ns_google_map/Resources/Private/Partials/'
+
+  nsGoogleMap.view.layoutRootPath:
+    label: 'Path to template layouts (FE)'
+    category: nsGoogleMap.view
+    type: string
+    default: 'EXT:ns_google_map/Resources/Private/Layouts/'
+
+  ##################################################
+  # Main Configuration
+  ##################################################
+
+  nsGoogleMap.settings.apiKey:
+    label: 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:apiKey'
+    category: nsGoogleMap.settings
+    type: string
+    default: ''
+
+  nsGoogleMap.settings.language:
+    label: 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:language'
+    category: nsGoogleMap.settings
+    type: string
+    default: 'en'
+
+  nsGoogleMap.settings.jquery:
+    label: 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:jquery'
+    category: nsGoogleMap.settings
+    type: bool
+    default: false

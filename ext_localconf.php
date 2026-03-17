@@ -2,9 +2,6 @@
 
 defined('TYPO3') || die('Access denied.');
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Imaging\IconRegistry;
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'NsGoogleMap',
     'Map',
@@ -14,16 +11,8 @@ use TYPO3\CMS\Core\Imaging\IconRegistry;
     // non-cacheable actions
     [
         \Nitsan\NsGoogleMap\Controller\AddressController::class => '',
-    ]
-);
-
-/* set iconidentifier */
-$iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
-
-$iconRegistry->registerIcon(
-    'ext-google-map-icon',
-    \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-    ['source' => 'EXT:ns_google_map/Resources/Public/Icons/ext-google-map-icon.svg']
+    ],
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1549261866] = [
@@ -31,4 +20,3 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1549261866] = [
     'priority' => 70,
     'class' => \Nitsan\NsGoogleMap\Utility\MapUtility::class,
 ];
-
