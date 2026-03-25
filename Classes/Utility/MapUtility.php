@@ -32,6 +32,7 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\RootlineUtility;
+use TYPO3\CMS\Core\Site\SiteFinder;
 
 /**
  * Google map.
@@ -41,19 +42,34 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
 {
     public function render(): array
     {
+        $pid = (int)($this->data['effectivePid'] ?? 0);
+        if($pid > 0){
+            $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
+            $site = $siteFinder->getSiteByPageId($pid);
+            $setSettings = $site->getSettings()->get('plugin')['tx_nsopenstreetmap_map']['settings'] ?? [];
+        } else {
+            $setSettings = [];
+        }
         $pluginSettings = [];
-        $configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
+        $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
         $config = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($config, __FILE__.' '.__LINE__);die;
+
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $out = $this->initializeResultArray();
+        $settings = $config['plugin.']['tx_nsopenstreetmap_map.']['settings.'] ?? null;
 
-        $version = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class);
-        // $settings = $this->loadTS($this->data['databaseRow']['pid']);
-        if (array_key_exists("tx_nsgooglemap_map.", $config['plugin.'])) {
-            $pluginSettings = $config['plugin.']['tx_nsgooglemap_map.']['settings.'];
-        } elseif (array_key_exists("tx_nsgooglemap_map.", $config['plugin.'])) {
-            $pluginSettings = $config['plugin.']['tx_nsgooglemap_map.']['settings.'];
+        if (!empty($setSettings)) {
+            $pluginSettings = $setSettings;
+        } elseif (isset($config['plugin.']['tx_nsopenstreetmap_map.']) && array_key_exists('settings.', $config['plugin.']['tx_nsopenstreetmap_map.'])) {
+            $pluginSettings = $config['plugin.']['tx_nsopenstreetmap_map.']['settings.'];
+        } elseif (isset($settings['plugin.']) && array_key_exists('tx_nsopenstreetmap_map.', $settings['plugin.'])) {
+            $pluginSettings = $settings['plugin.']['tx_nsopenstreetmap_map.']['settings.'];
+        } else {
+            $pluginSettings = [];
         }
+
 
 
         $checkURL = GeneralUtility::getIndpEnv('TYPO3_SSL') ? 'https://' : 'http://';
