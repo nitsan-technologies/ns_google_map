@@ -53,9 +53,6 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $pluginSettings = [];
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
         $config = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($config, __FILE__.' '.__LINE__);die;
-
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $out = $this->initializeResultArray();
         $settings = $config['plugin.']['tx_nsopenstreetmap_map.']['settings.'] ?? null;
