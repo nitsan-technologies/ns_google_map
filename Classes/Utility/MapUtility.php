@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 
 namespace Nitsan\NsGoogleMap\Utility;
 
 /***************************************************************
  *  Copyright notice
- *
  *
  *
  *  All rights reserved
@@ -28,47 +27,61 @@ namespace Nitsan\NsGoogleMap\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Utility\RootlineUtility;
 use TYPO3\CMS\Core\Site\SiteFinder;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Messaging\FlashMessageService;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /**
  * Google map.
  *
  */
-class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
+class MapUtility extends AbstractFormElement
 {
-    public function render(): array
+    public function render():array
     {
-        $pid = (int)($this->data['effectivePid'] ?? 0);
-        if($pid > 0){
-            $siteFinder = GeneralUtility::makeInstance(SiteFinder::class);
-            $site = $siteFinder->getSiteByPageId($pid);
-            $setSettings = $site->getSettings()->get('plugin')['tx_nsopenstreetmap_map']['settings'] ?? [];
-        } else {
-            $setSettings = [];
-        }
         $pluginSettings = [];
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
         $config = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $out = $this->initializeResultArray();
-        $settings = $config['plugin.']['tx_nsopenstreetmap_map.']['settings.'] ?? null;
-
-        if (!empty($setSettings)) {
-            $pluginSettings = $setSettings;
-        } elseif (isset($config['plugin.']['tx_nsopenstreetmap_map.']) && array_key_exists('settings.', $config['plugin.']['tx_nsopenstreetmap_map.'])) {
-            $pluginSettings = $config['plugin.']['tx_nsopenstreetmap_map.']['settings.'];
-        } elseif (isset($settings['plugin.']) && array_key_exists('tx_nsopenstreetmap_map.', $settings['plugin.'])) {
-            $pluginSettings = $settings['plugin.']['tx_nsopenstreetmap_map.']['settings.'];
-        } else {
-            $pluginSettings = [];
+        if (isset($config['plugin.']) && array_key_exists('tx_nsgooglemap_map.', $config['plugin.'])) {
+            $pluginSettings = $config['plugin.']['tx_nsgooglemap_map.']['settings.'];
+        }
+        if (!is_array($pluginSettings) || $pluginSettings === []) {
+            $pluginSettings = $this->getPluginSettingsFromSiteSettings();
         }
 
+        if (empty($pluginSettings['apiKey'])) {
+            $versionNumber = VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version());
+            $message = $versionNumber['version_main'] >= 14
+                ? 'Please configure the Google Map extension in Site Settings.'
+                : 'Please configure the Google Map extension in TypoScript or  Site Settings.';
 
+            $severity = $versionNumber['version_main'] >= 13
+                ? ContextualFeedbackSeverity::WARNING
+                : FlashMessage::WARNING;
 
+            $flashMessage = GeneralUtility::makeInstance(
+                FlashMessage::class,
+                $message,
+                'Google Map configuration missing',
+                $severity,
+                true
+            );
+
+            $flashMessageQueue = GeneralUtility::makeInstance(FlashMessageService::class)
+                ->getMessageQueueByIdentifier('core.template.flashMessages');
+            $flashMessageQueue->enqueue($flashMessage);
+
+            $out['html'] = '';
+            return $out;
+        }
         $checkURL = GeneralUtility::getIndpEnv('TYPO3_SSL') ? 'https://' : 'http://';
 
         if ($checkURL == 'http://') {
@@ -80,11 +93,9 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $pageRenderer->addJsFile('EXT:ns_google_map/Resources/Public/Js/jquery.min.js');
         $pageRenderer->addJsFile('EXT:ns_google_map/Resources/Public/Js/googleMap.js');
 
-        if (isset($pluginSettings['apiKey']) && $pluginSettings['apiKey']) {
+        if (isset($pluginSettings['apiKey'])) {
             $googleMapsLibrary .= '&key=' . $pluginSettings['apiKey'];
         }
-
-        //$out = [];
         $latitude = (float) $this->data['databaseRow']['latitude'];
         $longitude = (float) $this->data['databaseRow']['longitude'];
         $address = $this->data['databaseRow']['address'];
@@ -123,35 +134,51 @@ class MapUtility extends \TYPO3\CMS\Backend\Form\Element\AbstractFormElement
         $out['html'] .= '<input id="' . $addressId . '" type="textbox" value="' . $address . '" class="origin"  style="width:300px">';
         $out['html'] .= '<input type="button" id="findMap" value="Update">';
         $out['html'] .= '<div id="' . $mapId . '" style="height:400px;margin:10px 0;width:400px"></div>';
-        $out['html'] .= '</div>';
-
+        $out['html'] .= '</div>'; // id=$baseElementId
 
         return $out;
     }
 
-    protected function loadTS($pageUid)
+    /**
+     * In backend form context, full TypoScript plugin settings can be empty.
+     *
+     * @return array<string, mixed>
+     */
+    protected function getPluginSettingsFromSiteSettings(): array
     {
-        $rootLine = [];
-        if ($pageUid > 0) {
-            try {
-                $rootLine = GeneralUtility::makeInstance(RootlineUtility::class, 3)->get();
-            } catch (\RuntimeException $e) {
-                $rootLine = [];
-            }
+        $pid = $this->data['databaseRow']['pid'] ?? 0;
+        if (is_array($pid)) {
+            $pid = (int)($pid[0] ?? 0);
+        } else {
+            $pid = (int)$pid;
         }
-        // @extensionScannerIgnoreLine
-        $TSObj = GeneralUtility::makeInstance(
-            'TYPO3\\CMS\\Core\\TypoScript\\TemplateService'
-        );
 
-        $TSObj->tt_track = false;
-        $TSObj->runThroughTemplates($rootLine, 0);
-        $TSObj->generateConfig();
-        // @extensionScannerIgnoreLine
-        return $TSObj->setup;
+        if ($pid <= 0) {
+            return [];
+        }
+
+        try {
+            $site = GeneralUtility::makeInstance(SiteFinder::class)->getSiteByPageId($pid);
+            $siteSettings = $site->getSettings()->getAllFlat();
+        } catch (\Throwable $exception) {
+            return [];
+        }
+
+        return [
+            'apiKey' => (string)($siteSettings['nsGoogleMap.settings.apiKey'] ?? ''),
+            'language' => (string)($siteSettings['nsGoogleMap.settings.language'] ?? ''),
+            'jquery' => $siteSettings['nsGoogleMap.settings.jquery'] ?? '',
+            'enableGdpr' => $siteSettings['nsGoogleMap.settings.enableGdpr'] ?? '',
+            'description' => (string)($siteSettings['nsGoogleMap.settings.description'] ?? ''),
+            'noticeColor' => (string)($siteSettings['nsGoogleMap.settings.noticeColor'] ?? ''),
+            'bgImage' => (string)($siteSettings['nsGoogleMap.settings.bgImage'] ?? ''),
+            'bgColor' => (string)($siteSettings['nsGoogleMap.settings.bgColor'] ?? ''),
+            'buttonText' => (string)($siteSettings['nsGoogleMap.settings.buttonText'] ?? ''),
+            'activeAllButtonText' => (string)($siteSettings['nsGoogleMap.settings.activeAllButtonText'] ?? ''),
+            'buttonTextColor' => (string)($siteSettings['nsGoogleMap.settings.buttonTextColor'] ?? ''),
+            'buttonColor' => (string)($siteSettings['nsGoogleMap.settings.buttonColor'] ?? ''),
+        ];
     }
-
-
 
     /**
      * @param string $tableName

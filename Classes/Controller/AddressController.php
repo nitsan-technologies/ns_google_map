@@ -3,7 +3,6 @@ namespace Nitsan\NsGoogleMap\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Nitsan\NsGoogleMap\Domain\Repository\AddressRepository;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 /***
  *
  * This file is part of the "Google Map" Extension for TYPO3 CMS.
@@ -43,19 +42,17 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function listAction(): ResponseInterface
 {
     $setting = $this->settings;
-    $this->contentObj = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-    $data = $this->contentObj['data'] ?? [];
     if (empty($this->settings['address'])) {
-        $address = $this->addressRepository->findAll()->toArray();
+        $address = $this->addressRepository->findAll()->fetchAllAssociative();
     } else {
         $addressId = explode(',', $this->settings['address']);
-        $address = $this->addressRepository->findAddress($addressId)->toArray();
+        $address = $this->addressRepository->findAddress($addressId)->fetchAllAssociative();
     }
 
     $this->view->assignMultiple(
         [
             'locations' => $address,
-            'data' => $data
+            'data' => $setting
         ]
     );
 
