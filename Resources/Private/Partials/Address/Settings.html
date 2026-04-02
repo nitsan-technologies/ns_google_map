@@ -93,7 +93,7 @@
             googlemap.defaultMapTypes = new Array('roadmap');
 
             googlemap.mapSettings = <f:format.raw>{</f:format.raw>
-                id: 'map_{locations.0.uid}',
+                id: 'map_{data.uid}',
                
                 <f:if condition="{settings.width} ==''">
                     <f:then>

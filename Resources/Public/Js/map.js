@@ -11,7 +11,7 @@
         var $element = this.element = $(element);
         this.googlemap = googlemap;
         this.data = googlemap;
-        this.bounds = this.createBounds();
+        this.bounds = new google.maps.LatLngBounds();
         this.markers = [];
         this.map = new google.maps.Map(document.getElementById(googlemap.mapSettings.id), this.getMapOptions());
         this.initMap();
@@ -23,26 +23,6 @@
         this.refreshMap($element, googlemap);
     };
     GoogleMap.prototype = {       
-        // Create bounds in a way that works across Maps API variants.
-        createBounds: function() {
-            if (google.maps && typeof google.maps.LatLngBounds === 'function') {
-                return new google.maps.LatLngBounds();
-            }
-            return {
-                north: null,
-                south: null,
-                east: null,
-                west: null,
-                extend: function(position) {
-                    var lat = typeof position.lat === 'function' ? position.lat() : position.lat;
-                    var lng = typeof position.lng === 'function' ? position.lng() : position.lng;
-                    if (this.north === null || lat > this.north) this.north = lat;
-                    if (this.south === null || lat < this.south) this.south = lat;
-                    if (this.east === null || lng > this.east) this.east = lng;
-                    if (this.west === null || lng < this.west) this.west = lng;
-                }
-            };
-        },
         // Add css for map
         addStyle: function() {
             var googlemap = this.googlemap;
@@ -56,7 +36,7 @@
             var mapOptions = [];
             mapOptions = {
                 zoom: googlemap.mapSettings.zoom,
-                mapTypeId: 'roadmap',
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
                 scrollwheel: googlemap.mapSettings.scrollZoom,
                 draggable: googlemap.mapSettings.draggable,
                 disableDoubleClickZoom: googlemap.mapSettings.doubleClickZoom,
@@ -104,16 +84,7 @@
         refreshMap: function($element, googlemap) {
             var _map = this.map;
             if (googlemap.mapSettings.zoom == 0) {
-                if (this.bounds && typeof this.bounds.getNorthEast === 'function') {
-                    _map.fitBounds(this.bounds);
-                } else if (this.bounds && this.bounds.north !== null) {
-                    _map.fitBounds({
-                        north: this.bounds.north,
-                        south: this.bounds.south,
-                        east: this.bounds.east,
-                        west: this.bounds.west
-                    });
-                }
+                _map.fitBounds(this.bounds);
             }
         },
         // Initialized Map
@@ -138,10 +109,6 @@
             var markers = [];
             var _map = this.map;
             var _this = this;
-            var markerClusterStyle = parseInt(googlemap.mapSettings.markerClusterStyle, 10);
-            if (isNaN(markerClusterStyle)) {
-                markerClusterStyle = -1;
-            }
             var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             var labelIndex = 0;
             var markers = googlemap.locations.map(function(location, i) {
@@ -189,16 +156,25 @@
                 return marker;
             });
 
-            var styles = this.getMarkerClusterStyle(googlemap, markerClusterStyle);
+            var styles = this.getMarkerClusterStyle(googlemap);
             var mcOptions = {
-                maxZoom: googlemap.mapSettings.markerClusterZoom,
-                disableClusteringAtZoom: googlemap.mapSettings.markerClusterZoom,
+                // In this MarkerClusterer build, `maxZoom` controls when clustering stops.
+                maxZoom: _this.normalizeClusterMaxZoom(googlemap.mapSettings.markerClusterZoom),
+                // Backward compatibility with MarkerClustererPlus option name (also supported in our markerclusterer.js).
+                disableClusteringAtZoom: _this.normalizeClusterMaxZoom(googlemap.mapSettings.markerClusterZoom),
                 styles: styles,
                 imagePath: googlemap.iconBase
             };
             if (googlemap.mapSettings.markerCluster == 1) {
                 new MarkerClusterer(_map, markers, mcOptions);
             }
+        },
+        normalizeClusterMaxZoom: function(value) {
+            if (value === null || value === undefined || value === '') {
+                return null;
+            }
+            var n = typeof value === 'number' ? value : parseInt(value, 10);
+            return isNaN(n) ? null : n;
         },
         // Create marker for map
         createMarker: function(loc, markerLabel) {
@@ -219,12 +195,13 @@
             };
             var googlemap = this.googlemap;
             var _map = this.map;
+            var clusterOn = Number(googlemap.mapSettings.markerCluster) === 1;
             var newMarker = new google.maps.Marker({
                 position: {
                     lat: loc.latitude,
                     lng: loc.longitude
                 },
-                map: _map,
+                map: clusterOn ? null : _map,
                 title: loc.title,
                 label: markerLabel,
                 //animation: google.maps.Animation.DROP,
@@ -235,16 +212,8 @@
             return newMarker;
         },
         // Get custom marker style
-        getMarkerClusterStyle: function(googlemap, markerClusterStyle) {
-            var cacheBuster = String(markerClusterStyle) + '-' + String(Date.now());
-            var withCacheBuster = function(url) {
-                if (!url) {
-                    return url;
-                }
-                return url + (url.indexOf('?') === -1 ? '?' : '&') + '_v=' + encodeURIComponent(cacheBuster);
-            };
-            var imageUrl;
-            switch (markerClusterStyle) {
+        getMarkerClusterStyle: function(googlemap) {
+            switch (googlemap.mapSettings.markerClusterStyle) {
                 case 0:
                         imageUrl = googlemap.clusterVariance2;
                     break;
@@ -261,33 +230,37 @@
                     imageUrl = googlemap.clusterVariance1;
                     break;
             }
-            imageUrl = withCacheBuster(imageUrl);
-            var styles = [{
-                url: imageUrl,
-                height: 35,
-                width: 35,
-                textColor: '#ff00ff',
-                textSize: 10
-            }, {
-                url: imageUrl,
-                height: 27,
-                width: 30,
-                textColor: '#ff00ff',
-                textSize: 10
-            }, {
-                url: imageUrl,
-                height: 26,
-                width: 30,
-                textColor: '#ff00ff',
-                textSize: 10
-            }, {
-                url: imageUrl,
-                height: 48,
-                width: 30,
-                textColor: '#ffffff',
-                textSize: 10
-            }];
-            return styles;
+            // Flat list of styles (MarkerClusterer expects style objects, not nested arrays).
+            return [
+                {
+                    url: imageUrl,
+                    height: 35,
+                    width: 35,
+                    textColor: '#ff00ff',
+                    textSize: 10
+                },
+                {
+                    url: imageUrl,
+                    height: 27,
+                    width: 30,
+                    textColor: '#ff00ff',
+                    textSize: 10
+                },
+                {
+                    url: imageUrl,
+                    height: 26,
+                    width: 30,
+                    textColor: '#ff00ff',
+                    textSize: 10
+                },
+                {
+                    url: imageUrl,
+                    height: 48,
+                    width: 30,
+                    textColor: '#ffffff',
+                    textSize: 10
+                }
+            ];
         }
     };
     // Create a new Google Map

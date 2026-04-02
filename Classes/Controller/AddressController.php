@@ -42,6 +42,8 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function listAction(): ResponseInterface
 {
     $setting = $this->settings;
+    $this->contentObj = $this->request->getAttribute('currentContentObject');
+    $data = $this->contentObj->data;
     if (empty($this->settings['address'])) {
         $address = $this->addressRepository->findAll()->fetchAllAssociative();
     } else {
@@ -52,7 +54,7 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     $this->view->assignMultiple(
         [
             'locations' => $address,
-            'data' => $setting
+            'data' => $data
         ]
     );
 
