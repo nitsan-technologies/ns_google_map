@@ -102,9 +102,8 @@ return [
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
-                'type' => 'input',
-                'size' => 13,
-                'eval' => 'datetime',
+                'type' => 'datetime',
+                'format' => 'dateTime',
                 'default' => 0,
             ],
         ],
@@ -113,9 +112,8 @@ return [
             'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'size' => 13,
-                'eval' => 'datetime',
+                'type' => 'datetime',
+                'format' => 'dateTime',
                 'default' => 0,
                 'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038),

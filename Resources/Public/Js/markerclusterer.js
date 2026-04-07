@@ -114,6 +114,12 @@ function MarkerClusterer(map, opt_markers, opt_options) {
 
         if (that.prevZoom_ != zoom) {
             that.prevZoom_ = zoom;
+            // Match clusterclick UX: hide current cluster icons immediately on zoom.
+            for (var i = 0, cluster; cluster = that.clusters_[i]; i++) {
+                if (cluster.clusterIcon_) {
+                    cluster.clusterIcon_.hide();
+                }
+            }
             that.resetViewport();
         }
     });
@@ -625,9 +631,7 @@ MarkerClusterer.prototype.resetViewport = function (opt_hide) {
     // Reset the markers to not be added and to be invisible.
     for (var i = 0, marker; marker = this.markers_[i]; i++) {
         marker.isAdded = false;
-        if (opt_hide) {
-            marker.setMap(null);
-        }
+        marker.setMap(null);
     }
 
     this.clusters_ = [];
