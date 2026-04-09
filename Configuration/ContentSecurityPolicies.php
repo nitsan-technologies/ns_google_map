@@ -76,6 +76,5 @@ return Map::fromEntries([
             SourceScheme::data,
             new UriValue('https://www.youtube.com')
         ),
-        
     ),
 ]);

@@ -1,9 +1,6 @@
 <?php
 namespace Nitsan\NsGoogleMap\Domain\Repository;
 
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Connection;
-
 /***
  *
  * This file is part of the "Google Map" Extension for TYPO3 CMS.
@@ -20,38 +17,29 @@ use TYPO3\CMS\Core\Database\Connection;
  */
 class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-    protected ConnectionPool $connectionPool;
-
-    public function __construct(ConnectionPool $connectionPool)
-    {
-        $this->connectionPool = $connectionPool;
-    }
-
     /**
      * @param array $addressId
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
     public function findAddress(array $addressId)
     {
-        $queryBuilder = $this->connectionPool->getQueryBuilderForTable('tx_nsgooglemap_domain_model_address');
-        $addressIds = array_values(array_filter(array_map('intval', $addressId), static function ($id) {
-            return $id > 0;
-        }));
-        if ($addressIds == []) {
-            return $queryBuilder
-                ->select('*')
-                ->from('tx_nsgooglemap_domain_model_address')
-                ->where(
-                    $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT))
-                )
-                ->executeQuery();
-        }
-        return $queryBuilder
-                ->select('*')
-                ->from('tx_nsgooglemap_domain_model_address')
-                ->where(
-                    $queryBuilder->expr()->in('uid', $queryBuilder->createNamedParameter($addressIds, Connection::PARAM_INT_ARRAY))
-                )
-                ->executeQuery();
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->matching(
+            $query->in('uid', $addressId)
+        );
+        $result = $query->execute();
+        return $result;
+    }
+
+    /**
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findAll()
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $result = $query->execute();
+        return $result;
     }
 }

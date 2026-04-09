@@ -45,10 +45,10 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     $this->contentObj = $this->request->getAttribute('currentContentObject');
     $data = $this->contentObj->data;
     if (empty($this->settings['address'])) {
-        $address = $this->addressRepository->findAll()->fetchAllAssociative();
+        $address = $this->addressRepository->findAll()->toArray();
     } else {
         $addressId = explode(',', $this->settings['address']);
-        $address = $this->addressRepository->findAddress($addressId)->fetchAllAssociative();
+        $address = $this->addressRepository->findAddress($addressId)->toArray();
     }
 
     $this->view->assignMultiple(
