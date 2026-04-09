@@ -154,7 +154,10 @@ class MapUtility extends AbstractFormElement
         }
 
         if ($pid <= 0) {
-            return [];
+            $pid = (int)($this->data['effectivePid'] ?? 0);
+            if ($pid <= 0) {
+                return [];
+            }
         }
 
         try {
