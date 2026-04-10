@@ -171,15 +171,6 @@ class MapUtility extends AbstractFormElement
             'apiKey' => (string)($siteSettings['nsGoogleMap.settings.apiKey'] ?? ''),
             'language' => (string)($siteSettings['nsGoogleMap.settings.language'] ?? ''),
             'jquery' => $siteSettings['nsGoogleMap.settings.jquery'] ?? '',
-            'enableGdpr' => $siteSettings['nsGoogleMap.settings.enableGdpr'] ?? '',
-            'description' => (string)($siteSettings['nsGoogleMap.settings.description'] ?? ''),
-            'noticeColor' => (string)($siteSettings['nsGoogleMap.settings.noticeColor'] ?? ''),
-            'bgImage' => (string)($siteSettings['nsGoogleMap.settings.bgImage'] ?? ''),
-            'bgColor' => (string)($siteSettings['nsGoogleMap.settings.bgColor'] ?? ''),
-            'buttonText' => (string)($siteSettings['nsGoogleMap.settings.buttonText'] ?? ''),
-            'activeAllButtonText' => (string)($siteSettings['nsGoogleMap.settings.activeAllButtonText'] ?? ''),
-            'buttonTextColor' => (string)($siteSettings['nsGoogleMap.settings.buttonTextColor'] ?? ''),
-            'buttonColor' => (string)($siteSettings['nsGoogleMap.settings.buttonColor'] ?? ''),
         ];
     }
 

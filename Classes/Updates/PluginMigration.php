@@ -97,19 +97,7 @@ class PluginMigration implements UpgradeWizardInterface
                 ->fetchAllAssociative();
         }
 
-        // Fallback: if list_type doesn't exist, migrate any CType=list record.
-        // This matches your requirement: migrate when CType=list OR list_type is available.
-        return $queryBuilder
-            ->select('uid', 'pid', 'CType')
-            ->from('tt_content')
-            ->where(
-                $queryBuilder->expr()->eq(
-                    'CType',
-                    $queryBuilder->createNamedParameter('list')
-                )
-            )
-            ->executeQuery()
-            ->fetchAllAssociative();
+        return [];
     }
 
     protected function getTotalMigrationCount(): int
