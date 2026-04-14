@@ -246,6 +246,19 @@
 			<trans-unit id="language">
 				<source>Language Code : https://developers.google.com/maps/faq#languagesupport</source>
 			</trans-unit>
+
+			<trans-unit id="sets.apiKey">
+				<source>API Key</source>
+			</trans-unit>
+			<trans-unit id="sets.apiKey.description">
+				<source>https://developers.google.com/maps/documentation/javascript/get-api-key</source>
+			</trans-unit>
+			<trans-unit id="sets.language">
+				<source>Language Code</source>
+			</trans-unit>
+			<trans-unit id="sets.language.description">
+				<source>https://developers.google.com/maps/faq#languagesupport</source>
+			</trans-unit>
 			<trans-unit id="jquery">
 				<source>Include Jquery</source>
 			</trans-unit>

@@ -39,13 +39,15 @@ settings:
   ##################################################
 
   nsGoogleMap.settings.apiKey:
-    label: 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:apiKey'
+    label: 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:sets.apiKey'
+    description: 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:sets.apiKey.description'
     category: nsGoogleMap.settings
     type: string
     default: ''
 
   nsGoogleMap.settings.language:
-    label: 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:language'
+    label: 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:sets.language'
+    description: 'LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:sets.language.description'
     category: nsGoogleMap.settings
     type: string
     default: 'en'
