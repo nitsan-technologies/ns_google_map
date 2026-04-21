@@ -326,6 +326,22 @@
         <source>Language Code : https://developers.google.com/maps/faq#languagesupport</source>
         <target state="needs-translation">Language Code : https://developers.google.com/maps/faq#languagesupport</target>
       </trans-unit>
+      <trans-unit id="sets.apiKey">
+        <source>API Key</source>
+        <target state="needs-translation">API Key</target>
+      </trans-unit>
+      <trans-unit id="sets.apiKey.description">
+        <source>https://developers.google.com/maps/documentation/javascript/get-api-key</source>
+        <target state="needs-translation">https://developers.google.com/maps/documentation/javascript/get-api-key</target>
+      </trans-unit>
+      <trans-unit id="sets.language">
+        <source>Language Code</source>
+        <target state="needs-translation">Language Code</target>
+      </trans-unit>
+      <trans-unit id="sets.language.description">
+        <source>https://developers.google.com/maps/faq#languagesupport</source>
+        <target state="needs-translation">https://developers.google.com/maps/faq#languagesupport</target>
+      </trans-unit>
       <trans-unit id="jquery">
         <source>Include Jquery</source>
         <target state="needs-translation">Include Jquery</target>
