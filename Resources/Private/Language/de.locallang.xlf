@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_google_map/Resources/Private/Language/locallang.xlf" date="2017-10-17T18:30:52Z" product-name="ns_google_map" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="tx_nsgooglemap_domain_model_type">
+        <source>Searching for (Like travel_agency, restaurant)</source>
+        <target state="translated">Suche nach (z. B. Reisebüro, Restaurant)</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_example">
+        <source>(Like travel_agency, restaurant, food, point_of_interest, establishment etc)</source>
+        <target state="translated">(Wie Reisebüro, Restaurant, Lebensmittel, Sehenswürdigkeit, Einrichtung usw.)</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_km">
+        <source>Add distance (in Km)</source>
+        <target state="translated">Add distance (in km)</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_find">
+        <source>Find</source>
+        <target state="translated">Find</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_google_map_domain_model_map">
+        <source>Google Map</source>
+        <target state="translated">Google Map</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_google_map_domain_model_map.description">
+        <source>In this plugin you can find places(cafe,store etc..), direction between two places with different theme.</source>
+        <target state="translated">In diesem Plugin finden Sie Orte (Cafés, Geschäfte usw.) und Wegbeschreibungen zwischen zwei Orten mit unterschiedlichen Themen.</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address">
+        <source>City</source>
+        <target state="translated">Stadt</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.title">
+        <source>Title</source>
+        <target state="translated">Titel</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.address">
+        <source>Address</source>
+        <target state="translated">Adresse</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.infocontent">
+        <source>Info Content</source>
+        <target state="translated">Info Inhalt</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.closebyclick">
+        <source>Closebyclick</source>
+        <target state="translated">Mit einem Klick schließen</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.openbyclick">
+        <source>Openbyclick</source>
+        <target state="translated">Mit einem Klick öffnen</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.opened">
+        <source>Opened</source>
+        <target state="translated">Geöffnet</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.latitude">
+        <source>Latitude</source>
+        <target state="translated">Breitengrad</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.longitude">
+        <source>Longitude</source>
+        <target state="translated">Längengrad</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.map">
+        <source>Map</source>
+        <target state="translated">Karte</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.maplink">
+        <source>View on Google Maps</source>
+        <target state="translated">Auf Google Maps anzeigen</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.start">
+        <source>From</source>
+        <target state="translated">Von</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.end">
+        <source>To</source>
+        <target state="translated">An</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.travel">
+        <source>Travel:</source>
+        <target state="translated">Reisen:</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.getDirection">
+        <source>Get Direction</source>
+        <target state="translated">Wegbeschreibung</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.DRIVING">
+        <source>Driving</source>
+        <target state="translated">Fahren</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.WALKING">
+        <source>Walking</source>
+        <target state="translated">Gehen</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.BICYCLING">
+        <source>Bicycling</source>
+        <target state="translated">Radfahren</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.TRANSIT">
+        <source>Transit</source>
+        <target state="translated">Transit</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.notfoundmsg">
+        <source>Directions request failed due to zero result</source>
+        <target state="translated">Die Wegbeschreibung konnte aufgrund eines Null-Ergebnisses nicht angefordert werden.</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.ChangeTheme">
+        <source>Default Theme</source>
+        <target state="translated">Standarddesign</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.ExpressRoute">
+        <source>Express Route</source>
+        <target state="translated">Expressroute</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.DarkBluePower">
+        <source>Dark Blue Power</source>
+        <target state="translated">Dunkelblaues Kraftpaket</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.Energy">
+        <source>Energy</source>
+        <target state="translated">Energie</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.UltraLight">
+        <source>Ultra Light</source>
+        <target state="translated">Ultraleicht</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.GreenSerenity">
+        <source>Green Serenity</source>
+        <target state="translated">Grüne Gelassenheit</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.BlackAndWhite">
+        <source>Black And White</source>
+        <target state="translated">Black And White</target>
+      </trans-unit>
+      <trans-unit id="find_place_map">
+        <source>Find places on the map</source>
+        <target state="translated">Orte auf der Karte finden</target>
+      </trans-unit>
+      <trans-unit id="search_place_map">
+        <source>Find the direction between location on the map</source>
+        <target state="translated">Finden Sie die Richtung zwischen den Orten auf der Karte.</target>
+      </trans-unit>
+      <trans-unit id="change_theme">
+        <source>Change theme</source>
+        <target state="translated">Design ändern</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
