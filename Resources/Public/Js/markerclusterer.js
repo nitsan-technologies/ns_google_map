@@ -46,6 +46,21 @@ function MarkerClusterer(map, opt_markers, opt_options) {
      */
     this.maxZoom_ = options['maxZoom'] || null;
 
+    /**
+     * Zoom level at/above which clustering is disabled.
+     * (Compatibility with MarkerClustererPlus option name.)
+     *
+     * @type {?number}
+     * @private
+     */
+    this.disableClusteringAtZoom_ =
+        (options['disableClusteringAtZoom'] === undefined || options['disableClusteringAtZoom'] === null || options['disableClusteringAtZoom'] === '')
+            ? null
+            : Number(options['disableClusteringAtZoom']);
+    if (this.disableClusteringAtZoom_ !== null && isNaN(this.disableClusteringAtZoom_)) {
+        this.disableClusteringAtZoom_ = null;
+    }
+
     this.styles_ = options['styles'] || [];
 
     /**
@@ -99,6 +114,12 @@ function MarkerClusterer(map, opt_markers, opt_options) {
 
         if (that.prevZoom_ != zoom) {
             that.prevZoom_ = zoom;
+            // Match clusterclick UX: hide current cluster icons immediately on zoom.
+            for (var i = 0, cluster; cluster = that.clusters_[i]; i++) {
+                if (cluster.clusterIcon_) {
+                    cluster.clusterIcon_.hide();
+                }
+            }
             that.resetViewport();
         }
     });
@@ -272,6 +293,10 @@ MarkerClusterer.prototype.setMaxZoom = function (maxZoom) {
  *  @return {number} The max zoom level.
  */
 MarkerClusterer.prototype.getMaxZoom = function () {
+    // Prefer disableClusteringAtZoom when provided (MarkerClustererPlus compatibility).
+    if (this.disableClusteringAtZoom_ !== null && this.disableClusteringAtZoom_ !== undefined) {
+        return this.disableClusteringAtZoom_;
+    }
     return this.maxZoom_;
 };
 
@@ -606,9 +631,7 @@ MarkerClusterer.prototype.resetViewport = function (opt_hide) {
     // Reset the markers to not be added and to be invisible.
     for (var i = 0, marker; marker = this.markers_[i]; i++) {
         marker.isAdded = false;
-        if (opt_hide) {
-            marker.setMap(null);
-        }
+        marker.setMap(null);
     }
 
     this.clusters_ = [];
@@ -706,6 +729,27 @@ MarkerClusterer.prototype.addToClosestCluster_ = function (marker) {
 MarkerClusterer.prototype.createClusters_ = function () {
     if (!this.ready_) {
         return;
+    }
+
+    // If clustering is disabled at/above this zoom, don't build cluster icons.
+    // Show markers individually instead.
+    var mz = this.getMaxZoom();
+    var mzNum = (mz === null || mz === undefined) ? null : Number(mz);
+    if (mzNum !== null && !isNaN(mzNum)) {
+        var zoomNum = Number(this.map_.getZoom());
+        if (!isNaN(zoomNum) && zoomNum >= mzNum) {
+            var mapBounds = new google.maps.LatLngBounds(this.map_.getBounds().getSouthWest(),
+                this.map_.getBounds().getNorthEast());
+            var bounds = this.getExtendedBounds(mapBounds);
+
+            for (var i = 0, marker; marker = this.markers_[i]; i++) {
+                if (!marker.isAdded && this.isMarkerInBounds_(marker, bounds)) {
+                    marker.isAdded = true;
+                    marker.setMap(this.map_);
+                }
+            }
+            return;
+        }
     }
 
     // Get our current map view bounds.
@@ -913,11 +957,13 @@ Cluster.prototype.getMap = function () {
  * Updates the cluster icon
  */
 Cluster.prototype.updateIcon = function () {
-    var zoom = this.map_.getZoom();
+    var zoomNum = Number(this.map_.getZoom());
     var mz = this.markerClusterer_.getMaxZoom();
+    var mzNum = (mz === null || mz === undefined) ? null : Number(mz);
 
-    if (mz && zoom > mz) {
-        // The zoom is greater than our max zoom so show all the markers in cluster.
+    // At/above disable zoom: hide cluster icon and show markers.
+    if (mzNum !== null && !isNaN(mzNum) && !isNaN(zoomNum) && zoomNum >= mzNum) {
+        this.clusterIcon_.hide();
         for (var i = 0, marker; marker = this.markers_[i]; i++) {
             marker.setMap(this.map_);
         }
@@ -983,6 +1029,9 @@ ClusterIcon.prototype.triggerClusterClick = function (event) {
     google.maps.event.trigger(markerClusterer, 'clusterclick', this.cluster_, event);
 
     if (markerClusterer.isZoomOnClick()) {
+        // Hide clicked cluster icon immediately.
+        this.hide();
+
         // Zoom into the cluster.
         this.map_.fitBounds(this.cluster_.getBounds());
         this.map_.setCenter(this.cluster_.getCenter());
@@ -1084,6 +1133,12 @@ ClusterIcon.prototype.show = function () {
  * Remove the icon from the map
  */
 ClusterIcon.prototype.remove = function () {
+    // Force immediate DOM cleanup first; setMap(null) may defer onRemove.
+    if (this.div_ && this.div_.parentNode) {
+        this.hide();
+        this.div_.parentNode.removeChild(this.div_);
+        this.div_ = null;
+    }
     this.setMap(null);
 };
 

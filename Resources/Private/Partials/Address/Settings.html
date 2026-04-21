@@ -1,11 +1,78 @@
 {namespace nsgooglemap=Nitsan\NsGoogleMap\ViewHelpers}
 <nsgooglemap:script>
     (function ($, window, document, undefined) {
-        $(function () {
-            // Wait for Google Maps API to be fully loaded
+        var nsGoogleMapInitialized = false;
+
+        function waitForMapsConstructors(timeoutMs) {
+            return new Promise(function(resolve) {
+                var startedAt = Date.now();
+                function hasConstructors() {
+                    return (
+                        typeof google !== 'undefined' &&
+                        typeof google.maps !== 'undefined' &&
+                        typeof google.maps.Map === 'function' &&
+                        typeof google.maps.LatLng === 'function'
+                    );
+                }
+                function poll() {
+                    if (hasConstructors()) {
+                        resolve(true);
+                        return;
+                    }
+                    if (Date.now() - startedAt >= timeoutMs) {
+                        resolve(false);
+                        return;
+                    }
+                    window.setTimeout(poll, 100);
+                }
+                poll();
+            });
+        }
+
+        async function ensureMapsApiReady() {
             if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
                 console.error('Google Maps API not loaded');
-                return;
+                return false;
+            }
+            if (typeof google.maps.Map === 'function' && typeof google.maps.LatLng === 'function') {
+                return true;
+            }
+            if (typeof google.maps.importLibrary === 'function') {
+                try {
+                    var mapsLib = await google.maps.importLibrary('maps');
+                    var coreLib = await google.maps.importLibrary('core');
+                    if (mapsLib && typeof google.maps.Map !== 'function' && typeof mapsLib.Map === 'function') {
+                        google.maps.Map = mapsLib.Map;
+                    }
+                    if (coreLib && typeof google.maps.LatLng !== 'function' && typeof coreLib.LatLng === 'function') {
+                        google.maps.LatLng = coreLib.LatLng;
+                    }
+                    if (coreLib && typeof google.maps.LatLngBounds !== 'function' && typeof coreLib.LatLngBounds === 'function') {
+                        google.maps.LatLngBounds = coreLib.LatLngBounds;
+                    }
+                } catch (error) {
+                    console.error('Failed to load Google Maps libraries', error);
+                    return false;
+                }
+            }
+            if (!(await waitForMapsConstructors(3000))) {
+                console.error('Google Maps constructors unavailable after waiting');
+                return false;
+            }
+            if (typeof google.maps.Map !== 'function' || typeof google.maps.LatLng !== 'function') {
+                console.error('Google Maps constructors unavailable after loading');
+                return false;
+            }
+            return true;
+        }
+
+        async function initNsGoogleMap() {
+            if (nsGoogleMapInitialized) {
+                return true;
+            }
+            // If Google isn't ready yet, the API callback will call us later.
+            if (!(await ensureMapsApiReady())) {
+                return false;
             }
 
             var googlemap = new Object();
@@ -23,13 +90,7 @@
             googlemap.clusterVariance3 = "{clusterVariance3}";
             googlemap.clusterVariance4 = "{clusterVariance4}";
 
-            googlemap.zoomTypes = new Array(
-                google.maps.ZoomControlStyle.DEFAULT,
-                google.maps.ZoomControlStyle.SMALL,
-                google.maps.ZoomControlStyle.LARGE
-            );
-            
-            googlemap.defaultMapTypes = new Array(google.maps.MapTypeId.ROADMAP);
+            googlemap.defaultMapTypes = new Array('roadmap');
 
             googlemap.mapSettings = <f:format.raw>{</f:format.raw>
                 id: 'map_{data.uid}',
@@ -135,7 +196,7 @@
                 var $element = jQuery("#" + googlemap.mapSettings.id);
                 if ($element.length === 0) {
                     console.error('Map container not found:', googlemap.mapSettings.id);
-                    return;
+                    return true;
                 }
                 
                 $element.nsgooglemap(googlemap);
@@ -145,9 +206,23 @@
                         $element.trigger('mapresize');
                     });
                 }
+                nsGoogleMapInitialized = true;
             } catch (error) {
                 console.error('Error initializing map:', error);
             }
+            return true;
+        }
+
+        // Expose a deterministic callback for Google Maps API loading.
+        // TypoScript loads the API with `callback=nsGoogleMapInit`.
+        window.nsGoogleMapInit = function () {
+            initNsGoogleMap();
+        };
+
+        $(function () {
+            // Attempt immediate init (works if API is already available).
+            // If not available yet, the API callback will run later.
+            initNsGoogleMap();
         });
     })(jQuery || $, window, document);
 </nsgooglemap:script>

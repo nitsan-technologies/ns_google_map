@@ -5,12 +5,14 @@ mod.wizards.newContentElement.wizardItems.plugins {
 				title = LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_ns_google_map_domain_model_map
 				description = LLL:EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf:tx_ns_google_map_domain_model_map.description
 				tt_content_defValues {
-					CType = list
-					list_type = nsgooglemap_map
+					CType = nsgooglemap_map
 				}
 			}
 		}
 	show = *
 }
 
-mod.web_layout.tt_content.preview.list.nsgooglemap_map = EXT:ns_google_map/Resources/Private/Backend/Backendpreview/GoogleMap.html
+mod.web_layout.tt_content.preview.nsgooglemap_map = EXT:ns_google_map/Resources/Private/Backend/Backendpreview/GoogleMap.html
+[typo3.branch >= "14.0"]
+mod.web_layout.tt_content.preview.nsgooglemap_map = EXT:ns_google_map/Resources/Private/Backend/Backendpreview/GoogleMapV14.html
+[END]

@@ -158,14 +158,23 @@
 
             var styles = this.getMarkerClusterStyle(googlemap);
             var mcOptions = {
-                maxZoom: googlemap.mapSettings.markerClusterZoom,
-                disableClusteringAtZoom: googlemap.mapSettings.markerClusterZoom,
-                styles: styles[googlemap.mapSettings.markerClusterStyle],
+                // In this MarkerClusterer build, `maxZoom` controls when clustering stops.
+                maxZoom: _this.normalizeClusterMaxZoom(googlemap.mapSettings.markerClusterZoom),
+                // Backward compatibility with MarkerClustererPlus option name (also supported in our markerclusterer.js).
+                disableClusteringAtZoom: _this.normalizeClusterMaxZoom(googlemap.mapSettings.markerClusterZoom),
+                styles: styles,
                 imagePath: googlemap.iconBase
             };
             if (googlemap.mapSettings.markerCluster == 1) {
                 new MarkerClusterer(_map, markers, mcOptions);
             }
+        },
+        normalizeClusterMaxZoom: function(value) {
+            if (value === null || value === undefined || value === '') {
+                return null;
+            }
+            var n = typeof value === 'number' ? value : parseInt(value, 10);
+            return isNaN(n) ? null : n;
         },
         // Create marker for map
         createMarker: function(loc, markerLabel) {
@@ -186,12 +195,13 @@
             };
             var googlemap = this.googlemap;
             var _map = this.map;
+            var clusterOn = Number(googlemap.mapSettings.markerCluster) === 1;
             var newMarker = new google.maps.Marker({
                 position: {
                     lat: loc.latitude,
                     lng: loc.longitude
                 },
-                map: _map,
+                map: clusterOn ? null : _map,
                 title: loc.title,
                 label: markerLabel,
                 //animation: google.maps.Animation.DROP,
@@ -220,37 +230,37 @@
                     imageUrl = googlemap.clusterVariance1;
                     break;
             }
-            var styles = [
-                [{
+            // Flat list of styles (MarkerClusterer expects style objects, not nested arrays).
+            return [
+                {
                     url: imageUrl,
                     height: 35,
                     width: 35,
                     textColor: '#ff00ff',
                     textSize: 10
-                }],
-                [{
+                },
+                {
                     url: imageUrl,
                     height: 27,
                     width: 30,
                     textColor: '#ff00ff',
                     textSize: 10
-                }],
-                [{
+                },
+                {
                     url: imageUrl,
                     height: 26,
                     width: 30,
                     textColor: '#ff00ff',
                     textSize: 10
-                }],
-                [{
+                },
+                {
                     url: imageUrl,
                     height: 48,
                     width: 30,
                     textColor: '#ffffff',
                     textSize: 10
-                }]
+                }
             ];
-            return styles;
         }
     };
     // Create a new Google Map

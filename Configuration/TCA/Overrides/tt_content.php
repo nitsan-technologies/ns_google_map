@@ -3,8 +3,8 @@ defined('TYPO3') or die();
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
-$extKey = 'ns_google_map';
 
+$extKey = 'ns_google_map';
 $fields = [
     'map' => [
         'exclude' => true,
@@ -30,10 +30,16 @@ $pluginSignature = ExtensionUtility::registerPlugin(
     'Google Map'
 );
 
-// Flexform
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-ExtensionManagementUtility::addPiFlexFormValue(
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    '--div--;Configuration,pi_flexform,pages',
     $pluginSignature,
-    'FILE:EXT:' . $extKey . '/Configuration/FlexForms/FlexForm.xml'
+    'after:subheader',
 );
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'recursive,select_key';
+
+// @extensionScannerIgnoreLine
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:' . $extKey . '/Configuration/FlexForms/FlexForm.xml',
+    $pluginSignature,
+);

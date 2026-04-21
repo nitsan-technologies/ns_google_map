@@ -1,4 +1,3 @@
-
 plugin.tx_nsgooglemap_map {
   view {
     # cat=plugin.tx_nsgooglemap_map/file; type=string; label=Path to template root (FE)

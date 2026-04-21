@@ -1,17 +1,19 @@
+@import 'EXT:ns_google_map/Configuration/TypoScript/setup.typoscript'
+
 plugin.tx_nsgooglemap_map {
   view {
     templateRootPaths.0 = EXT:ns_google_map/Resources/Private/Templates/
-    templateRootPaths.1 = {$plugin.tx_nsgooglemap_map.view.templateRootPath}
+    templateRootPaths.1 = {$nsGoogleMap.view.templateRootPath}
     partialRootPaths.0 = EXT:ns_google_map/Resources/Private/Partials/
-    partialRootPaths.1 = {$plugin.tx_nsgooglemap_map.view.partialRootPath}
+    partialRootPaths.1 = {$nsGoogleMap.view.partialRootPath}
     layoutRootPaths.0 = EXT:ns_google_map/Resources/Private/Layouts/
-    layoutRootPaths.1 = {$plugin.tx_nsgooglemap_map.view.layoutRootPath}
+    layoutRootPaths.1 = {$nsGoogleMap.view.layoutRootPath}
   }
 
   settings {
-    apiKey = {$plugin.tx_nsgooglemap_map.settings.apiKey}
-    language = {$plugin.tx_nsgooglemap_map.settings.language}
-    jquery = {$plugin.tx_nsgooglemap_map.settings.jquery}
+    apiKey = {$nsGoogleMap.settings.apiKey}
+    language = {$nsGoogleMap.settings.language}
+    jquery = {$nsGoogleMap.settings.jquery}
   }
 }
 
@@ -23,7 +25,7 @@ page {
     # Load jQuery first
     includeJSLibs {
         nsfjquery = EXT:ns_google_map/Resources/Public/Js/jquery.min.js
-        nsfjquery.if.isTrue = {$plugin.tx_nsgooglemap_map.settings.jquery}
+        nsfjquery.if.isTrue = {$nsGoogleMap.settings.jquery}
         nsfjquery.forceOnTop = 1
         nsfjquery.disableCompression = 1
     }
@@ -31,7 +33,9 @@ page {
     # Load Google Maps API and other scripts in footer
     includeJSFooter {
         # Google Maps API
-        googleMapsApi = https://maps.googleapis.com/maps/api/js?key={$plugin.tx_nsgooglemap_map.settings.apiKey}&language={$plugin.tx_nsgooglemap_map.settings.language}&libraries=places&loading=async&callback=nsGoogleMapInit
+        # Use recommended async loading and a deterministic callback.
+        # The callback is implemented in `Resources/Private/Partials/Address/Settings.html`
+        googleMapsApi = https://maps.googleapis.com/maps/api/js?key={$nsGoogleMap.settings.apiKey}&language={$nsGoogleMap.settings.language}&libraries=places&loading=async&callback=nsGoogleMapInit
         googleMapsApi.external = 1
         googleMapsApi.disableCompression = 1
         googleMapsApi.async = 1

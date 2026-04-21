@@ -24,9 +24,21 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function findAddress(array $addressId)
     {
         $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching(
             $query->in('uid', $addressId)
         );
+        $result = $query->execute();
+        return $result;
+    }
+
+    /**
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findAll()
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
         $result = $query->execute();
         return $result;
     }

@@ -35,6 +35,9 @@
 								<type>input</type>
 								<size>30</size>
 								<max>4</max>
+								<range>
+									<lower>1</lower>
+								</range>
 							</config>
 						
 					</settings.width>
@@ -46,6 +49,9 @@
 								<type>input</type>
 								<size>30</size>
 								<max>4</max>
+								<range>
+									<lower>1</lower>
+								</range>
 							</config>
 						
 					</settings.height>
