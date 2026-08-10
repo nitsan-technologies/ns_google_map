@@ -5,147 +5,147 @@
     <body>
       <trans-unit id="tx_nsgooglemap_domain_model_type">
         <source>Searching for (Like travel_agency, restaurant)</source>
-        <target state="needs-translation">Searching for (Like travel_agency, restaurant)</target>
+        <target state="translated">Keresés (pl. travel_agency, restaurant)</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_example">
         <source>(Like travel_agency, restaurant, food, point_of_interest, establishment etc)</source>
-        <target state="needs-translation">(Like travel_agency, restaurant, food, point_of_interest, establishment etc)</target>
+        <target state="translated">(pl. travel_agency, restaurant, food, point_of_interest, establishment stb.)</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_km">
         <source>Add distance (in Km)</source>
-        <target state="needs-translation">Add distance (in Km)</target>
+        <target state="translated">Távolság hozzáadása (km-ben)</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_find">
         <source>Find</source>
-        <target state="needs-translation">Find</target>
+        <target state="translated">Keresés</target>
       </trans-unit>
       <trans-unit id="tx_ns_google_map_domain_model_map">
         <source>Google Map</source>
-        <target state="needs-translation">Google Map</target>
+        <target state="translated">Google Térkép</target>
       </trans-unit>
       <trans-unit id="tx_ns_google_map_domain_model_map.description">
         <source>In this plugin you can find places(cafe,store etc..), direction between two places with different theme.</source>
-        <target state="needs-translation">In this plugin you can find places(cafe,store etc..), direction between two places with different theme.</target>
+        <target state="translated">Ebben a bővítményben helyeket (kávézó, üzlet stb.) és útvonalakat kereshet két hely között, különböző témákkal.</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address">
         <source>City</source>
-        <target state="needs-translation">City</target>
+        <target state="translated">Város</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.address">
         <source>Address</source>
-        <target state="needs-translation">Address</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.infocontent">
         <source>Info Content</source>
-        <target state="needs-translation">Info Content</target>
+        <target state="translated">Információs tartalom</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.closebyclick">
         <source>Closebyclick</source>
-        <target state="needs-translation">Closebyclick</target>
+        <target state="translated">Bezárás kattintásra</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.openbyclick">
         <source>Openbyclick</source>
-        <target state="needs-translation">Openbyclick</target>
+        <target state="translated">Megnyitás kattintásra</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.opened">
         <source>Opened</source>
-        <target state="needs-translation">Opened</target>
+        <target state="translated">Megnyitva</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.latitude">
         <source>Latitude</source>
-        <target state="needs-translation">Latitude</target>
+        <target state="translated">Szélesség</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.longitude">
         <source>Longitude</source>
-        <target state="needs-translation">Longitude</target>
+        <target state="translated">Hosszúság</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.map">
         <source>Map</source>
-        <target state="needs-translation">Map</target>
+        <target state="translated">Térkép</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.maplink">
         <source>View on Google Maps</source>
-        <target state="needs-translation">View on Google Maps</target>
+        <target state="translated">Megtekintés a Google Térképen</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.start">
         <source>From</source>
-        <target state="needs-translation">From</target>
+        <target state="translated">Innen</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.end">
         <source>To</source>
-        <target state="needs-translation">To</target>
+        <target state="translated">Ide</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.travel">
         <source>Travel:</source>
-        <target state="needs-translation">Travel:</target>
+        <target state="translated">Utazás:</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.getDirection">
         <source>Get Direction</source>
-        <target state="needs-translation">Get Direction</target>
+        <target state="translated">Útvonal lekérése</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.DRIVING">
         <source>Driving</source>
-        <target state="needs-translation">Driving</target>
+        <target state="translated">Vezetés</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.WALKING">
         <source>Walking</source>
-        <target state="needs-translation">Walking</target>
+        <target state="translated">Gyaloglás</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.BICYCLING">
         <source>Bicycling</source>
-        <target state="needs-translation">Bicycling</target>
+        <target state="translated">Kerékpározás</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.TRANSIT">
         <source>Transit</source>
-        <target state="needs-translation">Transit</target>
+        <target state="translated">Tömegközlekedés</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.notfoundmsg">
         <source>Directions request failed due to zero result</source>
-        <target state="needs-translation">Directions request failed due to zero result</target>
+        <target state="translated">Az útvonaltervezési kérés nulla találat miatt sikertelen volt</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.ChangeTheme">
         <source>Default Theme</source>
-        <target state="needs-translation">Default Theme</target>
+        <target state="translated">Alapértelmezett téma</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.ExpressRoute">
         <source>Express Route</source>
-        <target state="needs-translation">Express Route</target>
+        <target state="translated">Expressz útvonal</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.DarkBluePower">
         <source>Dark Blue Power</source>
-        <target state="needs-translation">Dark Blue Power</target>
+        <target state="translated">Sötétkék erő</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.Energy">
         <source>Energy</source>
-        <target state="needs-translation">Energy</target>
+        <target state="translated">Energia</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.UltraLight">
         <source>Ultra Light</source>
-        <target state="needs-translation">Ultra Light</target>
+        <target state="translated">Ultra világos</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.GreenSerenity">
         <source>Green Serenity</source>
-        <target state="needs-translation">Green Serenity</target>
+        <target state="translated">Zöld nyugalom</target>
       </trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_address.BlackAndWhite">
         <source>Black And White</source>
-        <target state="needs-translation">Black And White</target>
+        <target state="translated">Fekete-fehér</target>
       </trans-unit>
       <trans-unit id="find_place_map">
         <source>Find places on the map</source>
-        <target state="needs-translation">Find places on the map</target>
+        <target state="translated">Helyek keresése a térképen</target>
       </trans-unit>
       <trans-unit id="search_place_map">
         <source>Find the direction between location on the map</source>
-        <target state="needs-translation">Find the direction between location on the map</target>
+        <target state="translated">Útvonal keresése a térképen lévő helyek között</target>
       </trans-unit>
       <trans-unit id="change_theme">
         <source>Change theme</source>
-        <target state="needs-translation">Change theme</target>
+        <target state="translated">Téma váltása</target>
       </trans-unit>
     </body>
   </file>
