@@ -20,3 +20,9 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1549261866] = [
     'priority' => 70,
     'class' => \Nitsan\NsGoogleMap\Utility\MapUtility::class,
 ];
+
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeResolver'][1792066218] = [
+    'nodeName' => 'flexFormTabsContainer',
+    'priority' => 43,
+    'class' => \Nitsan\NsGoogleMap\Form\Resolver\PremiumStripFlexFormTabsContainerResolver::class,
+];
