@@ -3,6 +3,15 @@
   <file source-language="en" datatype="plaintext" original="EXT:ns_google_map/Resources/Private/Language/locallang.xlf" date="2017-10-17T18:30:52Z" product-name="ns_google_map" target-language="pt-PT">
     <header/>
     <body>
+      <trans-unit id="premium.strip.headline" xml:space="preserve">
+				<source>You're using the free version of NS Google Map</source>
+			<target state="needs-translation">You're using the free version of NS Google Map</target></trans-unit>
+      <trans-unit id="premium.strip.description" xml:space="preserve">
+				<source>Unlock premium features and get more out of NS Google Map.</source>
+			<target state="needs-translation">Unlock premium features and get more out of NS Google Map.</target></trans-unit>
+      <trans-unit id="premium.strip.trial" xml:space="preserve">
+				<source>Start Free Trial</source>
+			<target state="needs-translation">Start Free Trial</target></trans-unit>
       <trans-unit id="tx_nsgooglemap_domain_model_type">
         <source>Searching for (Like travel_agency, restaurant)</source>
         <target state="needs-translation">Searching for (Like travel_agency, restaurant)</target>
