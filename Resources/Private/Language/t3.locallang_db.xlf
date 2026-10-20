@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_google_map/Resources/Private/Language/locallang_db.xlf" date="2017-10-17T18:30:52Z" product-name="ns_google_map" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_ns_google_map_domain_model_map">
+        <source>Google Map</source>
+        <target>crwdns377210:0crwdne377210:0</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_google_map_domain_model_map.description">
+        <source>In this plugin you can find places(cafe,store etc..), direction between two places with different theme.</source>
+        <target>crwdns377212:0crwdne377212:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address">
+        <source>Address</source>
+        <target>crwdns377214:0crwdne377214:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.title">
+        <source>Title</source>
+        <target>crwdns377216:0crwdne377216:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.address">
+        <source>Address</source>
+        <target>crwdns377218:0crwdne377218:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.infocontent">
+        <source>Info Content</source>
+        <target>crwdns377220:0crwdne377220:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.maplink">
+        <source>View Google Map Link</source>
+        <target>crwdns377222:0crwdne377222:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.closebyclick">
+        <source>Close By Click</source>
+        <target>crwdns377224:0crwdne377224:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.openbyclick">
+        <source>Open By Click</source>
+        <target>crwdns377226:0crwdne377226:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.opened">
+        <source>Opened</source>
+        <target>crwdns377228:0crwdne377228:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.latitude">
+        <source>Latitude</source>
+        <target>crwdns377230:0crwdne377230:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.longitude">
+        <source>Longitude</source>
+        <target>crwdns377232:0crwdne377232:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.map">
+        <source>Map</source>
+        <target>crwdns377234:0crwdne377234:0</target>
+      </trans-unit>
+      <!-- TCA Configuration -->
+      <trans-unit id="tx_nsgooglemap_domain_model_address.info_window">
+        <source>Info Content</source>
+        <target>crwdns377236:0crwdne377236:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.palettes.interaction">
+        <source>Interaction</source>
+        <target>crwdns377238:0crwdne377238:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.others">
+        <source>Others</source>
+        <target>crwdns377240:0crwdne377240:0</target>
+      </trans-unit>
+      <!-- FlexForm Configuration -->
+      <trans-unit id="tx_nsgooglemap_map.flexform.sheetTitle">
+        <source>General</source>
+        <target>crwdns377242:0crwdne377242:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.address">
+        <source>Address</source>
+        <target>crwdns377244:0crwdne377244:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.width">
+        <source>Width</source>
+        <target>crwdns377246:0crwdne377246:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.height">
+        <source>Height</source>
+        <target>crwdns377248:0crwdne377248:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.mapSetting">
+        <source>Map Settings</source>
+        <target>crwdns377250:0crwdne377250:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.defaulttype">
+        <source>Default MapType</source>
+        <target>crwdns377252:0crwdne377252:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.0">
+        <source>Map</source>
+        <target>crwdns377254:0crwdne377254:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.1">
+        <source>Satellite</source>
+        <target>crwdns377256:0crwdne377256:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.2">
+        <source>Hybrid</source>
+        <target>crwdns377258:0crwdne377258:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.3">
+        <source>Terrain</source>
+        <target>crwdns377260:0crwdne377260:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.defaulttype.3">
+        <source>Terrain</source>
+        <target>crwdns377260:0crwdne377260:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.zoom">
+        <source>Zoom Level (1-22)</source>
+        <target>crwdns377264:0crwdne377264:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.scrollzoom">
+        <source>Scroll Zoom</source>
+        <target>crwdns377266:0crwdne377266:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.draggable">
+        <source>Draggable</source>
+        <target>crwdns377268:0crwdne377268:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.doubleclickzoom">
+        <source>Doubleclick Zoom</source>
+        <target>crwdns377270:0crwdne377270:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controls">
+        <source>Frontend Controls</source>
+        <target>crwdns377272:0crwdne377272:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.mapcontrol">
+        <source>Map type control</source>
+        <target>crwdns377274:0crwdne377274:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.maptype">
+        <source>Map types</source>
+        <target>crwdns377276:0crwdne377276:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.maptype.0">
+        <source>Map</source>
+        <target>crwdns377278:0crwdne377278:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.maptype.1">
+        <source>Satellite</source>
+        <target>crwdns377280:0crwdne377280:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.maptype.2">
+        <source>Hybrid</source>
+        <target>crwdns377282:0crwdne377282:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.maptype.3">
+        <source>Terrain</source>
+        <target>crwdns377284:0crwdne377284:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.maptype.3">
+        <source>Terrain</source>
+        <target>crwdns377284:0crwdne377284:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlstyle">
+        <source>Map Type Control Style</source>
+        <target>crwdns377288:0crwdne377288:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlstyle.0">
+        <source>DEFAULT</source>
+        <target>crwdns377290:0crwdne377290:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlstyle.1">
+        <source>DROPDOWN MENU</source>
+        <target>crwdns377292:0crwdne377292:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlstyle.2">
+        <source>HORIZONTAL BAR</source>
+        <target>crwdns377294:0crwdne377294:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.mapcontrolposition">
+        <source>Map Control Position</source>
+        <target>crwdns377296:0crwdne377296:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.zoomcontrolposition">
+        <source>Zoom Control Position</source>
+        <target>crwdns377298:0crwdne377298:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.screencontrolposition">
+        <source>Full Screen Control Position</source>
+        <target>crwdns377300:0crwdne377300:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.scalecontrolposition">
+        <source>Scale Control Position</source>
+        <target>crwdns377302:0crwdne377302:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.streetcontrolposition">
+        <source>Street Control Position</source>
+        <target>crwdns377304:0crwdne377304:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.0">
+        <source>TOP CENTER</source>
+        <target>crwdns377306:0crwdne377306:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.1">
+        <source>TOP LEFT</source>
+        <target>crwdns377308:0crwdne377308:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.2">
+        <source>TOP RIGHT</source>
+        <target>crwdns377310:0crwdne377310:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.3">
+        <source>LEFT TOP</source>
+        <target>crwdns377312:0crwdne377312:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.4">
+        <source>RIGHT TOP</source>
+        <target>crwdns377314:0crwdne377314:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.5">
+        <source>LEFT CENTER</source>
+        <target>crwdns377316:0crwdne377316:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.6">
+        <source>RIGHT CENTER</source>
+        <target>crwdns377318:0crwdne377318:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.7">
+        <source>LEFT BOTTOM</source>
+        <target>crwdns377320:0crwdne377320:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.8">
+        <source>RIGHT BOTTOM</source>
+        <target>crwdns377322:0crwdne377322:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.9">
+        <source>BOTTOM CENTER</source>
+        <target>crwdns377324:0crwdne377324:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.10">
+        <source>BOTTOM LEFT</source>
+        <target>crwdns377326:0crwdne377326:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.controlposition.11">
+        <source>BOTTOM RIGHT</source>
+        <target>crwdns377328:0crwdne377328:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.zoomcontrol">
+        <source>Zoom Control</source>
+        <target>crwdns377330:0crwdne377330:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.pancontrol">
+        <source>Zoom Control</source>
+        <target>crwdns377332:0crwdne377332:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.streetviewcontrol">
+        <source>Street view Control</source>
+        <target>crwdns377334:0crwdne377334:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.pancontrol">
+        <source>Pan Control</source>
+        <target>crwdns377332:0crwdne377332:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.fullscreencontrol">
+        <source>Fullscreen Control</source>
+        <target>crwdns377338:0crwdne377338:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.scalecontrol">
+        <source>Scale Control</source>
+        <target>crwdns377340:0crwdne377340:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.markerSetting">
+        <source>Marker Settings</source>
+        <target>crwdns377342:0crwdne377342:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.opacity">
+        <source>Marker Opacity</source>
+        <target>crwdns377344:0crwdne377344:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.markercluster">
+        <source>Marker Cluster</source>
+        <target>crwdns377346:0crwdne377346:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.maxzoomlevel">
+        <source>Max Zoom Level (1-22)</source>
+        <target>crwdns377348:0crwdne377348:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.styles">
+        <source>Marker Cluster icons</source>
+        <target>crwdns377350:0crwdne377350:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.styles.0">
+        <source>Default</source>
+        <target>crwdns377352:0crwdne377352:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.styles.1">
+        <source>People</source>
+        <target>crwdns377354:0crwdne377354:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.styles.2">
+        <source>Conversation</source>
+        <target>crwdns377356:0crwdne377356:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.styles.3">
+        <source>Heart</source>
+        <target>crwdns377358:0crwdne377358:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.styles.4">
+        <source>Pin</source>
+        <target>crwdns377360:0crwdne377360:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.gridsize">
+        <source>Grid Size</source>
+        <target>crwdns377362:0crwdne377362:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.label">
+        <source>Show alphabet label on marker</source>
+        <target>crwdns377364:0crwdne377364:0</target>
+      </trans-unit>
+      <!-- Constant Editor -->
+      <trans-unit id="apiKey">
+        <source>API Key : https://developers.google.com/maps/documentation/javascript/get-api-key</source>
+        <target>crwdns377366:0crwdne377366:0</target>
+      </trans-unit>
+      <trans-unit id="language">
+        <source>Language Code : https://developers.google.com/maps/faq#languagesupport</source>
+        <target>crwdns377368:0crwdne377368:0</target>
+      </trans-unit>
+      <trans-unit id="sets.apiKey">
+        <source>API Key</source>
+        <target>crwdns394428:0crwdne394428:0</target>
+      </trans-unit>
+      <trans-unit id="sets.apiKey.description">
+        <source>https://developers.google.com/maps/documentation/javascript/get-api-key</source>
+        <target>crwdns394430:0crwdne394430:0</target>
+      </trans-unit>
+      <trans-unit id="sets.language">
+        <source>Language Code</source>
+        <target>crwdns394432:0crwdne394432:0</target>
+      </trans-unit>
+      <trans-unit id="sets.language.description">
+        <source>https://developers.google.com/maps/faq#languagesupport</source>
+        <target>crwdns394434:0crwdne394434:0</target>
+      </trans-unit>
+      <trans-unit id="jquery">
+        <source>Include Jquery</source>
+        <target>crwdns377370:0crwdne377370:0</target>
+      </trans-unit>
+      <trans-unit id="address">
+        <source>Addreses</source>
+        <target>crwdns377372:0crwdne377372:0</target>
+      </trans-unit>
+      <trans-unit id="width">
+        <source>Width</source>
+        <target>crwdns377374:0crwdne377374:0</target>
+      </trans-unit>
+      <trans-unit id="height">
+        <source>Height</source>
+        <target>crwdns377376:0crwdne377376:0</target>
+      </trans-unit>
+      <trans-unit id="radiussearch">
+        <source>Show Radius search feature</source>
+        <target>crwdns377378:0crwdne377378:0</target>
+      </trans-unit>
+      <trans-unit id="theme">
+        <source>Show theme option</source>
+        <target>crwdns377380:0crwdne377380:0</target>
+      </trans-unit>
+      <trans-unit id="direction">
+        <source>Show direction feature</source>
+        <target>crwdns377382:0crwdne377382:0</target>
+      </trans-unit>
+      <trans-unit id="defaulttype">
+        <source>Default map type</source>
+        <target>crwdns377384:0crwdne377384:0</target>
+      </trans-unit>
+      <trans-unit id="zoom">
+        <source>Zoom level</source>
+        <target>crwdns377386:0crwdne377386:0</target>
+      </trans-unit>
+      <trans-unit id="scrollzoom">
+        <source>Zoom while scroll</source>
+        <target>crwdns377388:0crwdne377388:0</target>
+      </trans-unit>
+      <trans-unit id="draggable">
+        <source>Draggable</source>
+        <target>crwdns377390:0crwdne377390:0</target>
+      </trans-unit>
+      <trans-unit id="doubleclickzoom">
+        <source>Zoom on doubleclick</source>
+        <target>crwdns377392:0crwdne377392:0</target>
+      </trans-unit>
+      <trans-unit id="mapcontrol">
+        <source>Map control</source>
+        <target>crwdns377394:0crwdne377394:0</target>
+      </trans-unit>
+      <trans-unit id="zoomcontrol">
+        <source>Zoom control</source>
+        <target>crwdns377396:0crwdne377396:0</target>
+      </trans-unit>
+      <trans-unit id="fullscreencontrol">
+        <source>Full screen control</source>
+        <target>crwdns377398:0crwdne377398:0</target>
+      </trans-unit>
+      <trans-unit id="streetviewcontrol">
+        <source>Street view control</source>
+        <target>crwdns377400:0crwdne377400:0</target>
+      </trans-unit>
+      <trans-unit id="scalecontrol">
+        <source>Scale control</source>
+        <target>crwdns377402:0crwdne377402:0</target>
+      </trans-unit>
+      <trans-unit id="maptype">
+        <source>Map type</source>
+        <target>crwdns377404:0crwdne377404:0</target>
+      </trans-unit>
+      <trans-unit id="controlstyle">
+        <source>Control style</source>
+        <target>crwdns377406:0crwdne377406:0</target>
+      </trans-unit>
+      <trans-unit id="mapcontrolposition">
+        <source>Map control position</source>
+        <target>crwdns377408:0crwdne377408:0</target>
+      </trans-unit>
+      <trans-unit id="zoomcontrolposition">
+        <source>Zoom control position</source>
+        <target>crwdns377410:0crwdne377410:0</target>
+      </trans-unit>
+      <trans-unit id="screencontrolposition">
+        <source>Screen control position</source>
+        <target>crwdns377412:0crwdne377412:0</target>
+      </trans-unit>
+      <trans-unit id="streetcontrolposition">
+        <source>Street control position</source>
+        <target>crwdns377414:0crwdne377414:0</target>
+      </trans-unit>
+      <trans-unit id="label">
+        <source>Show alphabet Label</source>
+        <target>crwdns377416:0crwdne377416:0</target>
+      </trans-unit>
+      <trans-unit id="opacity">
+        <source>Opacity</source>
+        <target>crwdns377418:0crwdne377418:0</target>
+      </trans-unit>
+      <trans-unit id="markercluster">
+        <source>Marker cluster</source>
+        <target>crwdns377420:0crwdne377420:0</target>
+      </trans-unit>
+      <trans-unit id="maxzoomlevel">
+        <source>Max zoom level</source>
+        <target>crwdns377422:0crwdne377422:0</target>
+      </trans-unit>
+      <trans-unit id="gridsize">
+        <source>Grid size</source>
+        <target>crwdns377424:0crwdne377424:0</target>
+      </trans-unit>
+      <trans-unit id="styles">
+        <source>Styles</source>
+        <target>crwdns377426:0crwdne377426:0</target>
+      </trans-unit>
+      <trans-unit id="yesNo-1">
+        <source>Yes</source>
+        <target>crwdns377428:0crwdne377428:0</target>
+      </trans-unit>
+      <trans-unit id="yesNo-0">
+        <source>No</source>
+        <target>crwdns377430:0crwdne377430:0</target>
+      </trans-unit>
+      <trans-unit id="TOP_CENTER">
+        <source>TOP CENTER</source>
+        <target>crwdns377432:0crwdne377432:0</target>
+      </trans-unit>
+      <trans-unit id="TOP_LEFT">
+        <source>TOP LEFT</source>
+        <target>crwdns377434:0crwdne377434:0</target>
+      </trans-unit>
+      <trans-unit id="TOP_RIGHT">
+        <source>TOP RIGHT</source>
+        <target>crwdns377436:0crwdne377436:0</target>
+      </trans-unit>
+      <trans-unit id="LEFT_TOP">
+        <source>LEFT TOP</source>
+        <target>crwdns377438:0crwdne377438:0</target>
+      </trans-unit>
+      <trans-unit id="RIGHT_TOP">
+        <source>RIGHT TOP</source>
+        <target>crwdns377440:0crwdne377440:0</target>
+      </trans-unit>
+      <trans-unit id="LEFT_CENTER">
+        <source>LEFT CENTER</source>
+        <target>crwdns377442:0crwdne377442:0</target>
+      </trans-unit>
+      <trans-unit id="RIGHT_CENTER">
+        <source>RIGHT CENTER</source>
+        <target>crwdns377444:0crwdne377444:0</target>
+      </trans-unit>
+      <trans-unit id="LEFT_BOTTOM">
+        <source>LEFT BOTTOM</source>
+        <target>crwdns377446:0crwdne377446:0</target>
+      </trans-unit>
+      <trans-unit id="RIGHT_BOTTOM">
+        <source>RIGHT BOTTOM</source>
+        <target>crwdns377448:0crwdne377448:0</target>
+      </trans-unit>
+      <trans-unit id="BOTTOM_CENTER">
+        <source>BOTTOM CENTER</source>
+        <target>crwdns377450:0crwdne377450:0</target>
+      </trans-unit>
+      <trans-unit id="BOTTOM_LEFT">
+        <source>BOTTOM LEFT</source>
+        <target>crwdns377452:0crwdne377452:0</target>
+      </trans-unit>
+      <trans-unit id="BOTTOM_RIGHT">
+        <source>BOTTOM RIGHT</source>
+        <target>crwdns377454:0crwdne377454:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.radiussearch">
+        <source>Enable Radius Search Feature</source>
+        <target>crwdns377456:0crwdne377456:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.theme">
+        <source>Enable Theme Feature</source>
+        <target>crwdns377458:0crwdne377458:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_map.flexform.direction">
+        <source>Enable Direction and Distance Feature</source>
+        <target>crwdns377460:0crwdne377460:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

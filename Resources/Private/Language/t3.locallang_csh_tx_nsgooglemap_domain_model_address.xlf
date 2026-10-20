@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_google_map/Resources/Private/Language/locallang_csh_tx_nsgooglemap_domain_model_address.xlf" date="2017-10-17T18:30:52Z" product-name="ns_google_map" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_ns_google_map_domain_model_map">
+        <source>Google Map</source>
+        <target>crwdns377188:0crwdne377188:0</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_google_map_domain_model_map.description">
+        <source/>
+      </trans-unit>
+      <trans-unit id="title.description">
+        <source>title</source>
+        <target>crwdns377192:0crwdne377192:0</target>
+      </trans-unit>
+      <trans-unit id="address.description">
+        <source>address</source>
+        <target>crwdns377194:0crwdne377194:0</target>
+      </trans-unit>
+      <trans-unit id="infocontent.description">
+        <source>Info Content</source>
+        <target>crwdns377196:0crwdne377196:0</target>
+      </trans-unit>
+      <trans-unit id="closebyclick.description">
+        <source>Close By Click</source>
+        <target>crwdns377198:0crwdne377198:0</target>
+      </trans-unit>
+      <trans-unit id="openbyclick.description">
+        <source>Open By Click</source>
+        <target>crwdns377200:0crwdne377200:0</target>
+      </trans-unit>
+      <trans-unit id="opened.description">
+        <source>opened</source>
+        <target>crwdns377202:0crwdne377202:0</target>
+      </trans-unit>
+      <trans-unit id="latitude.description">
+        <source>latitude</source>
+        <target>crwdns377204:0crwdne377204:0</target>
+      </trans-unit>
+      <trans-unit id="longitude.description">
+        <source>longitude</source>
+        <target>crwdns377206:0crwdne377206:0</target>
+      </trans-unit>
+      <trans-unit id="map.description">
+        <source>map</source>
+        <target>crwdns377208:0crwdne377208:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
