@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_google_map/Resources/Private/Language/locallang.xlf" date="2017-10-17T18:30:52Z" product-name="ns_google_map" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="premium.strip.headline" xml:space="preserve">
+				<source>You're using the free version of NS Google Map</source>
+			<target>crwdns415257:0crwdne415257:0</target></trans-unit>
+      <trans-unit id="premium.strip.description" xml:space="preserve">
+				<source>Unlock premium features and get more out of NS Google Map.</source>
+			<target>crwdns415259:0crwdne415259:0</target></trans-unit>
+      <trans-unit id="premium.strip.trial" xml:space="preserve">
+				<source>Start Free Trial</source>
+			<target>crwdns415261:0crwdne415261:0</target></trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_type">
+        <source>Searching for (Like travel_agency, restaurant)</source>
+        <target>crwdns377116:0crwdne377116:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_example">
+        <source>(Like travel_agency, restaurant, food, point_of_interest, establishment etc)</source>
+        <target>crwdns377118:0crwdne377118:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_km">
+        <source>Add distance (in Km)</source>
+        <target>crwdns377120:0crwdne377120:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_find">
+        <source>Find</source>
+        <target>crwdns377122:0crwdne377122:0</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_google_map_domain_model_map">
+        <source>Google Map</source>
+        <target>crwdns377124:0crwdne377124:0</target>
+      </trans-unit>
+      <trans-unit id="tx_ns_google_map_domain_model_map.description">
+        <source>In this plugin you can find places(cafe,store etc..), direction between two places with different theme.</source>
+        <target>crwdns377126:0crwdne377126:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address">
+        <source>City</source>
+        <target>crwdns377128:0crwdne377128:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.title">
+        <source>Title</source>
+        <target>crwdns377130:0crwdne377130:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.address">
+        <source>Address</source>
+        <target>crwdns377132:0crwdne377132:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.infocontent">
+        <source>Info Content</source>
+        <target>crwdns377134:0crwdne377134:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.closebyclick">
+        <source>Closebyclick</source>
+        <target>crwdns377136:0crwdne377136:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.openbyclick">
+        <source>Openbyclick</source>
+        <target>crwdns377138:0crwdne377138:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.opened">
+        <source>Opened</source>
+        <target>crwdns377140:0crwdne377140:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.latitude">
+        <source>Latitude</source>
+        <target>crwdns377142:0crwdne377142:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.longitude">
+        <source>Longitude</source>
+        <target>crwdns377144:0crwdne377144:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.map">
+        <source>Map</source>
+        <target>crwdns377146:0crwdne377146:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.maplink">
+        <source>View on Google Maps</source>
+        <target>crwdns377148:0crwdne377148:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.start">
+        <source>From</source>
+        <target>crwdns377150:0crwdne377150:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.end">
+        <source>To</source>
+        <target>crwdns377152:0crwdne377152:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.travel">
+        <source>Travel:</source>
+        <target>crwdns377154:0crwdne377154:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.getDirection">
+        <source>Get Direction</source>
+        <target>crwdns377156:0crwdne377156:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.DRIVING">
+        <source>Driving</source>
+        <target>crwdns377158:0crwdne377158:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.WALKING">
+        <source>Walking</source>
+        <target>crwdns377160:0crwdne377160:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.BICYCLING">
+        <source>Bicycling</source>
+        <target>crwdns377162:0crwdne377162:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.TRANSIT">
+        <source>Transit</source>
+        <target>crwdns377164:0crwdne377164:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.notfoundmsg">
+        <source>Directions request failed due to zero result</source>
+        <target>crwdns377166:0crwdne377166:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.ChangeTheme">
+        <source>Default Theme</source>
+        <target>crwdns377168:0crwdne377168:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.ExpressRoute">
+        <source>Express Route</source>
+        <target>crwdns377170:0crwdne377170:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.DarkBluePower">
+        <source>Dark Blue Power</source>
+        <target>crwdns377172:0crwdne377172:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.Energy">
+        <source>Energy</source>
+        <target>crwdns377174:0crwdne377174:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.UltraLight">
+        <source>Ultra Light</source>
+        <target>crwdns377176:0crwdne377176:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.GreenSerenity">
+        <source>Green Serenity</source>
+        <target>crwdns377178:0crwdne377178:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsgooglemap_domain_model_address.BlackAndWhite">
+        <source>Black And White</source>
+        <target>crwdns377180:0crwdne377180:0</target>
+      </trans-unit>
+      <trans-unit id="find_place_map">
+        <source>Find places on the map</source>
+        <target>crwdns377182:0crwdne377182:0</target>
+      </trans-unit>
+      <trans-unit id="search_place_map">
+        <source>Find the direction between location on the map</source>
+        <target>crwdns377184:0crwdne377184:0</target>
+      </trans-unit>
+      <trans-unit id="change_theme">
+        <source>Change theme</source>
+        <target>crwdns377186:0crwdne377186:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
