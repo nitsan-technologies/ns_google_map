@@ -1,5 +1,10 @@
 # ns_google_map — Session state
 
+## 2026-11-23 — PHP 8.5 constraint only
+
+- Declared PHP `>=8.1 <8.6` in `composer.json` and `8.1.0-8.5.99` in `ext_emconf.php`.
+- No runtime, template, or TCA changes. Version stays 14.1.0.
+
 ## 2026-10-15 — ns_license integration + premium strip + agent context
 
 - Branch `feature/ns-license-premium-strip` from `master` (efa73d5).
