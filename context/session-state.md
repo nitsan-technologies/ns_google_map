@@ -1,5 +1,11 @@
 # ns_google_map — Session state
 
+## 2026-11-23 — BE map API key for TypoScript-only sites
+
+- `MapUtility` now loads FE TypoScript for the address record PID when FormEngine FULL_TYPOSCRIPT has no key,
+  then falls back to Site Settings. Camino (Site Settings) and Home (TypoScript-only) both work.
+- Widget HTML/JS and Site Settings keys unchanged.
+
 ## 2026-11-23 — PHP 8.5 constraint only
 
 - Declared PHP `>=8.1 <8.6` in `composer.json` and `8.1.0-8.5.99` in `ext_emconf.php`.

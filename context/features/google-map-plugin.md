@@ -5,8 +5,9 @@ v14.3.7, frontend and the address map picker not tested.*
 
 ## Editor flow
 
-1. Set the Google Maps API key: site set setting `nsGoogleMap.settings.apiKey` (v14 message points here) or the
-   classic constant `plugin.tx_nsgooglemap_map.settings.apiKey`. Without a key the address form shows a warning.
+1. Set the Google Maps API key: classic constant `plugin.tx_nsgooglemap_map.settings.apiKey` or site set
+   setting `nsGoogleMap.settings.apiKey`. Without a key the address form shows a warning.
+   BE `MapUtility` resolves key as: Extbase FULL_TYPOSCRIPT → TypoScript for the record PID → Site Settings.
 2. Create address records (`tx_nsgooglemap_domain_model_address`) in a folder; the `map` field searches a
    place and sets latitude, longitude and address (`MapUtility`, `Js/googleMap.js`).
 3. Add the content element "Google Map" (wizard group plugins, CType `nsgooglemap_map`). Tab "Configuration":
