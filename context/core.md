@@ -17,11 +17,11 @@
 
 | Source | TYPO3 | PHP |
 |---|---|---|
-| `ext_emconf.php` | `12.4.37-14.9.99` | not declared |
-| `composer.json` | `^12.4.37 \|\| ^13 \|\| ^14` | not declared |
+| `ext_emconf.php` | `12.4.37-14.9.99` | `8.1.0-8.5.99` |
+| `composer.json` | `^12.4.37 \|\| ^13 \|\| ^14` | `>=8.1 <8.6` |
 | ns_license 14.5.4 (dependency) | `12.4.18-14.9.99` | not declared (TYPO3 12.4 needs 8.1+) |
 
-- ns_license does not raise the minimum: TYPO3 12.4.37, PHP 8.1.
+- ns_license does not raise the minimum: TYPO3 12.4.37, PHP 8.1. PHP 8.5 is inside the extension range. No PHP 8.2+ syntax.
 
 ## Dependencies
 

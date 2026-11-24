@@ -15,6 +15,7 @@ $EM_CONF['ns_google_map'] = [
 	'version' => '14.0.1',
 	'constraints' => [
 		'depends' => [
+			'php' => '8.1.0-8.5.99',
 			'typo3' => '12.4.37-14.9.99',
 			'ns_license' => '14.5.4-14.9.99',
 		],

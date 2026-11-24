@@ -27,6 +27,7 @@ namespace Nitsan\NsGoogleMap\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -45,23 +46,13 @@ class MapUtility extends AbstractFormElement
 {
     public function render():array
     {
-        $pluginSettings = [];
-        $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
-        $config = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $out = $this->initializeResultArray();
-        if (isset($config['plugin.']) && array_key_exists('tx_nsgooglemap_map.', $config['plugin.'])) {
-            $pluginSettings = $config['plugin.']['tx_nsgooglemap_map.']['settings.'];
-        }
-        if (!is_array($pluginSettings) || $pluginSettings === []) {
-            $pluginSettings = $this->getPluginSettingsFromSiteSettings();
-        }
+        $pluginSettings = $this->resolvePluginSettings();
 
         if (empty($pluginSettings['apiKey'])) {
             $versionNumber = VersionNumberUtility::convertVersionStringToArray(VersionNumberUtility::getCurrentTypo3Version());
-            $message = $versionNumber['version_main'] >= 14
-                ? 'Please configure the Google Map extension in Site Settings.'
-                : 'Please configure the Google Map extension in TypoScript or  Site Settings.';
+            $message = 'Please configure the Google Map extension in TypoScript or Site Settings.';
 
             $severity = $versionNumber['version_main'] >= 13
                 ? ContextualFeedbackSeverity::WARNING
@@ -140,11 +131,97 @@ class MapUtility extends AbstractFormElement
     }
 
     /**
-     * In backend form context, full TypoScript plugin settings can be empty.
+     * Resolve plugin settings for the BE map widget.
+     *
+     * Order: Extbase FULL_TYPOSCRIPT → page TypoScript for record PID → Site Settings.
+     * Keeps TypoScript-only sites working in FormEngine without changing Site Settings setups.
      *
      * @return array<string, mixed>
      */
-    protected function getPluginSettingsFromSiteSettings(): array
+    protected function resolvePluginSettings(): array
+    {
+        $pluginSettings = $this->extractPluginSettings(
+            $this->getTypoScriptSetupFromConfigurationManager()
+        );
+        if ($this->hasApiKey($pluginSettings)) {
+            return $pluginSettings;
+        }
+
+        $pid = $this->resolveRecordPageId();
+        if ($pid > 0) {
+            $pluginSettings = $this->extractPluginSettings(
+                $this->getTypoScriptSetupForPageId($pid)
+            );
+            if ($this->hasApiKey($pluginSettings)) {
+                return $pluginSettings;
+            }
+        }
+
+        return $this->getPluginSettingsFromSiteSettings($pid);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    protected function getTypoScriptSetupFromConfigurationManager(): array
+    {
+        try {
+            $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
+            $config = $configurationManager->getConfiguration(
+                ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT
+            );
+            return is_array($config) ? $config : [];
+        } catch (\Throwable) {
+            return [];
+        }
+    }
+
+    /**
+     * Load FE TypoScript for a concrete page id (FormEngine often has no / wrong "id").
+     *
+     * @return array<string, mixed>
+     */
+    protected function getTypoScriptSetupForPageId(int $pageId): array
+    {
+        $request = $GLOBALS['TYPO3_REQUEST'] ?? null;
+        if (!$request instanceof ServerRequestInterface || $pageId <= 0) {
+            return [];
+        }
+
+        try {
+            $request = $request->withQueryParams(array_merge($request->getQueryParams(), ['id' => $pageId]));
+            $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
+            if (method_exists($configurationManager, 'setRequest')) {
+                $configurationManager->setRequest($request);
+            }
+            $config = $configurationManager->getConfiguration(
+                ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT
+            );
+            return is_array($config) ? $config : [];
+        } catch (\Throwable) {
+            return [];
+        }
+    }
+
+    /**
+     * @param array<string, mixed> $config
+     * @return array<string, mixed>
+     */
+    protected function extractPluginSettings(array $config): array
+    {
+        $settings = $config['plugin.']['tx_nsgooglemap_map.']['settings.'] ?? null;
+        return is_array($settings) ? $settings : [];
+    }
+
+    /**
+     * @param array<string, mixed> $pluginSettings
+     */
+    protected function hasApiKey(array $pluginSettings): bool
+    {
+        return trim((string)($pluginSettings['apiKey'] ?? '')) !== '';
+    }
+
+    protected function resolveRecordPageId(): int
     {
         $pid = $this->data['databaseRow']['pid'] ?? 0;
         if (is_array($pid)) {
@@ -155,9 +232,23 @@ class MapUtility extends AbstractFormElement
 
         if ($pid <= 0) {
             $pid = (int)($this->data['effectivePid'] ?? 0);
-            if ($pid <= 0) {
-                return [];
-            }
+        }
+
+        return $pid;
+    }
+
+    /**
+     * In backend form context, full TypoScript plugin settings can be empty.
+     *
+     * @return array<string, mixed>
+     */
+    protected function getPluginSettingsFromSiteSettings(int $pid = 0): array
+    {
+        if ($pid <= 0) {
+            $pid = $this->resolveRecordPageId();
+        }
+        if ($pid <= 0) {
+            return [];
         }
 
         try {
