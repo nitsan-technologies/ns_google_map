@@ -152,11 +152,11 @@
             <f:for each="{locations}" as="address" iteration="i">
                 googlemap.locations[{i.index}] = <f:format.raw>{</f:format.raw>
                     uid: {address.uid},
-                    title: '<nsgooglemap:escape>{address.title}</nsgooglemap:escape>',
+                    title: <f:format.raw>{address.title -> f:format.json()}</f:format.raw>,
                     latitude: {address.latitude -> f:format.number(decimals:6, thousandsSeparator:'')},
                     longitude: {address.longitude -> f:format.number(decimals:6, thousandsSeparator:'')},
-                    address: '<nsgooglemap:escape>{address.address}</nsgooglemap:escape>',
-                    infoWindowContent: '<f:format.raw><nsgooglemap:escape><f:render partial="Address/InfoWindow" arguments="{_all}" /></nsgooglemap:escape></f:format.raw>',
+                    address: <f:format.raw>{address.address -> f:format.json()}</f:format.raw>,
+                    infoWindowContent: <f:format.raw><f:format.json><f:render partial="Address/InfoWindow" arguments="{_all}" /></f:format.json></f:format.raw>,
                     openByClick: {f:if(condition:"{address.openByClick}", then:"1", else:"0")},
                     closeByClick: {f:if(condition:"{address.closeByClick}", then:"1", else:"0")},
                     opened: {f:if(condition:"{address.opened}", then:"1", else:"0")},
@@ -193,36 +193,77 @@
 
 
             try {
-                var $element = jQuery("#" + googlemap.mapSettings.id);
+                var jq = await waitForJQueryPlugin(10000);
+                if (!jq) {
+                    console.error('ns_google_map: jQuery plugin not available');
+                    return false;
+                }
+
+                var $element = jq("#" + googlemap.mapSettings.id);
                 if ($element.length === 0) {
                     console.error('Map container not found:', googlemap.mapSettings.id);
-                    return true;
+                    return false;
                 }
-                
+
                 $element.nsgooglemap(googlemap);
-                
-                if(googlemap.mapSettings.width.indexOf('%') != -1) {
-                    $(window).resize(function() {
+
+                if (googlemap.mapSettings.width.indexOf('%') != -1) {
+                    jq(window).resize(function() {
                         $element.trigger('mapresize');
                     });
                 }
                 nsGoogleMapInitialized = true;
             } catch (error) {
                 console.error('Error initializing map:', error);
+                return false;
             }
             return true;
         }
 
-        // Expose a deterministic callback for Google Maps API loading.
-        // TypoScript loads the API with `callback=nsGoogleMapInit`.
+        function waitForJQueryPlugin(timeoutMs) {
+            return new Promise(function(resolve) {
+                var startedAt = Date.now();
+                function poll() {
+                    var jq = window.jQuery || window.$;
+                    if (typeof window.nsGoogleMapAttach === 'function') {
+                        window.nsGoogleMapAttach(jq);
+                    }
+                    if (jq && jq.fn && typeof jq.fn.nsgooglemap === 'function') {
+                        resolve(jq);
+                        return;
+                    }
+                    if (Date.now() - startedAt >= timeoutMs) {
+                        resolve(null);
+                        return;
+                    }
+                    window.setTimeout(poll, 100);
+                }
+                poll();
+            });
+        }
+
+        // Support multiple plugins on one page: queue inits, single Maps callback.
+        window.nsGoogleMapInits = window.nsGoogleMapInits || [];
+        window.nsGoogleMapInits.push(initNsGoogleMap);
         window.nsGoogleMapInit = function () {
-            initNsGoogleMap();
+            var queue = window.nsGoogleMapInits.slice();
+            queue.forEach(function(fn) {
+                fn();
+            });
         };
 
-        $(function () {
-            // Attempt immediate init (works if API is already available).
-            // If not available yet, the API callback will run later.
+        function scheduleInit() {
             initNsGoogleMap();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', scheduleInit);
+        } else {
+            scheduleInit();
+        }
+        // Late jQuery replacements (other extensions) — retry after full load.
+        window.addEventListener('load', function() {
+            window.setTimeout(scheduleInit, 0);
         });
-    })(jQuery || $, window, document);
+    })(window.jQuery || window.$, window, document);
 </nsgooglemap:script>

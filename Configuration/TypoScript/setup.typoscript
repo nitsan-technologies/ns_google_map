@@ -19,31 +19,4 @@ page {
     includeCSS {
         mapstyle = EXT:ns_google_map/Resources/Public/Css/style.css
     }
-    
-    # Load jQuery first
-    includeJSLibs {
-        nsfjquery = EXT:ns_google_map/Resources/Public/Js/jquery.min.js
-        nsfjquery.if.isTrue = {$plugin.tx_nsgooglemap_map.settings.jquery}
-        nsfjquery.forceOnTop = 1
-        nsfjquery.disableCompression = 1
-    }
-    
-    # Load Google Maps API and other scripts in footer
-    includeJSFooter {
-        # Google Maps API
-        googleMapsApi = https://maps.googleapis.com/maps/api/js?key={$plugin.tx_nsgooglemap_map.settings.apiKey}&language={$plugin.tx_nsgooglemap_map.settings.language}&libraries=places&loading=async&callback=nsGoogleMapInit
-        googleMapsApi.external = 1
-        googleMapsApi.disableCompression = 1
-        googleMapsApi.async = 1
-        googleMapsApi.defer = 1
-        
-        
-        # Extension specific scripts
-        mapjs = EXT:ns_google_map/Resources/Public/Js/map.js
-        mapjs.disableCompression = 1
-        customJs = EXT:ns_google_map/Resources/Public/Js/custom.js
-        customJs.disableCompression = 1
-        clusterCustom = EXT:ns_google_map/Resources/Public/Js/markerclusterer.js
-        clusterCustom.disableCompression = 1
-    }
 }

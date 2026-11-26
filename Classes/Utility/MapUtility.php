@@ -28,13 +28,14 @@ namespace Nitsan\NsGoogleMap\Utility;
  ***************************************************************/
 
 use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Page\PageRenderer;
-use TYPO3\CMS\Core\Site\SiteFinder;
+use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
+use TYPO3\CMS\Core\Http\NormalizedParams;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessageService;
+use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Backend\Form\Element\AbstractFormElement;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
@@ -73,59 +74,57 @@ class MapUtility extends AbstractFormElement
             $out['html'] = '';
             return $out;
         }
-        $checkURL = GeneralUtility::getIndpEnv('TYPO3_SSL') ? 'https://' : 'http://';
-
-        if ($checkURL == 'http://') {
-            $googleMapsLibrary = 'http://maps.googleapis.com/maps/api/js?libraries=places';
-        } else {
-            $googleMapsLibrary = 'https://maps.googleapis.com/maps/api/js?libraries=places';
-        }
+        $scheme = $this->isHttpsRequest() ? 'https://' : 'http://';
+        $googleMapsLibrary = $scheme . 'maps.googleapis.com/maps/api/js?libraries=places';
 
         $pageRenderer->addJsFile('EXT:ns_google_map/Resources/Public/Js/jquery.min.js');
         $pageRenderer->addJsFile('EXT:ns_google_map/Resources/Public/Js/googleMap.js');
 
         if (isset($pluginSettings['apiKey'])) {
-            $googleMapsLibrary .= '&key=' . $pluginSettings['apiKey'];
+            $googleMapsLibrary .= '&key=' . rawurlencode((string)$pluginSettings['apiKey']);
         }
-        $latitude = (float) $this->data['databaseRow']['latitude'];
-        $longitude = (float) $this->data['databaseRow']['longitude'];
-        $address = $this->data['databaseRow']['address'];
+        $latitude = (float)$this->data['databaseRow']['latitude'];
+        $longitude = (float)$this->data['databaseRow']['longitude'];
+        $address = (string)$this->data['databaseRow']['address'];
 
-        $baseElementId = isset($this->data['databaseRow']['itemFormElID']) ? $this->data['databaseRow']['itemFormElID'] : $this->data['tableName'] . '_' . $this->data['databaseRow']['uid'] . '_map';
+        $baseElementId = isset($this->data['databaseRow']['itemFormElID'])
+            ? (string)$this->data['databaseRow']['itemFormElID']
+            : $this->data['tableName'] . '_' . $this->data['databaseRow']['uid'] . '_map';
         $addressId = 'data_' . $baseElementId . '_address';
         $mapId = $baseElementId . '_map';
 
         if (!($latitude && $longitude)) {
-            $latitude = 0;
-            $longitude = 0;
+            $latitude = 0.0;
+            $longitude = 0.0;
         }
         $dataPrefix = 'data[' . $this->data['tableName'] . '][' . $this->data['databaseRow']['uid'] . ']';
         $latitudeField = $dataPrefix . '[latitude]';
         $longitudeField = $dataPrefix . '[longitude]';
         $addressField = $dataPrefix . '[address]';
 
-        $updateLatitudeJs = $this->updateField($this->data['tableName'], (string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['latitude']);
-        $updateLongitudeJs = $this->updateField($this->data['tableName'], (string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['longitude']);
-        $updateAddressJs = $this->updateField($this->data['tableName'], (string)$this->data['databaseRow']['uid'], $latitudeField, $this->data['databaseRow']['address']);
+        $updateLatitudeJs = $this->updateField($this->data['tableName'], (string)$this->data['databaseRow']['uid'], $latitudeField, (string)$this->data['databaseRow']['latitude']);
+        $updateLongitudeJs = $this->updateField($this->data['tableName'], (string)$this->data['databaseRow']['uid'], $latitudeField, (string)$this->data['databaseRow']['longitude']);
+        $updateAddressJs = $this->updateField($this->data['tableName'], (string)$this->data['databaseRow']['uid'], $latitudeField, $address);
 
-        $basePath = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
+        $h = static fn(string $value): string => htmlspecialchars($value, ENT_QUOTES | ENT_HTML5);
+
         $out['html'] = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>';
-        $out['html'] .= '<script src="' . $googleMapsLibrary . '"></script>';
-        $out['html'] .= '<input type="hidden" value="' . $latitude . '" class="latitude"/>';
-        $out['html'] .= '<input type="hidden" value="' . $longitude . '" class="longitude"/>';
-        $out['html'] .= '<input type="hidden" value="' . $mapId . '" class="mapId"/>';
-        $out['html'] .= '<input type="hidden" value="' . $addressId . '" class="addressId"/>';
-        $out['html'] .= '<input type="hidden" value="' . $latitudeField . '" class="latitudeField"/>';
-        $out['html'] .= '<input type="hidden" value="' . $longitudeField . '" class="longitudeField"/>';
-        $out['html'] .= '<input type="hidden" value="' . $addressField . '" class="addressField"/>';
-        $out['html'] .= '<input type="hidden" value="' . $updateLatitudeJs . '" class="updateLatitudeJs"/>';
-        $out['html'] .= '<input type="hidden" value="' . $updateLongitudeJs . '" class="updateLongitudeJs"/>';
-        $out['html'] .= '<input type="hidden" value="' . $updateAddressJs . '" class="updateAddressJs"/>';
-        $out['html'] .= '<div id="' . $baseElementId . '">';
-        $out['html'] .= '<input id="' . $addressId . '" type="textbox" value="' . $address . '" class="origin"  style="width:300px">';
+        $out['html'] .= '<script src="' . $h($googleMapsLibrary) . '"></script>';
+        $out['html'] .= '<input type="hidden" value="' . $h((string)$latitude) . '" class="latitude"/>';
+        $out['html'] .= '<input type="hidden" value="' . $h((string)$longitude) . '" class="longitude"/>';
+        $out['html'] .= '<input type="hidden" value="' . $h($mapId) . '" class="mapId"/>';
+        $out['html'] .= '<input type="hidden" value="' . $h($addressId) . '" class="addressId"/>';
+        $out['html'] .= '<input type="hidden" value="' . $h($latitudeField) . '" class="latitudeField"/>';
+        $out['html'] .= '<input type="hidden" value="' . $h($longitudeField) . '" class="longitudeField"/>';
+        $out['html'] .= '<input type="hidden" value="' . $h($addressField) . '" class="addressField"/>';
+        $out['html'] .= '<input type="hidden" value="' . $h($updateLatitudeJs) . '" class="updateLatitudeJs"/>';
+        $out['html'] .= '<input type="hidden" value="' . $h($updateLongitudeJs) . '" class="updateLongitudeJs"/>';
+        $out['html'] .= '<input type="hidden" value="' . $h($updateAddressJs) . '" class="updateAddressJs"/>';
+        $out['html'] .= '<div id="' . $h($baseElementId) . '">';
+        $out['html'] .= '<input id="' . $h($addressId) . '" type="textbox" value="' . $h($address) . '" class="origin"  style="width:300px">';
         $out['html'] .= '<input type="button" id="findMap" value="Update">';
-        $out['html'] .= '<div id="' . $mapId . '" style="height:400px;margin:10px 0;width:400px"></div>';
-        $out['html'] .= '</div>'; // id=$baseElementId
+        $out['html'] .= '<div id="' . $h($mapId) . '" style="height:400px;margin:10px 0;width:400px"></div>';
+        $out['html'] .= '</div>';
 
         return $out;
     }
@@ -140,6 +139,15 @@ class MapUtility extends AbstractFormElement
      */
     protected function resolvePluginSettings(): array
     {
+        $pid = $this->resolveRecordPageId();
+
+        // Prefer Site Settings in BE FormEngine to avoid loading full FE TypoScript
+        // (other extensions' empty conditions can log parse errors there).
+        $fromSite = $this->getPluginSettingsFromSiteSettings($pid);
+        if ($this->hasApiKey($fromSite)) {
+            return $fromSite;
+        }
+
         $pluginSettings = $this->extractPluginSettings(
             $this->getTypoScriptSetupFromConfigurationManager()
         );
@@ -147,7 +155,6 @@ class MapUtility extends AbstractFormElement
             return $pluginSettings;
         }
 
-        $pid = $this->resolveRecordPageId();
         if ($pid > 0) {
             $pluginSettings = $this->extractPluginSettings(
                 $this->getTypoScriptSetupForPageId($pid)
@@ -157,7 +164,7 @@ class MapUtility extends AbstractFormElement
             }
         }
 
-        return $this->getPluginSettingsFromSiteSettings($pid);
+        return $fromSite;
     }
 
     /**
@@ -279,5 +286,20 @@ class MapUtility extends AbstractFormElement
             [$tableName, $identifier, $fieldName, $elementName]
         );
         return sprintf('TBE_EDITOR.fieldChanged(%s);', implode(',', $args));
+    }
+
+    protected function isHttpsRequest(): bool
+    {
+        $request = $GLOBALS['TYPO3_REQUEST'] ?? null;
+        if (!$request instanceof ServerRequestInterface) {
+            return true;
+        }
+
+        $normalizedParams = $request->getAttribute('normalizedParams');
+        if ($normalizedParams instanceof NormalizedParams) {
+            return $normalizedParams->isHttps();
+        }
+
+        return true;
     }
 }

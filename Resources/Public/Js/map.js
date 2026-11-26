@@ -1,10 +1,31 @@
-(function($) {
-    var GoogleMap = window.GoogleMap = window.GoogleMap || {};
+(function(global) {
+    // Stub early so Google Maps async callback is never missing when multiple plugins enqueue inits.
+    global.nsGoogleMapInits = global.nsGoogleMapInits || [];
+    if (typeof global.nsGoogleMapInit !== 'function') {
+        global.nsGoogleMapInit = function () {
+            (global.nsGoogleMapInits || []).slice().forEach(function (fn) {
+                fn();
+            });
+        };
+    }
+
+    /**
+     * Attach the plugin to the current jQuery instance.
+     * Other extensions may reload jQuery after this file; call again before init.
+     *
+     * @param {JQueryStatic} $
+     */
+    function attachNsGoogleMap($) {
+        if (!$ || !$.fn) {
+            return false;
+        }
+
+    var GoogleMap = global.NsGoogleMapController = global.NsGoogleMapController || null;
     /**
      * Controller for Map functionality
      *
      * @param {HTMLElement} element
-     * @param {GoogleMap.Data} googlemap
+     * @param {Object} googlemap
      * @constructor
      */
     GoogleMap = function(element, googlemap) {
@@ -263,11 +284,18 @@
             ];
         }
     };
-    // Create a new Google Map
+    global.NsGoogleMapController = GoogleMap;
+
+    // Create a new Google Map (re-bind if another script replaced jQuery)
     $.fn.nsgooglemap = function(googlemap) {
         var $element = $(this);
         if (!$element.data('googlemap')) {
             $element.data('googlemap', new GoogleMap($element, googlemap));
         }
     };
-}(jQuery));
+        return true;
+    }
+
+    global.nsGoogleMapAttach = attachNsGoogleMap;
+    attachNsGoogleMap(global.jQuery || global.$);
+}(window));

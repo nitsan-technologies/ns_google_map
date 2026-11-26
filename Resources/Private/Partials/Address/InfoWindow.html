@@ -1,25 +1,16 @@
-{namespace esc=Nitsan\NsGoogleMap\ViewHelpers}
 <div class="info-window">
     <div class="title">
         <p>
-            <f:format.raw>
-                {address.title}
-            </f:format.raw>
+            {address.title}
         </p>
     </div>
     <div class="address">
-        <f:format.raw>
-            <f:format.htmlentitiesDecode>
-            <f:format.html parseFuncTSPath="lib.parseFunc">
-                {address.infocontent}
-           </f:format.html>
-            </f:format.htmlentitiesDecode>
-        </f:format.raw>
+        <f:format.html parseFuncTSPath="lib.parseFunc">{address.infocontent}</f:format.html>
     </div>
     <f:if condition="{address.maplink}">
         <div class="view-link">
             <a href="https://maps.google.com/maps?daddr=<f:format.urlencode>{address.address}</f:format.urlencode>(<f:format.urlencode>{address.title}</f:format.urlencode>)"
-               target="_blank">
+               target="_blank" rel="noopener noreferrer">
                 <span>
                     <f:translate
                             key="LLL:EXT:ns_google_map/Resources/Private/Language/locallang.xlf:tx_nsgooglemap_domain_model_address.maplink">
